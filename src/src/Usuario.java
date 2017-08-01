@@ -2,6 +2,8 @@ package src;
 
 import java.util.ArrayList;
 
+import itens.Item;
+
 public class Usuario {
 
 	private String nome;
@@ -9,7 +11,15 @@ public class Usuario {
 	private String celular;
 	private ArrayList<Item> itens;
 	
-	public Usuario(String nome, String email, String celular) {
+	public Usuario(String nome, String email, String celular) throws Exception {
+		if (nome == null || email == null || celular == null) {
+			throw new Exception("Parametros de usuario nao podem ser nulos");
+		}
+		
+		else if (nome.trim().equals("") || email.trim().equals("") || celular.trim().equals("")) {
+			throw new Exception("Parametros de usuario nao podem ser vazios");
+		}
+		
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCelular(celular);

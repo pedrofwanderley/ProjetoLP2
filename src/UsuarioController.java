@@ -1,6 +1,8 @@
 
 import java.util.HashSet;
 
+import src.Usuario;
+
 public class UsuarioController {
 	private HashSet<Usuario> usuarios;
 
