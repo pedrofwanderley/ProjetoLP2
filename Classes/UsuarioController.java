@@ -1,7 +1,6 @@
 
-import java.util.HashSet;
 
-import src.Usuario;
+import java.util.HashSet;
 
 public class UsuarioController {
 	private HashSet<Usuario> usuarios;
