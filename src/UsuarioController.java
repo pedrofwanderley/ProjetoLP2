@@ -1,0 +1,46 @@
+
+import java.util.HashSet;
+
+public class UsuarioController {
+	private HashSet<Usuario> usuarios;
+
+	public UsuarioController() {
+		usuarios = new HashSet<>();
+	}
+
+	public String CadastrarUsuario(String nome, String email, String celular) throws Exception {
+		Usuario usuario = new Usuario(nome, email, celular);
+		usuarios.add(usuario);
+		return "Usuário cadastrado com sucesso!";
+	}
+
+	public String removerUsuario(String nome, String celular) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				usuarios.remove(usuario);
+				return "Usuario removido com sucesso";
+			}
+		}
+
+		return "Usuario invalido";
+	}
+
+	public String PesquisarUsuario(String nome) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim())) {
+				return usuario.toString();
+			}
+		}
+		
+		return "Usuario invalido";
+
+	}
+
+	public String AtualizarUsuario(String nome) {
+		return "";
+	}
+
+	public HashSet<Usuario> getUsuarios() {
+		return usuarios;
+	}
+}
