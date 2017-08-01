@@ -1,4 +1,4 @@
-package item;
+package itens;
 
 public abstract class Item {
 	
@@ -6,6 +6,7 @@ public abstract class Item {
 	protected double valor;
 	
 	public Item(String nome, double valor){
+		
 		this.nome = nome;
 		this.valor = valor;
 	}

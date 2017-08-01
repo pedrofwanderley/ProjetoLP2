@@ -1,4 +1,4 @@
-package item;
+package itens;
 
 public class BlurayShow extends Bluray{
 
@@ -8,6 +8,7 @@ public class BlurayShow extends Bluray{
 	
 	public BlurayShow(String nome, double valor, int duracao, String classificacao, String nomeDoArtista,
 			int numeroDeFaixas) {
+		
 		super(nome, valor, duracao, classificacao);
 		
 		this.nomeDoArtista = nomeDoArtista;

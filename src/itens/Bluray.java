@@ -1,4 +1,4 @@
-package item;
+package itens;
 
 public abstract class Bluray extends Item{
 
@@ -7,6 +7,7 @@ public abstract class Bluray extends Item{
 	
 	
 	public Bluray(String nome, double valor, int duracao, String classificacao) {
+		
 		super(nome, valor);
 		
 		this.duracao = duracao;
