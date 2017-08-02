@@ -2,7 +2,7 @@ import java.util.Collections;
 
 public class ControllerPesquisa {
 	
-	UsuarioController usuarios = new UsuarioController();
+	public UsuarioController usuarios = new UsuarioController();
 	
 	public String listaItensUsuarios(){
 		NomeItemComparator comparator = new NomeItemComparator();
