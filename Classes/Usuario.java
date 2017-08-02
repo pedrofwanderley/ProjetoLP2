@@ -11,7 +11,7 @@ public class Usuario {
 	private String celular;
 	private ArrayList<Item> itens;
 	
-	public Usuario(String nome, String email, String celular) throws Exception {
+	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
 			throw new Exception("Parametros de usuario nao podem ser nulos");
 		}

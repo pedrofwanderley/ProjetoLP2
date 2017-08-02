@@ -8,8 +8,8 @@ public class UsuarioController {
 		usuarios = new HashSet<>();
 	}
 
-	public String CadastrarUsuario(String nome, String email, String celular) throws Exception {
-		Usuario usuario = new Usuario(nome, email, celular);
+	public String CadastrarUsuario(String nome, String celular, String email) throws Exception {
+		Usuario usuario = new Usuario(nome, celular, email);
 		usuarios.add(usuario);
 		return "Usuário cadastrado com sucesso!";
 	}
@@ -43,8 +43,8 @@ public class UsuarioController {
 	public String getInfoUsuario(String nome, String celular, String atributo) {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					return usuario.getEmail().toString();
+				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
+					return usuario.getEmail();
 				}
 			}
 		}
