@@ -11,7 +11,7 @@ public class UsuarioController {
 	public String CadastrarUsuario(String nome, String celular, String email) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				throw new Exception ("Usuario ja cadastrado");
+				throw new Exception("Usuario ja cadastrado");
 			}
 		}
 		Usuario usuario = new Usuario(nome, celular, email);
@@ -27,7 +27,7 @@ public class UsuarioController {
 			}
 		}
 
-		throw new Exception ("Usuario invalido");
+		throw new Exception("Usuario invalido");
 	}
 
 	public String PesquisarUsuario(String nome) {
@@ -41,15 +41,28 @@ public class UsuarioController {
 
 	}
 
+	/**
+	 * Metodo que recebe a identificacao do usuario, o atributo que se deseja
+	 * modificar e o valor que sera setado
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param atributo
+	 * @param valor
+	 * @return mensagem de sucesso
+	 * @throws Exception
+	 */
+
 	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
 				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
 					usuario.setEmail(valor);
+					return "Usuario atualizado!";
 				}
 			}
 		}
-		throw new Exception ("Usuario invalido");
+		throw new Exception("Usuario invalido");
 	}
 
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
@@ -60,7 +73,7 @@ public class UsuarioController {
 				}
 			}
 		}
-		throw new Exception ("Usuario invalido");
+		throw new Exception("Usuario invalido");
 	}
 
 	public HashSet<Usuario> getUsuarios() {
