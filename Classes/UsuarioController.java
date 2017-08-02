@@ -1,13 +1,17 @@
 
+import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.List;
+import itens.Item;
 import itens.JogosEletronicos;
 
 public class UsuarioController {
+	private List<Item> itensTotais;
 	private HashSet<Usuario> usuarios;
 
 	public UsuarioController() {
 		usuarios = new HashSet<>();
+		itensTotais = new ArrayList<>();
 	}
 
 	/**
