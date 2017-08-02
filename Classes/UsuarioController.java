@@ -1,6 +1,8 @@
 
 import java.util.HashSet;
 
+import itens.JogosEletronicos;
+
 public class UsuarioController {
 	private HashSet<Usuario> usuarios;
 
@@ -84,7 +86,7 @@ public class UsuarioController {
 	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
-				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					usuario.setEmail(valor);
 					return "Usuario atualizado!";
 				}
@@ -93,7 +95,7 @@ public class UsuarioController {
 
 		else if (atributo.equalsIgnoreCase("telefone")) {
 			for (Usuario usuario : usuarios) {
-				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					usuario.setCelular(valor);
 					return "Usuario atualizado!";
 				}
@@ -122,6 +124,14 @@ public class UsuarioController {
 			}
 		}
 		throw new Exception("Usuario invalido");
+	}
+
+	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, nomeDoJogo, plataforma);
+			}
+		}
 	}
 
 	public HashSet<Usuario> getUsuarios() {
