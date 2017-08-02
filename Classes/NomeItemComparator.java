@@ -1,6 +1,3 @@
-import java.util.Comparator;
-
-import itens.Item;
 
 public class NomeItemComparator implements Comparator<Item> {
 	
