@@ -17,7 +17,11 @@ public class Fachada {
 		return usuarioController.getInfoUsuario(nome, celular, atributo);
 	}
 	
-	public void removerUsuario(String nome, String celular) {
+	public void removerUsuario(String nome, String celular) throws Exception {
 		usuarioController.removerUsuario(nome, celular);
+	}
+	
+	public void atualizarUsuario(String nome, String celular, String atributo, String novoEmail) throws Exception {
+		 usuarioController.AtualizarUsuario(nome, celular, atributo, novoEmail);
 	}
 }
