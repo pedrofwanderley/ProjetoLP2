@@ -1,16 +1,43 @@
 package itens;
-
 import java.util.ArrayList;
 
+
+/**
+ *  A classe JogosTabuleiro estende a classe Item, tendo assim todas as suas funcionalidades
+ * e os seus atributos. A classe representa os jogos de tabuleiro, estes que podem possuir 
+ * muitas pecas pequenas, por esse motivo possui um ArrayList de String para reportar se
+ * alguma peca ja foi perdida. Caso nenhuma peca tenha sido perdida o jogo estara completo.
+ * 
+ * 
+ * Provavelmente esta classe tem erros na questao do funcionamento deste ArrayList de pecas
+ * perdidas(comparacao, criacao e etc)
+ * 
+ * @author Guilherme França
+ *
+ */
 public class JogosTabuleiro extends Item{
 
 	protected ArrayList<String> pecasPerdidas = new ArrayList<String> ();
 
+	
+	/**
+	 * Construtor da classe JogosTabuleiro
+	 * 
+	 * @param nome
+	 * @param valor
+	 * @param pecasPerdidas
+	 */
 	public JogosTabuleiro(String nome, double valor, ArrayList<String> pecasPerdidas) {
 		super(nome, valor);
 		this.pecasPerdidas = pecasPerdidas;
 	}
 
+	
+	/**
+	 * Sobrescrita do metodo  HashCode, baseado no nome do jogo de tabuleito e nas pecas
+	 * perdidas. Dois jogos de tabuleiro sao iguais se tem o mesmo nome e as mesmas pecas
+	 * perdidas. 
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -20,6 +47,12 @@ public class JogosTabuleiro extends Item{
 		return result;
 	}
 
+	
+	/**
+	 * Sobrescrita do metodo  Equals, baseado no nome do jogo de tabuleito e nas pecas
+	 * perdidas. Dois jogos de tabuleiro sao iguais se tem o mesmo nome e as mesmas pecas
+	 * perdidas. 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -45,6 +78,4 @@ public class JogosTabuleiro extends Item{
 	
 		return true;
 	}
-	
-	
 }
