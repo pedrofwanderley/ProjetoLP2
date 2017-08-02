@@ -6,6 +6,7 @@ import itens.BlurayShow;
 import itens.Item;
 import itens.JogosEletronicos;
 import itens.JogosTabuleiro;
+import itens.SituacaoEmprestimo;
 
 public class UsuarioController {
 	private List<Item> itensTotais;
@@ -34,7 +35,7 @@ public class UsuarioController {
 		}
 		Usuario usuario = new Usuario(nome, celular, email);
 		usuarios.add(usuario);
-		return "Usuário cadastrado com sucesso!";
+		return "Usuario cadastrado com sucesso!";
 	}
 
 	/**
@@ -181,6 +182,24 @@ public class UsuarioController {
 		}
 		return "Item nao cadastrado";
 	}
+	/**
+	 *
+	 * @author Wesley
+	 * @param usuario
+	 * @param usuarioHistorico
+	 * @param item
+	 * @param situacao
+	 */
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao){
+		for(Usuario u: usuarios){
+			if(u.equals(usuario)){
+				usuario.getHistoricos().add(new Historico(usuarioHistorico,item,situacao));
+			}
+		}
+	}
+	
+	
+	
 	
 	public HashSet<Usuario> getUsuarios() {
 		return usuarios;

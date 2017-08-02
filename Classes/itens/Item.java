@@ -11,11 +11,13 @@ public abstract class Item {
 	
 	protected String nomeItem;
 	protected double valor;
+	protected EstadoItem estado;
 	
-	public Item(String nome, double valor){
+	public Item(String nome, double valor, EstadoItem Estado){
 		
 		this.nomeItem = nome;
 		this.valor = valor;
+		this.estado=Estado;
 	}
 
 	public String getNomeItem() {
@@ -32,6 +34,14 @@ public abstract class Item {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public EstadoItem getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoItem estado) {
+		this.estado = estado;
 	}
 	
 }

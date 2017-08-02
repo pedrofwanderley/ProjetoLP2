@@ -10,6 +10,7 @@ public class Usuario {
 	private String email;
 	private String celular;
 	private ArrayList<Item> itens;
+	private ArrayList<Historico> historicos;
 	
 	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
@@ -24,7 +25,10 @@ public class Usuario {
 		this.setEmail(email);
 		this.setCelular(celular);
 		setItens(new ArrayList<>());
+		setHistoricos(new ArrayList<>());
 	}
+
+	
 
 	public String getCelular() {
 		return celular;
@@ -56,6 +60,14 @@ public class Usuario {
 
 	public void setItens(ArrayList<Item> itens) {
 		this.itens = itens;
+	}
+	
+	private void setHistoricos(ArrayList<Historico> historicos) {
+		this.historicos = historicos;
+		
+	}
+	public ArrayList<Historico> getHistoricos() {
+		return historicos;
 	}
 	
 	@Override
