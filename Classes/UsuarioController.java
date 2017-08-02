@@ -31,13 +31,24 @@ public class UsuarioController {
 				return usuario.toString();
 			}
 		}
-		
+
 		return "Usuario invalido";
 
 	}
 
 	public String AtualizarUsuario(String nome) {
 		return "";
+	}
+
+	public String getInfoUsuario(String nome, String celular, String atributo) {
+		if (atributo.equalsIgnoreCase("email")) {
+			for (Usuario usuario : usuarios) {
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+					return usuario.getEmail().toString();
+				}
+			}
+		}
+		return "Usuario invalido";
 	}
 
 	public HashSet<Usuario> getUsuarios() {
