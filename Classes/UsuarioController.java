@@ -40,7 +40,7 @@ public class UsuarioController {
 		return "";
 	}
 
-	public String getInfoUsuario(String nome, String celular, String atributo) {
+	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
 				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
@@ -48,7 +48,7 @@ public class UsuarioController {
 				}
 			}
 		}
-		return "Usuario invalido";
+		throw new Exception ("Usuario invalido");
 	}
 
 	public HashSet<Usuario> getUsuarios() {

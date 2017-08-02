@@ -13,7 +13,7 @@ public class Fachada {
 		return email;
 	}
 	
-	public String getInfoUsuario(String nome, String celular, String atributo) {
+	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
 		return usuarioController.getInfoUsuario(nome, celular, atributo);
 	}
 	
