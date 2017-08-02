@@ -11,7 +11,7 @@ public class UsuarioController {
 
 	public UsuarioController() {
 		usuarios = new HashSet<>();
-		itensTotais = new ArrayList<>();
+		setItensTotais(new ArrayList<>());
 	}
 
 	/**
@@ -140,5 +140,13 @@ public class UsuarioController {
 
 	public HashSet<Usuario> getUsuarios() {
 		return usuarios;
+	}
+
+	public List<Item> getItensTotais() {
+		return itensTotais;
+	}
+
+	public void setItensTotais(List<Item> itensTotais) {
+		this.itensTotais = itensTotais;
 	}
 }
