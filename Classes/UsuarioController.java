@@ -8,6 +8,16 @@ public class UsuarioController {
 		usuarios = new HashSet<>();
 	}
 
+	/**
+	 * Recebe os parametros do usuario e adiciona o mesmo a colecao de usuarios
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param email
+	 * @return mensagem de sucesso
+	 * @throws Exception
+	 */
+
 	public String CadastrarUsuario(String nome, String celular, String email) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
@@ -19,6 +29,16 @@ public class UsuarioController {
 		return "Usuário cadastrado com sucesso!";
 	}
 
+	/**
+	 * Metodo que recebe a identificacao do usuario, e remove o mesmo da colecao
+	 * de usuarios
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @return mensagem de sucesso ou nao
+	 * @throws Exception
+	 */
+
 	public String removerUsuario(String nome, String celular) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
@@ -29,6 +49,14 @@ public class UsuarioController {
 
 		throw new Exception("Usuario invalido");
 	}
+
+	/**
+	 * Metodo que recebe o nome do usuario e retorna a representacao textual do
+	 * mesmo
+	 * 
+	 * @param nome
+	 * @return toString do usuario desejado
+	 */
 
 	public String PesquisarUsuario(String nome) {
 		for (Usuario usuario : usuarios) {
@@ -62,6 +90,16 @@ public class UsuarioController {
 				}
 			}
 		}
+
+		else if (atributo.equalsIgnoreCase("telefone")) {
+			for (Usuario usuario : usuarios) {
+				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
+					usuario.setCelular(valor);
+					return "Usuario atualizado!";
+				}
+			}
+		}
+
 		throw new Exception("Usuario invalido");
 	}
 

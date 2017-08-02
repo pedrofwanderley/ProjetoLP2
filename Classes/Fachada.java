@@ -2,7 +2,7 @@ import easyaccept.EasyAccept;
 
 public class Fachada {
 	public static void main(String[] args) {
-		args = new String[] { "Fachada", "Acceptance_test/us1_test.txt.txt" };
+		args = new String[] { "Fachada", "Acceptance_test/us1_test.txt.txt", "Acceptance_test/us2_test.txt.txt" };
 		EasyAccept.main(args);
 	}
 	
