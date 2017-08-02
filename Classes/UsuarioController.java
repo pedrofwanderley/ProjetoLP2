@@ -65,6 +65,16 @@ public class UsuarioController {
 		throw new Exception("Usuario invalido");
 	}
 
+	/**
+	 * Metodo que recebe a identificaao do usuario e exibe o email do mesmo
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param atributo
+	 * @return Email desejado
+	 * @throws Exception
+	 */
+
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
