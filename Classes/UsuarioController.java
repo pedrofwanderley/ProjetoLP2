@@ -41,11 +41,11 @@ public class UsuarioController {
 
 	}
 
-	public String AtualizarUsuario(String nome, String celular, String atributo, String novoEmail) throws Exception {
+	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios) {
 				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
-					usuario.setEmail(novoEmail);
+					usuario.setEmail(valor);
 				}
 			}
 		}
