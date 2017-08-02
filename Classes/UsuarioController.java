@@ -1,9 +1,11 @@
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import itens.BlurayFilme;
+import itens.BlurayShow;
 import itens.Item;
 import itens.JogosEletronicos;
+import itens.JogosTabuleiro;
 
 public class UsuarioController {
 	private List<Item> itensTotais;
@@ -133,11 +135,53 @@ public class UsuarioController {
 	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, nomeDoJogo, plataforma);
+				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, plataforma);
+				usuario.getItens().add(game);
+				itensTotais.add(game);
+				return "Item cadastrado!";
 			}
 		}
+		return "Item nao cadastrado";
 	}
 
+	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				JogosTabuleiro jogo = new JogosTabuleiro(nomeItem, preco);
+				usuario.getItens().add(jogo);
+				itensTotais.add(jogo);
+				return "Item cadastrado!";
+			}
+		}
+		return "Item nao cadastrado";
+	}
+
+	public String cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
+			String genero, String classificacao, String anoLancamento) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
+				usuario.getItens().add(filme);
+				itensTotais.add(filme);
+				return "Item cadastrado!";
+			}
+		}
+		return "Item nao cadastrado";
+	}
+
+	public String cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
+			String classificacao, String artista, int numeroDeFaixas) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao , artista, numeroDeFaixas);
+				usuario.getItens().add(show);
+				itensTotais.add(show);
+				return "Item cadastrado!";
+			}
+		}
+		return "Item nao cadastrado";
+	}
+	
 	public HashSet<Usuario> getUsuarios() {
 		return usuarios;
 	}

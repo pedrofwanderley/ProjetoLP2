@@ -22,7 +22,7 @@ public class JogosEletronicos extends Item{
 	 * @param nomeDoJogo nome do jogo disponibilizado
 	 * @param plataforma nome da plataforma em que o jogo funciona
 	 */
-	public JogosEletronicos(String nome, double valor, String nomeDoJogo, String plataforma) {
+	public JogosEletronicos(String nome, double valor, String plataforma) {
 		super(nome, valor);
 		this.plataforma = plataforma;
 	}

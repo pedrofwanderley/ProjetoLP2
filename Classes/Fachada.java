@@ -24,4 +24,14 @@ public class Fachada {
 	public void atualizarUsuario(String nome, String celular, String atributo, String novoEmail) throws Exception {
 		 usuarioController.AtualizarUsuario(nome, celular, atributo, novoEmail);
 	}
+	
+	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
+			String classificacao, String artista, int numeroDeFaixas) {
+		usuarioController.cadastrarBluRayShow(nome, celular, nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
+	}
+	
+	public void cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
+			String genero, String classificacao, String anoLancamento) {
+		usuarioController.cadastrarBluRayFilme(nome, celular, nomeItem, preco, duracao, genero, classificacao, anoLancamento);
+	}
 }

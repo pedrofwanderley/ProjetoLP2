@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * Provavelmente esta classe tem erros na questao do funcionamento deste ArrayList de pecas
  * perdidas(comparacao, criacao e etc)
  * 
- * @author Guilherme França
+ * @author Guilherme Franï¿½a
  *
  */
 public class JogosTabuleiro extends Item{
 
-	protected ArrayList<String> pecasPerdidas = new ArrayList<String> ();
+	protected ArrayList<String> pecasPerdidas;
 
 	
 	/**
@@ -27,9 +27,9 @@ public class JogosTabuleiro extends Item{
 	 * @param valor
 	 * @param pecasPerdidas
 	 */
-	public JogosTabuleiro(String nome, double valor, ArrayList<String> pecasPerdidas) {
+	public JogosTabuleiro(String nome, double valor) {
 		super(nome, valor);
-		this.pecasPerdidas = pecasPerdidas;
+		pecasPerdidas = new ArrayList<>();
 	}
 
 	
@@ -77,5 +77,15 @@ public class JogosTabuleiro extends Item{
 			return false;
 	
 		return true;
+	}
+
+
+	public ArrayList<String> getPecasPerdidas() {
+		return pecasPerdidas;
+	}
+
+
+	public void setPecasPerdidas(ArrayList<String> pecasPerdidas) {
+		this.pecasPerdidas = pecasPerdidas;
 	}
 }
