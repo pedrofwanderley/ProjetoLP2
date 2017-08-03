@@ -12,7 +12,7 @@ public class Historico {
 	private Item item;
 	private SituacaoEmprestimo situacao;
 	private Calendar dataFinal;
-	private int diasAtrasados;
+	private int diasAtrasados = 0;
 	
 	
 	public Historico(Usuario usuario, Item item, SituacaoEmprestimo situacao,Calendar dataFinal){
@@ -20,10 +20,14 @@ public class Historico {
 		this.usuario=usuario;
 		this.item=item;
 		this.situacao=situacao;
-		this.diasAtrasados= diasAtrasados;
 		this.dataFinal=dataFinal;
 
 		
+	}
+	
+	public int getDiasAtrasados(){
+		Calendar.getInstance();
+		return diasAtrasados = Calendar.DAY_OF_YEAR - dataFinal.DAY_OF_YEAR;
 	}
 	
 	public String toString(){
