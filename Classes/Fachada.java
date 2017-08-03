@@ -30,18 +30,12 @@ public class Fachada {
 		usuarioController.removerUsuario(nome, celular);
 	}
 
-	public void atualizarUsuario(String nome, String celular, String atributo, String novoEmail) throws Exception {
-		usuarioController.AtualizarUsuario(nome, celular, atributo, novoEmail);
-	}
-
-	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
-			String classificacao, String artista, int numeroDeFaixas) throws Exception {
-		usuarioController.cadastrarBluRayShow(nome, celular, nomeItem, preco, duracao, classificacao, artista,
-				numeroDeFaixas);
+	public void atualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
+		usuarioController.AtualizarUsuario(nome, celular, atributo, valor);
 	}
 
 	public void cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
-			String genero, String classificacao, String anoLancamento) throws Exception {
+			String genero, String classificacao, int anoLancamento) throws Exception {
 		usuarioController.cadastrarBluRayFilme(nome, celular, nomeItem, preco, duracao, genero, classificacao,
 				anoLancamento);
 	}
@@ -55,6 +49,18 @@ public class Fachada {
 		usuarioController.cadastrarJogoTabuleiro(nome, celular, nomeItem, preco);
 	}
 
+	public void getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+		usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
+	}
+	
+	public void removerItem(String nome, String celular, String nomeItem) throws Exception {
+		usuarioController.removerItem(nome, celular, nomeItem);
+	}
+	
+	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor) throws Exception {
+		usuarioController.atualizarItem(nome, celular, nomeItem, atributo, valor);
+	}
+	
 	public String listarItensOrdenadosPorNome() {
 		return pesquisa.listaItensUsuariosNome(usuarioController.getItensTotais());
 	}
