@@ -24,8 +24,8 @@ public class Usuario {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCelular(celular);
-		setItens(new ArrayList<>());
-		setHistoricos(new ArrayList<>());
+		itens = new ArrayList<>();
+		historicos = new ArrayList<>();
 	}
 
 	

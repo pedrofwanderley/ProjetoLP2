@@ -14,7 +14,7 @@ public class UsuarioController {
 
 	public UsuarioController() {
 		usuarios = new HashSet<>();
-		setItensTotais(new ArrayList<>());
+		itensTotais = new ArrayList<>();
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class UsuarioController {
 		throw new Exception("Usuario invalido");
 	}
 
-	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) {
+	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, plataforma);
@@ -145,7 +145,7 @@ public class UsuarioController {
 		return "Item nao cadastrado";
 	}
 
-	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) {
+	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogosTabuleiro jogo = new JogosTabuleiro(nomeItem, preco);
@@ -158,7 +158,7 @@ public class UsuarioController {
 	}
 
 	public String cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
-			String genero, String classificacao, String anoLancamento) {
+			String genero, String classificacao, String anoLancamento) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
@@ -171,7 +171,7 @@ public class UsuarioController {
 	}
 
 	public String cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
-			String classificacao, String artista, int numeroDeFaixas) {
+			String classificacao, String artista, int numeroDeFaixas) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao , artista, numeroDeFaixas);
@@ -182,6 +182,7 @@ public class UsuarioController {
 		}
 		return "Item nao cadastrado";
 	}
+	
 	/**
 	 *
 	 * @author Wesley
@@ -197,9 +198,6 @@ public class UsuarioController {
 			}
 		}
 	}
-	
-	
-	
 	
 	public HashSet<Usuario> getUsuarios() {
 		return usuarios;
