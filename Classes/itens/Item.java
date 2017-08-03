@@ -7,7 +7,7 @@ package itens;
  * @author Guilherme Fran�a
  *
  */
-public abstract class Item {
+public class Item {
 	
 	protected String nomeItem;
 	protected double valor;

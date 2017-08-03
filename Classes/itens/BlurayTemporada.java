@@ -1,5 +1,6 @@
 package itens;
-import java.util.HashSet;
+import java.util.ArrayList;
+
 
 
 /**
@@ -11,7 +12,7 @@ import java.util.HashSet;
  * Provavelmente esta classe tem erro no funcionamento deste Hashset de Blurays, nao sei ainda 
  * com certeza como ele vai funcionar(comparacao, criacao e etc)
  * 
- * @author Guilherme França
+ * @author Guilherme Franï¿½a
  *
  */
 public class BlurayTemporada extends Bluray{
@@ -19,7 +20,7 @@ public class BlurayTemporada extends Bluray{
 	protected String generoSerie;
 	protected int numeroDaTemporada;
 	protected int duracaoTotal;
-	protected HashSet<Bluray> discosTemporada = new HashSet<Bluray> ();
+	protected ArrayList<Integer> episodios = new ArrayList<Integer> ();
 	
 	
 	/**
@@ -35,8 +36,7 @@ public class BlurayTemporada extends Bluray{
 	 * @param discosTemporada
 	 */
 	public BlurayTemporada(String nome, double valor, int duracao, String classificacao, 
-			String generoSerie, int numeroDaTemporada, int duracaoTotal, 
-			HashSet<Bluray> discosTemporada) throws Exception{
+			String generoSerie, int numeroDaTemporada, int duracaoTotal) throws Exception{
 		super(nome, valor, duracao, classificacao);
 		
 		if (generoSerie.trim().equals("")) {
@@ -55,7 +55,6 @@ public class BlurayTemporada extends Bluray{
 		this.generoSerie = generoSerie;
 		this.numeroDaTemporada = numeroDaTemporada;
 		this.duracaoTotal = duracaoTotal;
-		this.discosTemporada = discosTemporada;
 	}
 
 

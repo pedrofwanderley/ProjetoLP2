@@ -6,13 +6,13 @@ package itens;
  * seus atributos. A classe representa o Bluray de filme e tem por caracteristica propria
  * possuir um genero e um ano de lancamento.
  * 
- * @author Guilherme França
+ * @author Guilherme Franï¿½a
  *
  */
 public class BlurayFilme extends Bluray{
 
 	protected String genero;
-	protected String anoDeLancamento;
+	protected int anoDeLancamento;
 	
 	
 	/**
@@ -26,7 +26,7 @@ public class BlurayFilme extends Bluray{
 	 * @param anoDeLancamento
 	 */
 	public BlurayFilme(String nome, double valor, int duracao, String classificacao, 
-			String genero,String anoDeLancamento) throws Exception{
+			String genero, int anoDeLancamento) throws Exception{
 		super(nome, valor, duracao, classificacao);
 		
 		if (genero.trim().equals("")) {
@@ -35,16 +35,25 @@ public class BlurayFilme extends Bluray{
 		if (genero.equals(null)) {
 			throw new NullPointerException();
 		}
-		if (anoDeLancamento.trim().equals("")) {
+		if (anoDeLancamento <= 0) {
 			throw new IllegalArgumentException();
-		}
-		if (anoDeLancamento.equals(null)) {
-			throw new NullPointerException();
 		}
 		
 		this.genero = genero;
 		this.anoDeLancamento = anoDeLancamento;
 	}
+
+
+	public String getGenero() {
+		return genero;
+	}
+
+
+	public int getAnoDeLancamento() {
+		return anoDeLancamento;
+	}
+	
+	
 	
 	
 }
