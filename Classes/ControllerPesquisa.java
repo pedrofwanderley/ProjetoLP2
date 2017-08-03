@@ -1,14 +1,17 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import itens.Item;
-
+/**
+ * Classe de controle de pesquisas.
+ * @author pedrofw
+ *
+ */
 public class ControllerPesquisa {
 
-	public UsuarioController usuarios;
 
 	public ControllerPesquisa() {
-		this.usuarios = new UsuarioController();
 	}
 
 	public String listaItensUsuariosNome(List<Item> itens) {
@@ -34,5 +37,8 @@ public class ControllerPesquisa {
 
 		return listaItens;
 	}
+	
+	
+	
 
 }
