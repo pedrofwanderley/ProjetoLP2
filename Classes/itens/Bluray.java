@@ -3,12 +3,11 @@ package itens;
 /**
  * A classe Bluray estende a classe item tendo assim os seus atributos, a classe Bluray tem 
  * por funcionalidade servir como base para a construcao das classes que dela variam.
- * Ainda nao sei se devo estabelecer esta classe como abstrata. 
  * 
  * @author Guilherme França
  *
  */
-public abstract class Bluray extends Item{
+public class Bluray extends Item{
 
 	protected int duracao;
 	protected String classificacao;
@@ -22,12 +21,32 @@ public abstract class Bluray extends Item{
 	 * @param duracao
 	 * @param classificacao
 	 */
-	public Bluray(String nome, double valor, int duracao, String classificacao) {
-		
+	public Bluray(String nome, double valor, int duracao, String classificacao) throws Exception{
 		super(nome, valor);
+		
+		if (duracao <= 0) {
+			throw new IllegalArgumentException();
+		}
+		if (classificacao.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (classificacao.equals(null)) {
+			throw new NullPointerException();
+		}
 		
 		this.duracao = duracao;
 		this.classificacao = classificacao;
 	}
+
+
+	public int getDuracao() {
+		return duracao;
+	}
+
+
+	public String getClassificacao() {
+		return classificacao;
+	}
 		
+
 }

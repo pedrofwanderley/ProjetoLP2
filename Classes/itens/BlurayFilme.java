@@ -25,10 +25,22 @@ public class BlurayFilme extends Bluray{
 	 * @param genero
 	 * @param anoDeLancamento
 	 */
-	public BlurayFilme(String nome, double valor, int duracao, String classificacao, String genero,
-			String anoDeLancamento) {
-		
+	public BlurayFilme(String nome, double valor, int duracao, String classificacao, 
+			String genero,String anoDeLancamento) throws Exception{
 		super(nome, valor, duracao, classificacao);
+		
+		if (genero.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (genero.equals(null)) {
+			throw new NullPointerException();
+		}
+		if (anoDeLancamento.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (anoDeLancamento.equals(null)) {
+			throw new NullPointerException();
+		}
 		
 		this.genero = genero;
 		this.anoDeLancamento = anoDeLancamento;

@@ -34,10 +34,23 @@ public class BlurayTemporada extends Bluray{
 	 * @param duracaoTotal
 	 * @param discosTemporada
 	 */
-	public BlurayTemporada(String nome, double valor, int duracao, String classificacao, String generoSerie,
-			int numeroDaTemporada, int duracaoTotal, HashSet<Bluray> discosTemporada) {
-		
+	public BlurayTemporada(String nome, double valor, int duracao, String classificacao, 
+			String generoSerie, int numeroDaTemporada, int duracaoTotal, 
+			HashSet<Bluray> discosTemporada) throws Exception{
 		super(nome, valor, duracao, classificacao);
+		
+		if (generoSerie.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (generoSerie.equals(null)) {
+			throw new NullPointerException();
+		}
+		if (numeroDaTemporada <= 0) {
+			throw new IllegalArgumentException();
+		}
+		if (duracaoTotal <= 0) {
+			throw new IllegalArgumentException();
+		}
 		
 		this.generoSerie = generoSerie;
 		this.numeroDaTemporada = numeroDaTemporada;

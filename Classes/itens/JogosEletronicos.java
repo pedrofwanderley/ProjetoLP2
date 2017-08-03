@@ -22,8 +22,16 @@ public class JogosEletronicos extends Item{
 	 * @param nomeDoJogo nome do jogo disponibilizado
 	 * @param plataforma nome da plataforma em que o jogo funciona
 	 */
-	public JogosEletronicos(String nome, double valor, String plataforma) {
+	public JogosEletronicos(String nome, double valor, String plataforma) throws Exception{
 		super(nome, valor);
+		
+		if (plataforma.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (plataforma.equals(null)) {
+			throw new NullPointerException();
+		}
+		
 		this.plataforma = plataforma;
 	}
 

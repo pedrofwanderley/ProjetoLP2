@@ -27,9 +27,9 @@ public class JogosTabuleiro extends Item{
 	 * @param valor
 	 * @param pecasPerdidas
 	 */
-	public JogosTabuleiro(String nome, double valor) {
+	public JogosTabuleiro(String nome, double valor) throws Exception{
 		super(nome, valor);
-		pecasPerdidas = new ArrayList<>();
+		pecasPerdidas = new ArrayList<String>();
 	}
 
 	

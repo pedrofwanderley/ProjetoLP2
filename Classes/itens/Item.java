@@ -13,11 +13,21 @@ public abstract class Item {
 	protected double valor;
 	protected EstadoItem estado;
 	
-	public Item(String nome, double valor, EstadoItem Estado){
+	public Item(String nome, double valor) throws Exception{
+		if (nome.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (nome.equals(null)) {
+			throw new NullPointerException();
+		}
+		if (valor <= 0) {
+			throw new IllegalArgumentException();
+		}
+		
 		
 		this.nomeItem = nome;
 		this.valor = valor;
-		this.estado=Estado;
+		this.estado= EstadoItem.NEmprestado;
 	}
 
 	public String getNomeItem() {
