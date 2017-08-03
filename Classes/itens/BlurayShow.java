@@ -6,7 +6,7 @@ package itens;
  * seus atributos. A classe representa o Bluray de show e tem por caracteristica propria
  * possuir o nome do artista e o numero de faixas.
  * 
- * @author Guilherme França
+ * @author Guilherme Franï¿½a
  *
  */
 public class BlurayShow extends Bluray{
@@ -42,4 +42,17 @@ public class BlurayShow extends Bluray{
 		this.nomeDoArtista = nomeDoArtista;
 		this.numeroDeFaixas = numeroDeFaixas;
 	}
+
+
+	public String getNomeDoArtista() {
+		return nomeDoArtista;
+	}
+
+
+	public int getNumeroDeFaixas() {
+		return numeroDeFaixas;
+	}
+	
+	
+	
 }

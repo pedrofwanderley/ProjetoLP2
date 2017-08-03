@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Guilherme Fran�a
  *
  */
-public class JogosTabuleiro extends Item{
+public class JogoTabuleiro extends Item{
 
 	protected ArrayList<String> pecasPerdidas;
 
@@ -27,7 +27,7 @@ public class JogosTabuleiro extends Item{
 	 * @param valor
 	 * @param pecasPerdidas
 	 */
-	public JogosTabuleiro(String nome, double valor) throws Exception{
+	public JogoTabuleiro(String nome, double valor) throws Exception{
 		super(nome, valor);
 		pecasPerdidas = new ArrayList<String>();
 	}
@@ -62,7 +62,7 @@ public class JogosTabuleiro extends Item{
 		if (getClass() != obj.getClass())
 			return false;
 		
-		JogosTabuleiro jogoTabuleiro = (JogosTabuleiro) obj;
+		JogoTabuleiro jogoTabuleiro = (JogoTabuleiro) obj;
 		
 		if (pecasPerdidas == null) {
 			if (jogoTabuleiro.pecasPerdidas != null)
