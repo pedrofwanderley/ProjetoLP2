@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import itens.Bluray;
 import itens.BlurayFilme;
 import itens.BlurayShow;
 import itens.Item;
@@ -133,7 +135,8 @@ public class UsuarioController {
 		throw new Exception("Usuario invalido");
 	}
 
-	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) throws Exception {
+	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
+			throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, plataforma);
@@ -174,7 +177,7 @@ public class UsuarioController {
 			String classificacao, String artista, int numeroDeFaixas) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao , artista, numeroDeFaixas);
+				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
 				usuario.getItens().add(show);
 				itensTotais.add(show);
 				return "Item cadastrado!";
@@ -182,7 +185,25 @@ public class UsuarioController {
 		}
 		return "Item nao cadastrado";
 	}
+
+//	public String cadastrarBluRaySerieBlurayTemporada(String nome, String celular, String nomeItem, double preco, int duracao,
+//			String classificacao, String generoSerie, int numeroDaTemporada, int duracaoTotal,
+//			HashSet<Bluray> discosTemporada) throws Exception {
+//		for (Usuario usuario : usuarios) {
+//			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+//				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
+//				usuario.getItens().add(show);
+//				itensTotais.add(show);
+//				return "Item cadastrado!";
+//			}
+//		}
+//		return "Item nao cadastrado";
+//	}
 	
+	public String getInfoItem() {
+		
+	}
+
 	/**
 	 *
 	 * @author Wesley
@@ -191,14 +212,14 @@ public class UsuarioController {
 	 * @param item
 	 * @param situacao
 	 */
-	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao){
-		for(Usuario u: usuarios){
-			if(u.equals(usuario)){
-				usuario.getHistoricos().add(new Historico(usuarioHistorico,item,situacao));
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao) {
+		for (Usuario u : usuarios) {
+			if (u.equals(usuario)) {
+				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao));
 			}
 		}
 	}
-	
+
 	public HashSet<Usuario> getUsuarios() {
 		return usuarios;
 	}
