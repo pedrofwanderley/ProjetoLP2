@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -311,10 +312,10 @@ public class UsuarioController {
 	 * @param situacao
 	 */
 	
-	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao) {
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, Calendar dataFinal) {
 		for (Usuario u : usuarios) {
 			if (u.equals(usuario)) {
-				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao));
+				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal));
 			}
 		}
 	}

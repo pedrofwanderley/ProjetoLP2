@@ -10,7 +10,7 @@ public class Emprestimo {
 	private Item item;
 	private int tempoEmprestimo;
 	
-	private Calendar dataInicial = Calendar.getInstance().DAY_OF_YEAR;
+	private Calendar dataInicial = Calendar.getInstance();
 	private Calendar dataFinal = Calendar.getInstance();
 	
 	/**
@@ -76,6 +76,13 @@ public class Emprestimo {
 
 	public void setDataFinal(Calendar dataFinal) {
 		this.dataFinal = dataFinal;
+	}
+
+	@Override
+	public String toString() {
+		return "Emprestimo [donoItem=" + donoItem + ", usuarioEmprestado=" + usuarioEmprestado + ", item=" + item
+				+ ", tempoEmprestimo=" + tempoEmprestimo + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
+				+ "]";
 	}
 	
 	
