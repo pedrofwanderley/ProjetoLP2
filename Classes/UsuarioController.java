@@ -6,8 +6,8 @@ import itens.Bluray;
 import itens.BlurayFilme;
 import itens.BlurayShow;
 import itens.Item;
-import itens.JogosEletronicos;
-import itens.JogosTabuleiro;
+import itens.JogoEletronico;
+import itens.JogoTabuleiro;
 import itens.SituacaoEmprestimo;
 
 public class UsuarioController {
@@ -139,7 +139,7 @@ public class UsuarioController {
 			throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				JogosEletronicos game = new JogosEletronicos(nomeItem, preco, plataforma);
+				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 				usuario.getItens().add(game);
 				itensTotais.add(game);
 				return "Item cadastrado!";
@@ -151,7 +151,7 @@ public class UsuarioController {
 	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				JogosTabuleiro jogo = new JogosTabuleiro(nomeItem, preco);
+				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 				usuario.getItens().add(jogo);
 				itensTotais.add(jogo);
 				return "Item cadastrado!";

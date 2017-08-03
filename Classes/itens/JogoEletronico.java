@@ -7,10 +7,9 @@ package itens;
  * PC que possuem mideas que podem ser emprestadas. A classe tem por atributos o nome do jogo
  * e o nome da plataforma.
  * 
- * @author Guilherme Fran�a
  *
  */
-public class JogosEletronicos extends Item{
+public class JogoEletronico extends Item{
 	protected String plataforma;
 
 
@@ -22,7 +21,7 @@ public class JogosEletronicos extends Item{
 	 * @param nomeDoJogo nome do jogo disponibilizado
 	 * @param plataforma nome da plataforma em que o jogo funciona
 	 */
-	public JogosEletronicos(String nome, double valor, String plataforma) throws Exception{
+	public JogoEletronico(String nome, double valor, String plataforma) throws Exception{
 		super(nome, valor);
 		
 		if (plataforma.trim().equals("")) {
@@ -44,7 +43,8 @@ public class JogosEletronicos extends Item{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((plataforma == null) ? 0 : plataforma.hashCode());
+		result = prime * result + ((super.nomeItem == null) ? 0 : super.nomeItem.hashCode());
+		result = prime * result + ((this.plataforma == null) ? 0 : plataforma.hashCode());
 		return result;
 	}
 
@@ -61,14 +61,28 @@ public class JogosEletronicos extends Item{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		JogosEletronicos jogoEletronico = (JogosEletronicos) obj;
-		if (plataforma == null) {
-			if (jogoEletronico.plataforma != null)
+		
+		JogoEletronico jogoEletronicoTeste = (JogoEletronico) obj;
+		
+		if (this.plataforma == null) {
+			if (jogoEletronicoTeste.plataforma != null)
 				return false;
-		} else if (!plataforma.equals(jogoEletronico.plataforma))
+		} else if (!plataforma.equals(jogoEletronicoTeste.plataforma))
+			return false;
+		
+		if (super.nomeItem == null) {
+			if (jogoEletronicoTeste.nomeItem != null)
+				return false;
+		} else if (!super.nomeItem.equals(jogoEletronicoTeste.nomeItem))
 			return false;
 		
 		return true;
 	}
+
+
+	public String getPlataforma() {
+		return plataforma;
+	}
+	
 	
 }
