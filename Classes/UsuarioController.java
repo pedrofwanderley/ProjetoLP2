@@ -1,15 +1,5 @@
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-
-import itens.Bluray;
-import itens.BlurayFilme;
-import itens.BlurayShow;
-import itens.Item;
-import itens.JogoEletronico;
-import itens.JogoTabuleiro;
-import itens.SituacaoEmprestimo;
+import java.util.*;
+import itens.*;
 
 public class UsuarioController {
 	private List<Item> itensTotais;
