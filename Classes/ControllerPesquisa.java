@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import itens.Item;
 
@@ -11,19 +13,29 @@ import itens.Item;
  */
 public class ControllerPesquisa {
 	
+	private List<Item> itensSistema = new ArrayList<>();
+	
 	public ControllerPesquisa() {
 	}
+
+		
+	
 	/**
 	 * Método de ordenacao e exibicao de itens em ordem alfabetica.
 	 * @param itens, o parametro é uma lista de itens.
 	 * @return, retorna as representacoes dos itens em forma de string.
 	 */
-	public String listaItensUsuariosNome(List<Item> itens) {
+	public String listaItensUsuariosNome(Map<String,Usuario> usuarios) {
+		for (Usuario usuario : usuarios.values()){
+			for(Item itens : usuario.getItens().values()){
+				itensSistema .add(itens);
+			}
+		}
 		NomeItemComparator comparator = new NomeItemComparator();
-		Collections.sort(itens, comparator);
+		Collections.sort(itensSistema , comparator);
 		String listaItens = "";
-		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + "|";
+		for (int i = 0; i < itensSistema .size(); i++) {
+			listaItens += itensSistema .get(i).toString() + "|";
 
 		}
 
@@ -34,25 +46,32 @@ public class ControllerPesquisa {
 	 * @param itens, o parametro é uma lista de itens
 	 * @return, retorna uma representacao em string de todos os itens dos usuários.
 	 */
-	public String listaItensUsuariosValor(List<Item> itens) {
+	public String listaItensUsuariosValor(Map<String,Usuario> usuarios) {
+		for (Usuario usuario : usuarios.values()){
+			for(Item itens : usuario.getItens().values()){
+				itensSistema .add(itens);
+			}
+		}
 		ValorItemComparator comparator = new ValorItemComparator();
-		Collections.sort(itens, comparator);
+		Collections.sort(itensSistema, comparator);
 		String listaItens = "";
-		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + "|";
+		for (int i = 0; i < itensSistema .size(); i++) {
+			listaItens += itensSistema .get(i).toString() + "|";
 
 		}
 
 		return listaItens;
 	}
 	
-	public String pesquisarDetalhesItem(List<Usuario> usuarios, String nome, String telefone, String nomeitem){
+	public String pesquisarDetalhesItem(Map<String,Usuario> usuarios, String nome, String telefone, String nomeitem){
 		String itemDetalhado = "";
-		for (int i = 0; i < usuarios.size(); i++) {
-			if (nome.equals(usuarios.get(i).getNome()) && telefone.equals(usuarios.get(i).getCelular()) && 
-					usuarios.get(i).getItens().get(i).getNomeItem().equals(nomeitem)) {
-						
-					itemDetalhado = usuarios.get(i).getItens().get(i).toString();	
+		for (Usuario usuario : usuarios.values()){
+			if (nome.equals(usuario.getNome()) && telefone.equals(usuario.getCelular())) {
+				for(Item itens : usuario.getItens().values()){
+					if (nomeitem.equals(itens.getNomeItem())){
+						itemDetalhado = itens.toString();
+					}
+				}
 				
 				
 				
@@ -61,6 +80,7 @@ public class ControllerPesquisa {
 		}
 		return itemDetalhado;
 	}
+	
 	
 	
 
