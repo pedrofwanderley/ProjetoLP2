@@ -57,7 +57,7 @@ public class BlurayShow extends Bluray{
 	@Override
 	public String toString() {
 		return "SHOW: "+ nomeItem + ", R$ " + valor + ", " + estado.getEstadoItem() + ", " +
-				duracao + ", " + classificacao + ", " +  nomeDoArtista + ", " + numeroDeFaixas;
+				duracao + " min, " + classificacao + ", " +  nomeDoArtista + ", " + numeroDeFaixas + " faixas";
 				
 	}
 	
