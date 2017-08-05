@@ -88,4 +88,22 @@ public class JogoTabuleiro extends Item{
 	public void setPecasPerdidas(ArrayList<String> pecasPerdidas) {
 		this.pecasPerdidas = pecasPerdidas;
 	}
+
+
+	@Override
+	public String toString() {
+		String temPecasPerdidas = "";
+		if (pecasPerdidas.size() > 0) {
+			temPecasPerdidas = "COM PECAS PERDIDAS";
+			
+		}else{
+			temPecasPerdidas = "COMPLETO";
+		}
+		
+		return "JOGO DE TABULEIRO: " + nomeItem + ", R$ " + valor + ", " + estado.getEstadoItem() + 
+				", " + temPecasPerdidas ;
+				 
+	}
+		
+	
 }
