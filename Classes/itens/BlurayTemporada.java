@@ -27,13 +27,14 @@ public class BlurayTemporada extends Bluray{
 	 * 
 	 * @param nome
 	 * @param valor
+	 * @param descricao 
 	 * @param duracao
 	 * @param classificacao
 	 * @param generoSerie
 	 * @param numeroDaTemporada
 	 * @param discosTemporada
 	 */
-	public BlurayTemporada(String nome, double valor, int duracao, String classificacao, 
+	public BlurayTemporada(String nome, double valor, String descricao, int duracao, String classificacao, 
 			String generoSerie, int numeroDaTemporada) throws Exception{
 		super(nome, valor, duracao, classificacao);
 		
