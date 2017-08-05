@@ -39,7 +39,8 @@ public class ControllerEmprestimo {
 		
 		for(Emprestimo emprestimo : emprestimos){
 			if(emprestimo.getDono().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
-					&& emprestimo.getRequerente().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)){
+					&& emprestimo.getRequerente().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
+					&& emprestimo.getItem().getNomeItem().equals(nomeItem)){
 				emprestimos.remove(emprestimo);
 				usuarioController.registraHistorico(usuarioController.getUsuarios().get(nomeDono), usuarioController.getUsuarios().get(nomeRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal());
 				usuarioController.registraHistorico(usuarioController.getUsuarios().get(nomeRequerente), usuarioController.getUsuarios().get(nomeDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal());
