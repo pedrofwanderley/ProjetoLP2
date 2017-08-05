@@ -71,11 +71,11 @@ public class Fachada {
 	}
 	
 	public String listarItensOrdenadosPorNome() {
-		return pesquisa.listaItensUsuariosNome(usuarioController.getItensTotais());
+		return pesquisa.listaItensUsuariosNome(usuarioController.getUsuarios());
 	}
 
 	public String listarItensOrdenadosPorValor() {
-		return pesquisa.listaItensUsuariosValor(usuarioController.getItensTotais());
+		return pesquisa.listaItensUsuariosValor(usuarioController.getUsuarios());
 	}
 	
 	public String pesquisarDetalhesItem(String nome, String telefone, String nomeItem){
