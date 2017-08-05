@@ -58,8 +58,8 @@ public class Fachada {
 		usuarioController.cadastrarJogoTabuleiro(nome, celular, nomeItem, preco);
 	}
 
-	public void getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
-		usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
+	public Double getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+		return usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
 	}
 	
 	public void removerItem(String nome, String celular, String nomeItem) throws Exception {
