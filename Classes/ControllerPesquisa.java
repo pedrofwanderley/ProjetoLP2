@@ -71,11 +71,11 @@ public class ControllerPesquisa {
 					if (nomeitem.equals(itens.getNomeItem())){
 						itemDetalhado = itens.toString();
 					}
+					
 				}
-				
-				
-				
+							
 			}
+			
 			
 		}
 		return itemDetalhado;
