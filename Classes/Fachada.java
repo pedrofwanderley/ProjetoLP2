@@ -39,6 +39,15 @@ public class Fachada {
 		usuarioController.cadastrarBluRayFilme(nome, celular, nomeItem, preco, duracao, genero, classificacao,
 				anoLancamento);
 	}
+	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
+			int numeroFaixas, String artista, String classificacao) throws Exception {
+		usuarioController.cadastrarBluRayShow(nome, celular, nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
+	}
+	
+	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao, int duracao, 
+			String classificacao, String genero, int temporada) throws Exception{
+		usuarioController.cadastrarBluRaySerie(nome, telefone, nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
+	}
 
 	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
 			throws Exception {
