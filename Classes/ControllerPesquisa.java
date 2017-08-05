@@ -23,7 +23,7 @@ public class ControllerPesquisa {
 		Collections.sort(itens, comparator);
 		String listaItens = "";
 		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + System.lineSeparator();
+			listaItens += itens.get(i).toString() + "|";
 
 		}
 
@@ -39,7 +39,7 @@ public class ControllerPesquisa {
 		Collections.sort(itens, comparator);
 		String listaItens = "";
 		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + System.lineSeparator();
+			listaItens += itens.get(i).toString() + "|";
 
 		}
 
