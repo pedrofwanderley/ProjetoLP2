@@ -57,6 +57,6 @@ public class BlurayFilme extends Bluray{
 	@Override
 	public String toString() {
 		return "FILME: " + nomeItem + ", R$ " + valor + ", " + estado.getEstadoItem() +
-				", " + duracao + " min, "  + classificacao + ", " + genero + ", " + anoDeLancamento;
+				", " + duracao + " min, "  + genero + ", " + classificacao + ", " + anoDeLancamento;
 	}
 }
