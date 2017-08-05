@@ -11,7 +11,7 @@ public class BlurayShowTest {
 	
 	@Before
 	public void inicializaBlurayShow() throws Exception{
-		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", "SOAD", 15);
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "SOAD", "Show de Rock");
 	}
 	
 	
@@ -28,31 +28,31 @@ public class BlurayShowTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNumeroDefaixasInvalidoZedo() throws Exception{
-		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", "SOAD", 0);
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 0, "SOAD", "Show de Rock");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNumerodeFaixasInvalidoNegativo() throws Exception{
-		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", "SOAD", -7);
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, -7, "SOAD", "Show de Rock");
 	}
 
 	
 	@Test(expected = NullPointerException.class)
 	public void testNomeDoArtistaNull() throws Exception{
-		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", null, 15);
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, null, "Show de Rock");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNomeDoArtistaInvalida() throws Exception{
-		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", "", 15);
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "", "Show de Rock");
 	}
 	
 	
 	@Test
 	public void testToString(){
-		String resultadoEsperado = "SHOW: SOAD, R$ 100.89, Nao emprestado, 127, Show de Rock, SOAD - Live in Rock in Rio, 15";
+		String resultadoEsperado = "SHOW: SOAD - Live in Rock in Rio, R$ 100.89, Nao emprestado, 127, Show de Rock, SOAD, 15";
 		String resultado = blurayShow.toString();
 		
 		assertEquals(resultado, resultadoEsperado);

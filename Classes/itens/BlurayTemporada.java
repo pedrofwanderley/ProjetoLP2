@@ -105,6 +105,18 @@ public class BlurayTemporada extends Bluray{
 				", " + duracao + ", " + classificacao + ", " + generoSerie + 
 				", " +  "Temporada " + numeroDaTemporada;
 			
-	}		
+	}
+
+
+	public String getGeneroSerie() {
+		return generoSerie;
+	}
+
+
+	public int getNumeroDaTemporada() {
+		return numeroDaTemporada;
+	}
+	
+	
 	
 }
