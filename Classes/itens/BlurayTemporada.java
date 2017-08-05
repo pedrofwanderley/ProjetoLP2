@@ -109,7 +109,7 @@ public class BlurayTemporada extends Bluray{
 	@Override
 	public String toString() {
 		return "SERIE: " + nomeItem + ", R$ " + valor + ", " +  estado.getEstadoItem() +
-				", " + duracao + ", " + classificacao + ", " + generoSerie + 
+				", " + duracao + " min, " + classificacao + ", " + generoSerie + 
 				", " +  "Temporada " + numeroDaTemporada;
 			
 	}
