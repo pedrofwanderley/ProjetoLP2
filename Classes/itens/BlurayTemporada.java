@@ -99,5 +99,15 @@ public class BlurayTemporada extends Bluray{
 			return false;
 		
 		return true;
-	}	
+	}
+
+
+	@Override
+	public String toString() {
+		return "SERIE: " + nomeItem + ", R$ " + valor + ", " +  estado.getEstadoItem() +
+				", " + duracao + ", " + classificacao + ", " + generoSerie + 
+				", " +  "Temporada " + numeroDaTemporada;
+			
+	}		
+	
 }
