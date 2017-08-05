@@ -3,10 +3,10 @@ import itens.*;
 
 public class UsuarioController {
 	private List<Item> itensTotais;
-	private List<Usuario> usuarios;
+	private Map<String,Usuario> usuarios;
 
 	public UsuarioController() {
-		usuarios = new ArrayList<>();
+		usuarios = new HashMap<>();
 		itensTotais = new ArrayList<>();
 	}
 
@@ -21,13 +21,13 @@ public class UsuarioController {
 	 */
 
 	public String CadastrarUsuario(String nome, String celular, String email) throws Exception {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				throw new Exception("Usuario ja cadastrado");
 			}
 		}
 		Usuario usuario = new Usuario(nome, celular, email);
-		usuarios.add(usuario);
+		usuarios.put(nome, usuario);
 		return "Usuario cadastrado com sucesso!";
 	}
 
@@ -42,7 +42,7 @@ public class UsuarioController {
 	 */
 
 	public String removerUsuario(String nome, String celular) throws Exception {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				usuarios.remove(usuario);
 				return "Usuario removido com sucesso";
@@ -61,7 +61,7 @@ public class UsuarioController {
 	 */
 
 	public String PesquisarUsuario(String nome) {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim())) {
 				return usuario.toString();
 			}
@@ -85,7 +85,7 @@ public class UsuarioController {
 
 	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
-			for (Usuario usuario : usuarios) {
+			for (Usuario usuario : usuarios.values()) {
 				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					usuario.setEmail(valor);
 					return "Usuario atualizado!";
@@ -94,7 +94,7 @@ public class UsuarioController {
 		}
 
 		else if (atributo.equalsIgnoreCase("telefone")) {
-			for (Usuario usuario : usuarios) {
+			for (Usuario usuario : usuarios.values()) {
 				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					usuario.setCelular(valor);
 					return "Usuario atualizado!";
@@ -117,7 +117,7 @@ public class UsuarioController {
 
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
-			for (Usuario usuario : usuarios) {
+			for (Usuario usuario : usuarios.values()) {
 				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
 					return usuario.getEmail();
 				}
@@ -128,7 +128,7 @@ public class UsuarioController {
 
 	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
 			throws Exception {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 				usuario.getItens().add(game);
@@ -153,7 +153,7 @@ public class UsuarioController {
 		if (preco < 0) {
 			throw new Exception("Preco invalido");
 		}
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 				usuario.getItens().add(jogo);
@@ -180,7 +180,7 @@ public class UsuarioController {
 
 	public String cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
 			String genero, String classificacao, int anoLancamento) throws Exception {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
 				usuario.getItens().add(filme);
@@ -207,7 +207,7 @@ public class UsuarioController {
 	
 	public String cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
 			String classificacao, String artista, int numeroDeFaixas) throws Exception {
-		for (Usuario usuario : usuarios) {
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
 				usuario.getItens().add(show);
@@ -303,14 +303,14 @@ public class UsuarioController {
 	 */
 	
 	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, Calendar dataFinal) {
-		for (Usuario u : usuarios) {
+		for (Usuario u : usuarios.values()) {
 			if (u.equals(usuario)) {
 				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal));
 			}
 		}
 	}
 
-	public List<Usuario> getUsuarios() {
+	public Map<String ,Usuario> getUsuarios() {
 		return usuarios;
 	}
 
