@@ -205,36 +205,32 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 	
-	public String cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
-			String classificacao, String artista, int numeroDeFaixas) throws Exception {
+
+	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
+			int numeroFaixas, String artista, String classificacao) throws Exception {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
-				usuario.getItens().put(nomeItem,show);
+				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
+				usuario.getItens().put(nomeItem, show);
 				itensTotais.add(show);
-				return "Item cadastrado!";
+				
 			}
 		}
-		return "Item nao cadastrado";
+		
 	}
-
-	// public String cadastrarBluRaySerieBlurayTemporada(String nome, String
-	// celular, String nomeItem, double preco, int duracao,
-	// String classificacao, String generoSerie, int numeroDaTemporada, int
-	// duracaoTotal,
-	// HashSet<Bluray> discosTemporada) throws Exception {
-	// for (Usuario usuario : usuarios) {
-	// if (usuario.getNome().trim().equals(nome.trim()) &&
-	// usuario.getCelular().equals(celular)) {
-	// BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao,
-	// artista, numeroDeFaixas);
-	// usuario.getItens().add(show);
-	// itensTotais.add(show);
-	// return "Item cadastrado!";
-	// }
-	// }
-	// return "Item nao cadastrado";
-	// }
+	
+	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao, int duracao, 
+			String classificacao, String genero, int temporada) throws Exception{
+		for (int i = 0; i < usuarios.size(); i++) {
+			if (nome.equals(usuarios.get(i).getNome()) && telefone.equals(usuarios.get(i).getCelular())) {
+				Bluray serie = new BlurayTemporada(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
+				
+				usuarios.get(i).getItens().put(nomeItem,serie);
+			}
+			
+		}
+	}
+	
 
 	public Usuario encontraUsuario(String nome, String celular) {
 		Usuario retorno = null;
