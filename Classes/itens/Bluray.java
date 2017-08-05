@@ -4,7 +4,7 @@ package itens;
  * A classe Bluray estende a classe item tendo assim os seus atributos, a classe Bluray tem 
  * por funcionalidade servir como base para a construcao das classes que dela variam.
  * 
- * @author Guilherme França
+ * @author Guilherme Franï¿½a
  *
  */
 public class Bluray extends Item{
