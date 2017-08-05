@@ -59,9 +59,4 @@ public class BlurayFilme extends Bluray{
 		return "FILME: " + nomeItem + ", R$ " + valor + ", " + estado.getEstadoItem() +
 				", " + duracao + " min, "  + classificacao + ", " + genero + ", " + anoDeLancamento;
 	}
-	
-	
-	
-	
-	
 }

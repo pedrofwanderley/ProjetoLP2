@@ -46,4 +46,12 @@ public class BlurayFilmeTest {
 	public void testGeneroInvalida() throws Exception{
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "", 1995);
 	}
+	
+	@Test 
+	public void testToString(){
+		String resultadoEsperado = "FILME: CDZ, R$ 50.60, Nao emprestado, 60 min, Infantil, Fantasia, 1995";
+		String resultado = blurayFilme.toString();
+		
+		assertEquals(resultadoEsperado, resultado);
+	}
 }
