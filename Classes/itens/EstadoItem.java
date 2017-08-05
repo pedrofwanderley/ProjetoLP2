@@ -2,7 +2,7 @@ package itens;
 
 public enum EstadoItem {
 
-	Emprestado("Item emprestado"), NEmprestado("Item disponivel");
+	Emprestado("Emprestado"), NEmprestado("Nao emprestado");
 
 	protected String estadoItem;
 
