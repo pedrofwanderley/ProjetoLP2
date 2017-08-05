@@ -83,6 +83,14 @@ public class JogoEletronico extends Item{
 	public String getPlataforma() {
 		return plataforma;
 	}
+
+
+	@Override
+	public String toString() {
+		return "JOGO ELETRONICO: " + nomeItem + ", R$ " + valor + ", " + estado.getEstadoItem() +
+				", " + plataforma;
+		
+	}
 	
 	
 }
