@@ -252,16 +252,7 @@ public class UsuarioController {
 		}
 		throw new Exception("Item nao encontrado");
 	}
-	// !!!
-	public HashMap arrayDeItensDesejado(String nome, String celular) {
-		ArrayList<Item> retorno = null;
-		for (int i = 0; i < usuarios.size(); i++) {
-			if (usuarios.get(i).getNome().trim().equals(nome.trim()) && usuarios.get(i).getCelular().equals(celular)) {
-				retorno = usuarios.get(i).getItens();
-			}
-		}
-		return retorno;
-	}
+
 
 	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
 			throws Exception {
@@ -284,6 +275,16 @@ public class UsuarioController {
 		}
 
 		throw new Exception("Item nao encontrado");
+	}
+	
+	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca){
+		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
+				((JogoTabuleiro) item).getPecasPerdidas().add(nomePeca);
+			
+			
+				
+			
+		}
 	}
 
 	public double getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
