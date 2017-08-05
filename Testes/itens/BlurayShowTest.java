@@ -48,4 +48,13 @@ public class BlurayShowTest {
 	public void testNomeDoArtistaInvalida() throws Exception{
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, "Show de Rock", "", 15);
 	}
+	
+	
+	@Test
+	public void testToString(){
+		String resultadoEsperado = "SHOW: SOAD, R$ 100.89, Nao emprestado, 127, Show de Rock, SOAD - Live in Rock in Rio, 15";
+		String resultado = blurayShow.toString();
+		
+		assertEquals(resultado, resultadoEsperado);
+	}
 }

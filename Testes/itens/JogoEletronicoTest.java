@@ -48,4 +48,18 @@ public class JogoEletronicoTest {
 		assertFalse(jogoEletronico1.equals(jogoEletronico5));
 	}
 	
+	@Test
+	public void testToString(){
+		String resultadoEsperado1 = "JOGO ELETRONICO: God of War, R$ 70.83, Nao emprestado, PS2";
+		String resultado1 = jogoEletronico1.toString();
+		
+		assertEquals(resultado1, resultadoEsperado1);
+		
+		jogoEletronico2.setEstado(EstadoItem.Emprestado);
+		String resultadoEsperado2 = "JOGO ELETRONICO: Mario, R$ 40.26, Emprestado, PC";
+		String resultado2 = jogoEletronico2.toString();
+		
+		assertEquals(resultadoEsperado2, resultado2);
+	}
+	
 }

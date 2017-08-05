@@ -49,7 +49,7 @@ public class BlurayFilmeTest {
 	
 	@Test 
 	public void testToString(){
-		String resultadoEsperado = "FILME: CDZ, R$ 50.60, Nao emprestado, 60 min, Infantil, Fantasia, 1995";
+		String resultadoEsperado = "FILME: CDZ, R$ 50.6, Nao emprestado, 60 min, Infantil, Fantasia, 1995";
 		String resultado = blurayFilme.toString();
 		
 		assertEquals(resultadoEsperado, resultado);

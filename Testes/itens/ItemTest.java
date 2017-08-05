@@ -48,4 +48,22 @@ public class ItemTest {
 	}
 	
 	
+	@Test
+	public void testSetNomeItem(){
+		item1.setNomeItem("GoT");
+		assertEquals("GoT", item1.getNomeItem());
+	}
+	
+	
+	@Test
+	public void testSetValorItem(){
+		item1.setValor(70.22);
+		assertEquals(70.22, item1.getValor(), 0.001);
+	}
+
+	@Test
+	public void testSetEstadoItem(){
+		item1.setEstado(EstadoItem.Emprestado);
+		assertEquals(EstadoItem.Emprestado, item1.getEstado());
+	}
 }
