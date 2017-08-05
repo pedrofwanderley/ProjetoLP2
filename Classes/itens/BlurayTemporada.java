@@ -21,8 +21,10 @@ public class BlurayTemporada extends Bluray{
 	protected String generoSerie;
 	protected int numeroDaTemporada;
 	protected ArrayList<Integer> episodios;
+	private int duracaoTotal;
 	
 	
+
 	/**
 	 * Construtor da classe BlurayTemporada
 	 * 
@@ -59,6 +61,7 @@ public class BlurayTemporada extends Bluray{
 		this.generoSerie = generoSerie;
 		this.numeroDaTemporada = numeroDaTemporada;
 		this.episodios = new ArrayList<Integer> ();
+		this.duracaoTotal = duracao;
 	}
 
 
@@ -128,6 +131,16 @@ public class BlurayTemporada extends Bluray{
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	public int getDuracaoTotal() {
+		return duracaoTotal;
+	}
+
+
+	public void setDuracaoTotal(int duracaoTotal) {
+		this.duracaoTotal += duracaoTotal;
+	}
+
 
 	
 }
