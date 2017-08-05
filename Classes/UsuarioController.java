@@ -221,11 +221,11 @@ public class UsuarioController {
 	
 	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao, int duracao, 
 			String classificacao, String genero, int temporada) throws Exception{
-		for (int i = 0; i < usuarios.size(); i++) {
-			if (nome.equals(usuarios.get(i).getNome()) && telefone.equals(usuarios.get(i).getCelular())) {
+		for (Usuario usuario : usuarios.values()) {
+			if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
 				Bluray serie = new BlurayTemporada(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
 				
-				usuarios.get(i).getItens().put(nomeItem,serie);
+				usuario.getItens().put(nomeItem,serie);
 			}
 			
 		}
@@ -276,16 +276,22 @@ public class UsuarioController {
 	}
 
 	public double getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
-		int x = encontraUsuario(nome, celular).getItens().size();
-		
-		for (int i = 0; i < x; i++) {
-			if (encontraUsuario(nome, celular).getItens().get(i).getNomeItem().equals(nomeItem)) {
-				
-				if (atributo.equalsIgnoreCase("preco")) {
-					return encontraUsuario(nome, celular).getItens().get(i).getValor();
+		double preco = 0.0;
+		if ("Preco".equalsIgnoreCase(atributo)) {
+			for (Usuario usuario : usuarios.values()) {
+				if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+					for(Item item : usuario.getItens().values()){
+						if (nomeItem.equals(item.getNomeItem())) {
+							preco = item.getValor();
+						}
+							
+					}
 				}
 			}
+			return preco;
 		}
+		
+		
 		throw new Exception("Item nao encontrado");
 	}
 
