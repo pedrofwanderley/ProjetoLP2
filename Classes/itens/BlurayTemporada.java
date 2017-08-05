@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 public class BlurayTemporada extends Bluray{
 
+	protected String descricao;
 	protected String generoSerie;
 	protected int numeroDaTemporada;
 	protected ArrayList<Integer> episodios;
@@ -32,12 +33,17 @@ public class BlurayTemporada extends Bluray{
 	 * @param classificacao
 	 * @param generoSerie
 	 * @param numeroDaTemporada
-	 * @param discosTemporada
 	 */
 	public BlurayTemporada(String nome, double valor, String descricao, int duracao, String classificacao, 
 			String generoSerie, int numeroDaTemporada) throws Exception{
 		super(nome, valor, duracao, classificacao);
 		
+		if (descricao.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (descricao.equals(null)) {
+			throw new NullPointerException();
+		}
 		if (generoSerie.trim().equals("")) {
 			throw new IllegalArgumentException();
 		}
@@ -49,6 +55,7 @@ public class BlurayTemporada extends Bluray{
 		}
 
 		
+		this.descricao = descricao;
 		this.generoSerie = generoSerie;
 		this.numeroDaTemporada = numeroDaTemporada;
 		this.episodios = new ArrayList<Integer> ();
@@ -116,7 +123,11 @@ public class BlurayTemporada extends Bluray{
 	public int getNumeroDaTemporada() {
 		return numeroDaTemporada;
 	}
-	
-	
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
 	
 }
