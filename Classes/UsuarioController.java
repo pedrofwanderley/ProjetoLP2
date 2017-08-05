@@ -230,6 +230,14 @@ public class UsuarioController {
 			
 		}
 	}
+	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao){
+		for (Item item : encontraUsuario(nome, telefone).getItens().values()){
+			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
+				((BlurayTemporada)item).setDuracaoTotal(duracao);
+				
+			}
+		}
+	}
 	
 
 	public Usuario encontraUsuario(String nome, String celular) {
