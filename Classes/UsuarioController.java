@@ -234,9 +234,9 @@ public class UsuarioController {
 
 	public Usuario encontraUsuario(String nome, String celular) {
 		Usuario retorno = null;
-		for (int i = 0; i < usuarios.size(); i++) {
-			if (usuarios.get(i).getNome().trim().equals(nome.trim()) && usuarios.get(i).getCelular().equals(celular)) {
-				retorno = usuarios.get(i);
+		for (Usuario usuario : usuarios.values()){
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				retorno = usuario;
 			}
 		}
 		return retorno;
