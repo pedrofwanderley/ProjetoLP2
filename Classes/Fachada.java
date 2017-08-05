@@ -68,4 +68,8 @@ public class Fachada {
 	public String listarItensOrdenadosPorValor() {
 		return pesquisa.listaItensUsuariosValor(usuarioController.getItensTotais());
 	}
+	
+	public String pesquisarDetalhesItem(String nome, String telefone, String nomeItem){
+		return pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), nome, telefone, nomeItem);
+	}
 }
