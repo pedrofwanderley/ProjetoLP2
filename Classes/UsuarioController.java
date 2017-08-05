@@ -263,12 +263,23 @@ public class UsuarioController {
 		return retorno;
 	}
 
-	public String atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
+	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
 			throws Exception {
-		for (int i = 0; i < encontraUsuario(nomeItem, celular).getItens().size(); i++) {
-			if (encontraUsuario(nomeItem, celular).getItens().get(i).getNomeItem().equals(nomeItem)) {
-				encontraUsuario(nomeItem, celular).getItens().get(i).setNomeItem(valor);
-				return "Item atualizado!";
+		if ("Preco".equalsIgnoreCase(atributo)) {
+			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
+				if (nomeItem.equals(item.getNomeItem())) {
+					Double valorDouble = Double.parseDouble(valor);
+					item.setValor(valorDouble);
+				}
+		
+			}
+		}
+		else if ("Nome".equalsIgnoreCase(atributo)) {
+			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
+				if (nomeItem.equals(item.getNomeItem())) {
+					item.setNomeItem(valor);;
+				}
+		
 			}
 		}
 
