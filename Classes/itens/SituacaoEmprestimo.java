@@ -1,5 +1,5 @@
 package itens;
 
 public enum SituacaoEmprestimo {
-	EMPRESTOU, EMPRESTADO;
+	EMPRESTOU, EMPRESTADO,DEVOLVIDO;
 }

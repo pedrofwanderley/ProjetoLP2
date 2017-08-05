@@ -5,8 +5,8 @@ public class Emprestimo {
 	/**
 	 * declaracao de variaveis
 	 */
-	private Usuario nomeDono;
-	private Usuario nomeRequerente;
+	private Usuario dono;
+	private Usuario requerente;
 	private Item item;
 	private int tempoEmprestimo;
 	
@@ -15,35 +15,35 @@ public class Emprestimo {
 	
 	/**
 	 * construtor
-	 * @param nomeDono
+	 * @param dono
 	 * @param nomeRequerente
 	 * @param item
 	 * @param tempoEmprestimo
 	 */
-	public Emprestimo(Usuario nomeDono, Usuario nomeRequerente, Item item, int tempoEmprestimo) {
+	public Emprestimo(Usuario dono, Usuario requerente, Item item, int tempoEmprestimo) {
 		
-		this.nomeDono = nomeDono;
-		this.nomeRequerente = nomeRequerente;
+		this.dono = dono;
+		this.requerente = requerente;
 		this.item = item;
 		this.tempoEmprestimo = tempoEmprestimo;
 		
 		dataFinal.add(Calendar.DATE, tempoEmprestimo); 
 	}
 
-	public Usuario getNomeDono() {
-		return nomeDono;
+	public Usuario getDono() {
+		return dono;
 	}
 
-	public void setDonoItem(Usuario nomeDono) {
-		this.nomeDono = nomeDono;
+	public void setDonoItem(Usuario dono) {
+		this.dono = dono;
 	}
 
-	public Usuario getNomeRequerente() {
-		return nomeRequerente;
+	public Usuario getRequerente() {
+		return requerente;
 	}
 
-	public void setUsuarioEmprestado(Usuario nomeRequerente) {
-		this.nomeRequerente = nomeRequerente;
+	public void setUsuarioEmprestado(Usuario requerente) {
+		this.requerente = requerente;
 	}
 
 	public Item getItem() {
@@ -80,7 +80,7 @@ public class Emprestimo {
 
 	@Override
 	public String toString() {
-		return "Emprestimo [donoItem=" + nomeDono + ", usuarioEmprestado=" + nomeRequerente + ", item=" + item
+		return "Emprestimo [donoItem=" + dono + ", usuarioEmprestado=" + requerente + ", item=" + item
 				+ ", tempoEmprestimo=" + tempoEmprestimo + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
 				+ "]";
 	}
