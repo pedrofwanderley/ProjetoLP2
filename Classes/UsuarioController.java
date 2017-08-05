@@ -244,9 +244,9 @@ public class UsuarioController {
 	}
 
 	public String removerItem(String nome, String celular, String nomeItem) throws Exception {
-		for (int i = 0; i < encontraUsuario(nome, celular).getItens().size(); i++) {
-			if (encontraUsuario(nome, celular).getItens().get(i).getNomeItem().equals(nomeItem)) {
-				encontraUsuario(nome, celular).getItens().remove(i);
+		for (Item item : encontraUsuario(nome, celular).getItens().values()) {
+			if (item.getNomeItem().equals(nomeItem)) {
+				encontraUsuario(nome, celular).getItens().values().remove(item);
 				return "Item removido!";
 			}
 		}
