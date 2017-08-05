@@ -52,7 +52,14 @@ public class BlurayShow extends Bluray{
 	public int getNumeroDeFaixas() {
 		return numeroDeFaixas;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "SHOW: "+ nomeDoArtista + ", R$ " + valor + ", " + estado.getEstadoItem() + ", " +
+				duracao + ", " + classificacao + ", " +  nomeItem + ", " + numeroDeFaixas;
+				
+	}
 	
 	
 }
