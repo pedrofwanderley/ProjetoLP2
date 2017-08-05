@@ -46,6 +46,22 @@ public class ControllerPesquisa {
 		return listaItens;
 	}
 	
+	public String pesquisarDetalhesItem(List<Usuario> usuarios, String nome, String telefone, String nomeitem){
+		String itemDetalhado = "";
+		for (int i = 0; i < usuarios.size(); i++) {
+			if (nome.equals(usuarios.get(i).getNome()) && telefone.equals(usuarios.get(i).getCelular()) && 
+					usuarios.get(i).getItens().get(i).getNomeItem().equals(nomeitem)) {
+						
+					itemDetalhado = usuarios.get(i).getItens().get(i).toString();	
+				
+				
+				
+			}
+			
+		}
+		return itemDetalhado;
+	}
+	
 	
 
 }
