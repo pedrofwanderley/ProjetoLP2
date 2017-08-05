@@ -131,7 +131,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
-				usuario.getItens().add(game);
+				usuario.getItens().put(nomeItem,game);
 				itensTotais.add(game);
 				return "Item cadastrado!";
 			}
@@ -156,7 +156,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
-				usuario.getItens().add(jogo);
+				usuario.getItens().put(nomeItem,jogo);
 				itensTotais.add(jogo);
 				return "Item cadastrado!";
 			}
@@ -183,7 +183,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
-				usuario.getItens().add(filme);
+				usuario.getItens().put(nomeItem,filme);
 				itensTotais.add(filme);
 				return "Item cadastrado!";
 			}
@@ -210,7 +210,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, classificacao, artista, numeroDeFaixas);
-				usuario.getItens().add(show);
+				usuario.getItens().put(nomeItem,show);
 				itensTotais.add(show);
 				return "Item cadastrado!";
 			}
@@ -256,8 +256,8 @@ public class UsuarioController {
 		}
 		throw new Exception("Item nao encontrado");
 	}
-
-	public ArrayList arrayDeItensDesejado(String nome, String celular) {
+	// !!!
+	public HashMap arrayDeItensDesejado(String nome, String celular) {
 		ArrayList<Item> retorno = null;
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getNome().trim().equals(nome.trim()) && usuarios.get(i).getCelular().equals(celular)) {

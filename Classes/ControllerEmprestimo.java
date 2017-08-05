@@ -17,6 +17,14 @@ public class ControllerEmprestimo {
 		emprestimos = new ArrayList<Emprestimo>();
 	}
 	
+	public void registraEmreprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
+			String nomeItem, int tempoEmprestimo){
+		if(usuarioController.getUsuarios().containsKey(nomeDono). && usuarioController.getUsuarios().containsKey(nomeDono))
+		
+	}
+	
+	
+	
 	//necessario trocar usuario e itens para hashmap
 	/*public void registraEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
 			String nomeItem, int tempoEmprestimo){

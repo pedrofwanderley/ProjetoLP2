@@ -1,6 +1,7 @@
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import itens.Item;
 
@@ -9,7 +10,7 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String celular;
-	private ArrayList<Item> itens;
+	private HashMap<String ,Item> itens;
 	private ArrayList<Historico> historicos;
 	
 	public Usuario(String nome, String celular, String email) throws Exception {
@@ -24,7 +25,7 @@ public class Usuario {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCelular(celular);
-		itens = new ArrayList<>();
+		itens = new HashMap<>();
 		historicos = new ArrayList<>();
 	}
 
@@ -54,18 +55,14 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public ArrayList<Item> getItens() {
+	public HashMap<String,Item> getItens() {
 		return itens;
 	}
 
-	public void setItens(ArrayList<Item> itens) {
+	public void setItens(HashMap<String,Item> itens) {
 		this.itens = itens;
 	}
 	
-	private void setHistoricos(ArrayList<Historico> historicos) {
-		this.historicos = historicos;
-		
-	}
 	public ArrayList<Historico> getHistoricos() {
 		return historicos;
 	}
