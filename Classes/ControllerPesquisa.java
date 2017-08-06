@@ -15,8 +15,14 @@ public class ControllerPesquisa {
 	
 	
 	public ControllerPesquisa() {
-	}
 		
+	}
+	
+	/**
+	 * Método que gera uma lista de itens	
+	 * @param usuarios, tem como parametro um hashmap de usuarios.
+	 * @return, retorna uma lista de itens.
+	 */
 	public List<Item> geraListaItens(Map<String,Usuario> usuarios){
 		List<Item> itensSistema = new ArrayList<>();
 		for (Usuario usuario : usuarios.values()){
@@ -60,17 +66,24 @@ public class ControllerPesquisa {
 
 		return listaItens;
 	}
-	
+	/**
+	 * Metodo de pesquisa de detalhes de um determinado item.
+	 * @param usuarios, tem como primeiro parametro um hashmap de usuarios.
+	 * @param nome, tem como segundo parametro o nome de um usuario.
+	 * @param telefone, tem como terceiro parametro o telefonede um usuario.
+	 * @param nomeitem, tem como quarto parametro o nome do item a ser detalhado.
+	 * @return, retorna uma representacao em string do item desejado.
+	 */
 	public String pesquisarDetalhesItem(Map<String,Usuario> usuarios, String nome, String telefone, String nomeitem){
 		String itemDetalhado = "";
-		int confereUsuario = 0;
-		int confereItem = 0;
+		boolean confereUsuario = false;
+		boolean confereItem = false;
 		for (Usuario usuario : usuarios.values()){
 			if (nome.equals(usuario.getNome()) && telefone.equals(usuario.getCelular())) {
-				confereUsuario++;
+				confereUsuario = true;
 				for(Item itens : usuario.getItens().values()){
 					if (nomeitem.equals(itens.getNomeItem())){
-						confereItem++;
+						confereItem = true;
 						itemDetalhado = itens.toString();
 					}
 					
@@ -80,11 +93,11 @@ public class ControllerPesquisa {
 			
 			
 		}
-		if (confereUsuario == 0) {
+		if (confereUsuario == false) {
 			throw new IllegalArgumentException("Usuario invalido");
 			
 		}
-		else if(confereItem == 0){
+		else if(confereItem == false){
 			throw new IllegalArgumentException("Item nao encontrado");
 		}
 		
