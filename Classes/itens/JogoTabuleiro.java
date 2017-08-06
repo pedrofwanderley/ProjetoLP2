@@ -1,5 +1,7 @@
 package itens;
 import java.util.ArrayList;
+import java.util.Collection;
+
 
 
 /**
@@ -105,5 +107,17 @@ public class JogoTabuleiro extends Item{
 				 
 	}
 		
+	public void adicionarPecaPerdida(String pecaPerdida)throws Exception{
+		if (pecaPerdida.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (pecaPerdida.equals(null)) {
+			throw new NullPointerException();
+		}
+		
+		pecasPerdidas.add(pecaPerdida);
+	}
+	
+	
 	
 }

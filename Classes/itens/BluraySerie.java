@@ -124,7 +124,11 @@ public class BluraySerie extends Bluray{
 	 * 
 	 * @param duracao
 	 */
-	public void adicionarBluRay(int duracao){
+	public void adicionarBluRay(int duracao)throws Exception{
+		if (duracao <= 0) {
+			throw new IllegalArgumentException();
+		}
+		
 		episodios.add(duracao);
 	}
 

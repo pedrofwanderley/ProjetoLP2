@@ -63,8 +63,14 @@ public class BluraySerieTest {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 0);
 	}
 	
-	@Test
-	public void testAdicionarBluray(){
-		
+	@Test(expected = IllegalArgumentException.class)
+	public void testAdicionarBlurayInvalidoZero() throws Exception{
+		bluraySerie1.adicionarBluRay(0);
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAdicionarBlurayInvalidoNegativo() throws Exception{
+		bluraySerie1.adicionarBluRay(-4);
 	}
 }
