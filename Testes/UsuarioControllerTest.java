@@ -9,17 +9,34 @@ public class UsuarioControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
+		Usuario usuario = new Usuario("Lucas", "Lucas@gmail.com", "12345");
 		fachada = new Fachada();
-		fachada.cadastrarUsuario("Lucas", "Lucas@gmail.com", "12345");
-		fachada.cadastrarUsuario("Pedro", "Pedro@gmail.com", "24680");
+		fachada.cadastrarUsuario(usuario.getNome(), usuario.getEmail(), usuario.getCelular());
 		fachada.cadastrarBluRayFilme("Lucas", "12345", "Resident Evil", 10.0, 100, "Terror", "16", 2000);
-		fachada.cadastrarBluRayFilme("Lucas", "12345", "Resident Evil 2", 10.0, 93, "Terror", "16", 2004);
-		fachada.cadastrarBluRayFilme("Lucas", "12345", "Resident Evil 3", 10.0, 110, "Terror", "16", 2006);
-
+		fachada.cadastrarEletronico("Lucas", "12345", "FIFA17", 20.0, "PC");
+		fachada.cadastrarBluRaySerie("Lucas", "12345", "Criminal Minds", 10.0, "investigacao", 200, "14", "Acao", 1);
+	}
+	
+	@Test
+	public void testCadastroUsuario() {
+		assertEquals(true,
+				fachada.usuarioController.getUsuarios().containsKey("Lucas"));
 	}
 
 	@Test
-	public void test() throws NumberFormatException, Exception {
-		System.out.println(fachada.usuarioController.getInfoItem("Lucas", "12345", "Resident Evil", "Nome"));
+	public void testCadastroBlurayFilme() {
+		assertEquals(true,
+				fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Resident Evil"));
+	}
+	
+	@Test
+	public void testCadastroBluraySerie() {
+		assertEquals(true,
+				fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Resident Evil"));
+	}
+	
+	@Test
+	public void testCadastroEletronico() {
+		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Criminal Minds"));
 	}
 }

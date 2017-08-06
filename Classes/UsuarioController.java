@@ -206,8 +206,7 @@ public class UsuarioController {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
 				usuario.getItens().put(nomeItem, filme);
-				;
-				return "Item cadastrado!";
+				return "Item cadastrado";
 			}
 		}
 		return "Item nao cadastrado";
@@ -258,7 +257,6 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
 				Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
-
 				usuario.getItens().put(nomeItem, serie);
 			}
 
@@ -396,11 +394,15 @@ public class UsuarioController {
 
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				
 				for (Item item : usuario.getItens().values()) {
 					if (nomeItem.equals(item.getNomeItem())) {
+						
 						if (atributo.equalsIgnoreCase("preco")) {
 							return String.valueOf(item.getValor());
-						} else if (atributo.equalsIgnoreCase("nome")) {
+						} 
+						
+						else if (atributo.equalsIgnoreCase("nome")) {
 							return item.getNomeItem();
 						}
 					}
