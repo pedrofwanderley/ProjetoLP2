@@ -263,7 +263,7 @@ public class UsuarioController {
 			int duracao, String classificacao, String genero, int temporada) throws Exception {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
-				Bluray serie = new BlurayTemporada(nomeItem, preco, descricao, duracao, classificacao, genero,
+				Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero,
 						temporada);
 
 				usuario.getItens().put(nomeItem, serie);
@@ -284,7 +284,7 @@ public class UsuarioController {
 	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
-				((BlurayTemporada) item).setDuracaoTotal(duracao);
+				((BluraySerie) item).setDuracaoTotal(duracao);
 
 			}
 		}
