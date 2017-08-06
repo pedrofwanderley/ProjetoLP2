@@ -6,7 +6,7 @@ import itens.*;
 
 public class UsuarioController {
 	private List<Item> itensTotais;
-	private Map<String,Usuario> usuarios;
+	private Map<String, Usuario> usuarios;
 
 	public UsuarioController() {
 		usuarios = new HashMap<>();
@@ -35,8 +35,8 @@ public class UsuarioController {
 	}
 
 	/**
-	 * Metodo que recebe a identificacao do usuario, e remove o mesmo da colecao
-	 * de usuarios
+	 * Metodo que recebe a identificacao do usuario, e remove o mesmo da colecao de
+	 * usuarios
 	 * 
 	 * @param nome
 	 * @param celular
@@ -132,12 +132,25 @@ public class UsuarioController {
 		throw new Exception("Usuario invalido");
 	}
 
+	/**
+	 * Metodo que cadastra um novo item do tipo jogo eletronico e adiciona ao mapa
+	 * de itens de determinado usuario
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param nomeItem
+	 * @param preco
+	 * @param plataforma
+	 * @return Mensagem de status
+	 * @throws Exception
+	 */
+
 	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
 			throws Exception {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
-				usuario.getItens().put(nomeItem,game);
+				usuario.getItens().put(nomeItem, game);
 				itensTotais.add(game);
 				return "Item cadastrado!";
 			}
@@ -147,6 +160,7 @@ public class UsuarioController {
 
 	/**
 	 * Metodo para cadastrar um novo jogo de tabuleiro no sistema
+	 * 
 	 * @param nome
 	 * @param celular
 	 * @param nomeItem
@@ -154,19 +168,19 @@ public class UsuarioController {
 	 * @return Mensagem de sucesso
 	 * @throws Exception
 	 */
-	
+
 	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
 		if (usuarios.containsKey(nome) == false) {
 			throw new Exception("Usuario invalido");
 		}
-		
+
 		if (preco < 0) {
 			throw new Exception("Preco invalido");
 		}
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
-				usuario.getItens().put(nomeItem,jogo);
+				usuario.getItens().put(nomeItem, jogo);
 				itensTotais.add(jogo);
 				return "Item cadastrado!";
 			}
@@ -176,6 +190,7 @@ public class UsuarioController {
 
 	/**
 	 * Metodo para cadastrar um novo blu-ray de filme no sistema
+	 * 
 	 * @param nome
 	 * @param celular
 	 * @param nomeItem
@@ -193,7 +208,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
-				usuario.getItens().put(nomeItem,filme);
+				usuario.getItens().put(nomeItem, filme);
 				itensTotais.add(filme);
 				return "Item cadastrado!";
 			}
@@ -203,6 +218,7 @@ public class UsuarioController {
 
 	/**
 	 * Metodo para cadastrar um novo blu-ray de show no sistema
+	 * 
 	 * @param nome
 	 * @param celular
 	 * @param nomeItem
@@ -214,7 +230,6 @@ public class UsuarioController {
 	 * @return Mensagem de sucesso
 	 * @throws Exception
 	 */
-	
 
 	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
 			int numeroFaixas, String artista, String classificacao) throws Exception {
@@ -223,36 +238,69 @@ public class UsuarioController {
 				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
 				usuario.getItens().put(nomeItem, show);
 				itensTotais.add(show);
-				
+
 			}
 		}
-		
+
 	}
-	
-	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao, int duracao, 
-			String classificacao, String genero, int temporada) throws Exception{
+
+	/**
+	 * Metodo que cadastra um novo Blu-Ray de serie no sistema
+	 * 
+	 * @param nome
+	 * @param telefone
+	 * @param nomeItem
+	 * @param preco
+	 * @param descricao
+	 * @param duracao
+	 * @param classificacao
+	 * @param genero
+	 * @param temporada
+	 * @throws Exception
+	 */
+
+	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao,
+			int duracao, String classificacao, String genero, int temporada) throws Exception {
 		for (Usuario usuario : usuarios.values()) {
-			if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
-				Bluray serie = new BlurayTemporada(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
-				
-				usuario.getItens().put(nomeItem,serie);
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
+				Bluray serie = new BlurayTemporada(nomeItem, preco, descricao, duracao, classificacao, genero,
+						temporada);
+
+				usuario.getItens().put(nomeItem, serie);
 			}
-			
+
 		}
 	}
-	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao){
-		for (Item item : encontraUsuario(nome, telefone).getItens().values()){
+
+	/**
+	 * Metodo que adiciona um blu-ray simples em uma temporada de determinada serie
+	 * 
+	 * @param nome
+	 * @param telefone
+	 * @param nomeBlurayTemporada
+	 * @param duracao
+	 */
+
+	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) {
+		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
-				((BlurayTemporada)item).setDuracaoTotal(duracao);
-				
+				((BlurayTemporada) item).setDuracaoTotal(duracao);
+
 			}
 		}
 	}
-	
+
+	/**
+	 * Metodo que encontra determinado usuario cadastrado no sistema
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @return Usuario desejado pronto para uso
+	 */
 
 	public Usuario encontraUsuario(String nome, String celular) {
 		Usuario retorno = null;
-		for (Usuario usuario : usuarios.values()){
+		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				retorno = usuario;
 			}
@@ -260,6 +308,16 @@ public class UsuarioController {
 		return retorno;
 
 	}
+
+	/**
+	 * Metodo que remove o item desejado de um determinado usuario
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param nomeItem
+	 * @return Mensagem de status
+	 * @throws Exception
+	 */
 
 	public String removerItem(String nome, String celular, String nomeItem) throws Exception {
 		if (usuarios.containsKey(nome) == false) {
@@ -274,13 +332,22 @@ public class UsuarioController {
 		throw new Exception("Item nao encontrado");
 	}
 
+	/**
+	 * Metodo que atualiza determinada informacao sobre um item desejado
+	 * 
+	 * @param nome
+	 * @param celular
+	 * @param nomeItem
+	 * @param atributo
+	 * @param valor
+	 * @throws Exception
+	 */
 
 	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
 			throws Exception {
 		if (usuarios.containsKey(nome) == false) {
 			throw new Exception("Usuario invalido");
-		}
-		else if (usuarios.get(nome).getItens().containsKey(nomeItem) == false) {
+		} else if (usuarios.get(nome).getItens().containsKey(nomeItem) == false) {
 			throw new Exception("Item nao encontrado");
 		}
 		if ("Preco".equalsIgnoreCase(atributo)) {
@@ -289,59 +356,77 @@ public class UsuarioController {
 					Double valorDouble = Double.parseDouble(valor);
 					item.setValor(valorDouble);
 				}
-		
+
 			}
-		}
-		else if ("Nome".equalsIgnoreCase(atributo)) {
+		} else if ("Nome".equalsIgnoreCase(atributo)) {
 			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
 				if (nomeItem.equals(item.getNomeItem())) {
-					item.setNomeItem(valor);;
+					item.setNomeItem(valor);
+					;
 				}
-		
+
 			}
 		}
 
 	}
+
+	/**
+	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
+	 * @param nome
+	 * @param telefone
+	 * @param nomeItem
+	 * @param nomePeca
+	 */
 	
-	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca){
+	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (item instanceof JogoTabuleiro) {
 				((JogoTabuleiro) item).getPecasPerdidas().add(nomePeca);
 			}
-	
+
 		}
 	}
 
+	/**
+	 * Metodo que retorna a informacao desejada sobre o item desejado
+	 * @param nome
+	 * @param celular
+	 * @param nomeItem
+	 * @param atributo
+	 * @return Mensagem de status
+	 * @throws Exception
+	 */
+	
 	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
-		
+
 		if ("Preco".equalsIgnoreCase(atributo)) {
 			for (Usuario usuario : usuarios.values()) {
-				if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					for(Item item : usuario.getItens().values()){
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+					for (Item item : usuario.getItens().values()) {
 						if (nomeItem.equals(item.getNomeItem())) {
 							return String.valueOf(item.getValor());
 						}
-							
+
 					}
 				}
 			}
-			
+
 		}
-		
+
 		else if ("Nome".equalsIgnoreCase(atributo)) {
 			for (Usuario usuario : usuarios.values()) {
-				if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					for(Item item : usuario.getItens().values()){
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+					for (Item item : usuario.getItens().values()) {
 						if (nomeItem.equals(item.getNomeItem())) {
 							return item.getNomeItem();
 						}
-							
+
 					}
 				}
 			}
-			
+
 		}
-		
+
 		throw new Exception("Item nao encontrado");
 	}
 
@@ -353,8 +438,9 @@ public class UsuarioController {
 	 * @param item
 	 * @param situacao
 	 */
-	
-	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, Calendar dataFinal) {
+
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao,
+			Calendar dataFinal) {
 		for (Usuario u : usuarios.values()) {
 			if (u.equals(usuario)) {
 				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal));
@@ -362,7 +448,7 @@ public class UsuarioController {
 		}
 	}
 
-	public Map<String ,Usuario> getUsuarios() {
+	public Map<String, Usuario> getUsuarios() {
 		return usuarios;
 	}
 
