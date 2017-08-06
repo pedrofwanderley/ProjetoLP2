@@ -64,7 +64,7 @@ public class Fachada {
 		usuarioController.cadastrarJogoTabuleiro(nome, celular, nomeItem, preco);
 	}
 
-	public Double getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
 		return usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
 	}
 
