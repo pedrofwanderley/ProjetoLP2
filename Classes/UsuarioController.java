@@ -1,4 +1,7 @@
 import java.util.*;
+
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 import itens.*;
 
 public class UsuarioController {
@@ -287,11 +290,10 @@ public class UsuarioController {
 	
 	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca){
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
+			if (item instanceof JogoTabuleiro) {
 				((JogoTabuleiro) item).getPecasPerdidas().add(nomePeca);
-			
-			
-				
-			
+			}
+	
 		}
 	}
 
