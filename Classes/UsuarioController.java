@@ -4,7 +4,8 @@ import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 import itens.*;
 
-public class UsuarioController {;
+public class UsuarioController {
+	;
 	private Map<String, Usuario> usuarios;
 
 	public UsuarioController() {
@@ -204,7 +205,8 @@ public class UsuarioController {;
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
-				usuario.getItens().put(nomeItem, filme);;
+				usuario.getItens().put(nomeItem, filme);
+				;
 				return "Item cadastrado!";
 			}
 		}
@@ -255,8 +257,7 @@ public class UsuarioController {;
 			int duracao, String classificacao, String genero, int temporada) throws Exception {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
-				Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero,
-						temporada);
+				Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
 
 				usuario.getItens().put(nomeItem, serie);
 			}
@@ -364,12 +365,13 @@ public class UsuarioController {;
 
 	/**
 	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
+	 * 
 	 * @param nome
 	 * @param telefone
 	 * @param nomeItem
 	 * @param nomePeca
 	 */
-	
+
 	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (item instanceof JogoTabuleiro) {
@@ -381,6 +383,7 @@ public class UsuarioController {;
 
 	/**
 	 * Metodo que retorna a informacao desejada sobre o item desejado
+	 * 
 	 * @param nome
 	 * @param celular
 	 * @param nomeItem
@@ -388,37 +391,22 @@ public class UsuarioController {;
 	 * @return Mensagem de status
 	 * @throws Exception
 	 */
-	
+
 	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
 
-		if ("Preco".equalsIgnoreCase(atributo)) {
-			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					for (Item item : usuario.getItens().values()) {
-						if (nomeItem.equals(item.getNomeItem())) {
+		for (Usuario usuario : usuarios.values()) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				for (Item item : usuario.getItens().values()) {
+					if (nomeItem.equals(item.getNomeItem())) {
+						if (atributo.equalsIgnoreCase("preco")) {
 							return String.valueOf(item.getValor());
-						}
-
-					}
-				}
-			}
-
-		}
-
-		else if ("Nome".equalsIgnoreCase(atributo)) {
-			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					for (Item item : usuario.getItens().values()) {
-						if (nomeItem.equals(item.getNomeItem())) {
+						} else if (atributo.equalsIgnoreCase("nome")) {
 							return item.getNomeItem();
 						}
-
 					}
 				}
 			}
-
 		}
-
 		throw new Exception("Item nao encontrado");
 	}
 
