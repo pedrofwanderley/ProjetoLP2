@@ -47,7 +47,7 @@ public class UsuarioController {
 	public String removerUsuario(String nome, String celular) throws Exception {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				usuarios.remove(usuario);
+				usuarios.remove(nome);
 				return "Usuario removido com sucesso";
 			}
 		}
@@ -119,6 +119,9 @@ public class UsuarioController {
 	 */
 
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
+		if (usuarios.containsKey(nome) == false) {
+			throw new Exception("Usuario invalido");
+		}
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios.values()) {
 				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
@@ -153,6 +156,10 @@ public class UsuarioController {
 	 */
 	
 	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
+		if (usuarios.containsKey(nome) == false) {
+			throw new Exception("Usuario invalido");
+		}
+		
 		if (preco < 0) {
 			throw new Exception("Preco invalido");
 		}
@@ -255,6 +262,9 @@ public class UsuarioController {
 	}
 
 	public String removerItem(String nome, String celular, String nomeItem) throws Exception {
+		if (usuarios.containsKey(nome) == false) {
+			throw new Exception("Usuario invalido");
+		}
 		for (Item item : encontraUsuario(nome, celular).getItens().values()) {
 			if (item.getNomeItem().equals(nomeItem)) {
 				encontraUsuario(nome, celular).getItens().values().remove(item);
@@ -267,6 +277,12 @@ public class UsuarioController {
 
 	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
 			throws Exception {
+		if (usuarios.containsKey(nome) == false) {
+			throw new Exception("Usuario invalido");
+		}
+		else if (usuarios.get(nome).getItens().containsKey(nomeItem) == false) {
+			throw new Exception("Item nao encontrado");
+		}
 		if ("Preco".equalsIgnoreCase(atributo)) {
 			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
 				if (nomeItem.equals(item.getNomeItem())) {
