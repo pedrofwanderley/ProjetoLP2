@@ -15,6 +15,7 @@ public class UsuarioControllerTest {
 		fachada.cadastrarBluRayFilme("Lucas", "12345", "Resident Evil", 10.0, 100, "Terror", "16", 2000);
 		fachada.cadastrarEletronico("Lucas", "12345", "FIFA17", 20.0, "PC");
 		fachada.cadastrarBluRaySerie("Lucas", "12345", "Criminal Minds", 10.0, "investigacao", 200, "14", "Acao", 1);
+		fachada.cadastrarJogoTabuleiro("Lucas", "12345", "Jumanji", 20.0);
 	}
 	
 	@Test
@@ -38,5 +39,10 @@ public class UsuarioControllerTest {
 	@Test
 	public void testCadastroEletronico() {
 		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Criminal Minds"));
+	}
+	
+	@Test
+	public void testCadastroJogoTabuleiro() {
+		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Jumanji"));
 	}
 }
