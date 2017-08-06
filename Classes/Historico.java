@@ -11,26 +11,40 @@ public class Historico {
 	private Usuario usuario;
 	private Item item;
 	private SituacaoEmprestimo situacao;
-	private Calendar dataFinal;
-	private int diasAtrasados = 0;
+	private String dataDevolucao;
+	private int diasAtrasados;
 	
 	
-	public Historico(Usuario usuario, Item item, SituacaoEmprestimo situacao,Calendar dataFinal){
+	public Historico(Usuario usuario, Item item, SituacaoEmprestimo situacao, String dataDevolucao){
 		
 		this.usuario=usuario;
 		this.item=item;
 		this.situacao=situacao;
-		this.dataFinal=dataFinal;
-
+		this.dataDevolucao = dataDevolucao;
+		
 		
 	}
 	
-	public int getDiasAtrasados(){
-		Calendar.getInstance();
-		return diasAtrasados = Calendar.DAY_OF_YEAR - dataFinal.DAY_OF_YEAR;
+	private int getDiasAtrasados(String dataDevolucao){
+		
+		Calendar dataAtual = Calendar.getInstance();
+		Calendar calendarDev = Calendar.getInstance();
+		
+		String[] datasDev = dataDevolucao.split("/");
+		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1])-1, Integer.parseInt(datasDev[0]));
+		
+		diasAtrasados = dataAtual.get(Calendar.DAY_OF_YEAR) - calendarDev.get(Calendar.DAY_OF_YEAR);
+		
+		if(diasAtrasados > 0){
+			return diasAtrasados;
+		}else{
+			return 0;
+		}
+		
+		
 	}
 	
 	public String toString(){
-		return usuario + " - " + item + " - " + situacao+ " - " + dataFinal + " - " + diasAtrasados; 
+		return usuario + " - " + item + " - " + situacao+ " - " + dataDevolucao + " - " + getDiasAtrasados(dataDevolucao); 
 	}
 }

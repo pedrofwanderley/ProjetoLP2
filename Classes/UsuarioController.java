@@ -422,10 +422,10 @@ public class UsuarioController {
 	 */
 
 	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao,
-			Calendar dataFinal) {
+			String dataDevolucao) {
 		for (Usuario u : usuarios.values()) {
 			if (u.equals(usuario)) {
-				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal));
+				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataDevolucao));
 			}
 		}
 	}

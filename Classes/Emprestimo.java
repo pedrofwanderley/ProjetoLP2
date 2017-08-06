@@ -1,5 +1,5 @@
 import itens.Item;
-import java.util.*;
+
 
 public class Emprestimo {
 	/**
@@ -8,26 +8,27 @@ public class Emprestimo {
 	private Usuario dono;
 	private Usuario requerente;
 	private Item item;
-	private int tempoEmprestimo;
-	
-	private Calendar dataInicial = Calendar.getInstance();
-	private Calendar dataFinal = Calendar.getInstance();
-	
+	private int periodo;
+	private String dataEmprestimo;
+	private String dataDevolucao;
+		
 	/**
 	 * construtor
 	 * @param dono
-	 * @param nomeRequerente
+	 * @param Requerente
 	 * @param item
-	 * @param tempoEmprestimo
+	 * @param periodo
+	 * @param dataEmprestimo
 	 */
-	public Emprestimo(Usuario dono, Usuario requerente, Item item, int tempoEmprestimo) {
+	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo, String dataDevolucao){
 		
 		this.dono = dono;
 		this.requerente = requerente;
 		this.item = item;
-		this.tempoEmprestimo = tempoEmprestimo;
+		this.periodo = periodo;
+		this.dataEmprestimo = dataEmprestimo;
+		this.dataDevolucao = dataDevolucao;
 		
-		dataFinal.add(Calendar.DATE, tempoEmprestimo); 
 	}
 
 	public Usuario getDono() {
@@ -54,37 +55,38 @@ public class Emprestimo {
 		this.item = item;
 	}
 
-	public int getTempoEmprestimo() {
-		return tempoEmprestimo;
+	public int getPeriodo() {
+		return periodo;
 	}
 
-	public void setTempoEmprestimo(int tempoEmprestimo) {
-		this.tempoEmprestimo = tempoEmprestimo;
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
 	}
 
-	public Calendar getDataInicial() {
-		return dataInicial;
+	public String getDataEmprestimo() {
+		return dataEmprestimo;
 	}
 
-	public void setDataInicial(Calendar dataInicial) {
-		this.dataInicial = dataInicial;
+	public void setDataEmprestimo(String dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
 	}
 
-	public Calendar getDataFinal() {
-		return dataFinal;
+	public String getDataDevolucao() {
+		return dataDevolucao;
 	}
 
-	public void setDataFinal(Calendar dataFinal) {
-		this.dataFinal = dataFinal;
+	public void setDataDevolucao(String dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
 	}
 
 	@Override
 	public String toString() {
-		return "Emprestimo [donoItem=" + dono + ", usuarioEmprestado=" + requerente + ", item=" + item
-				+ ", tempoEmprestimo=" + tempoEmprestimo + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
-				+ "]";
+		return "Dono do item: " + dono.getNome() + " - Requerente:  " + requerente.getNome() + " - Item: " + item.getNomeItem() 
+		+ " - Data Inicial do Emprestimo: " + dataEmprestimo + " - Data de Devoluçao do Emprestimo: " + dataDevolucao;
+	
 	}
 	
-	
+
+
 	
 }

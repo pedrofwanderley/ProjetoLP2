@@ -8,7 +8,7 @@ public class Fachada {
 	}
 
 	private ControllerPesquisa pesquisa = new ControllerPesquisa();
-
+	private ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
 	public UsuarioController usuarioController = new UsuarioController();
 
 	public void iniciarSistema() {
@@ -91,5 +91,15 @@ public class Fachada {
 
 	public String pesquisarDetalhesItem(String nome, String telefone, String nomeItem) {
 		return pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), nome, telefone, nomeItem);
+	}
+	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
+			String nomeItem,String dataEmprestimo, int periodo) throws Exception{
+		controllerEmprestimo.registrarEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,dataEmprestimo,  periodo, usuarioController.getUsuarios());
+		
+	}
+	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
+			String nomeItem, String dataEmprestimo, String dataDevolucao) throws Exception{
+		controllerEmprestimo.devolverItem(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,dataEmprestimo,dataDevolucao, usuarioController);
+		
 	}
 }
