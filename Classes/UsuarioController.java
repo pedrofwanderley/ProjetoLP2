@@ -285,7 +285,6 @@ public class UsuarioController {
 			}
 		}
 
-		throw new Exception("Item nao encontrado");
 	}
 	
 	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca){
@@ -297,22 +296,35 @@ public class UsuarioController {
 		}
 	}
 
-	public double getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
-		double preco = 0.0;
+	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+		
 		if ("Preco".equalsIgnoreCase(atributo)) {
 			for (Usuario usuario : usuarios.values()) {
 				if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					for(Item item : usuario.getItens().values()){
 						if (nomeItem.equals(item.getNomeItem())) {
-							preco = item.getValor();
+							return String.valueOf(item.getValor());
 						}
 							
 					}
 				}
 			}
-			return preco;
+			
 		}
 		
+		else if ("Nome".equalsIgnoreCase(atributo)) {
+			for (Usuario usuario : usuarios.values()) {
+				if  (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+					for(Item item : usuario.getItens().values()){
+						if (nomeItem.equals(item.getNomeItem())) {
+							return item.getNomeItem();
+						}
+							
+					}
+				}
+			}
+			
+		}
 		
 		throw new Exception("Item nao encontrado");
 	}
