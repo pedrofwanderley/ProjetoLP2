@@ -52,7 +52,7 @@ public class BlurayShowTest {
 	
 	@Test
 	public void testToString(){
-		String resultadoEsperado = "SHOW: SOAD - Live in Rock in Rio, R$ 100.89, Nao emprestado, 127, Show de Rock, SOAD, 15";
+		String resultadoEsperado = "SHOW: SOAD - Live in Rock in Rio, R$ 100.89, Nao emprestado, 127 min, Show de Rock, SOAD, 15 faixas";
 		String resultado = blurayShow.toString();
 		
 		assertEquals(resultado, resultadoEsperado);

@@ -7,13 +7,13 @@ import org.junit.Test;
 
 public class BlurayTemporadaTest {
 
-	BlurayTemporada blurayTemporada1;
-	BlurayTemporada blurayTemporada2;
-	BlurayTemporada blurayTemporada3;
+	BluraySerie blurayTemporada1;
+	BluraySerie blurayTemporada2;
+	BluraySerie blurayTemporada3;
 	
 	@Before
 	public void inicializaBlurayTemporada() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 7);
 		
 	}
 	
@@ -31,35 +31,35 @@ public class BlurayTemporadaTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testGeneroSerieInvalido() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "", 7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "", 7);
 	}
 	
 	
 	@Test(expected = NullPointerException.class)
 	public void testGeneroSerieNull() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", null, 7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", null, 7);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testDescricaoSerieInvalido() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "", 600, "Maiores de 18", "", 7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "", 600, "Maiores de 18", "", 7);
 	}
 	
 	
 	@Test(expected = NullPointerException.class)
 	public void testDescricaoSerieNull() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, null, 600, "Maiores de 18", null, 7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, null, 600, "Maiores de 18", null, 7);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNumeroDaTemporadaNegativo() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", -7);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", -7);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNumeroDaTemporadaZero() throws Exception{
-		blurayTemporada1 = new BlurayTemporada("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 0);
+		blurayTemporada1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 0);
 	}
 }

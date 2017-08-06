@@ -9,13 +9,10 @@ import java.util.ArrayList;
  * possuir um genero, um numero de temporada e a duracao total de uma temporada.
  * 
  * 
- * Provavelmente esta classe tem erro no funcionamento deste Hashset de Blurays, nao sei ainda 
- * com certeza como ele vai funcionar(comparacao, criacao e etc)
- * 
- * @author Guilherme Fran�a
+ * @author Guilherme Franca
  *
  */
-public class BlurayTemporada extends Bluray{
+public class BluraySerie extends Bluray{
 
 	protected String descricao;
 	protected String generoSerie;
@@ -36,7 +33,7 @@ public class BlurayTemporada extends Bluray{
 	 * @param generoSerie
 	 * @param numeroDaTemporada
 	 */
-	public BlurayTemporada(String nome, double valor, String descricao, int duracao, String classificacao, 
+	public BluraySerie(String nome, double valor, String descricao, int duracao, String classificacao, 
 			String generoSerie, int numeroDaTemporada) throws Exception{
 		super(nome, valor, duracao, classificacao);
 		
@@ -94,7 +91,7 @@ public class BlurayTemporada extends Bluray{
 		if (getClass() != obj.getClass())
 			return false;
 		
-		BlurayTemporada temporada = (BlurayTemporada) obj;
+		BluraySerie temporada = (BluraySerie) obj;
 		
 		if (numeroDaTemporada != temporada.numeroDaTemporada)
 			return false;
@@ -109,6 +106,9 @@ public class BlurayTemporada extends Bluray{
 	}
 
 
+	/**
+	 * Metodo toString segundo o que estava estabelecido nos testes de aceitacao fornecidos
+	 */
 	@Override
 	public String toString() {
 		return "SERIE: " + nomeItem + ", R$ " + valor + ", " +  estado.getEstadoItem() +
@@ -117,30 +117,58 @@ public class BlurayTemporada extends Bluray{
 			
 	}
 
+	/**
+	 * Metodo adiciona Bluray de episodio na lista de epiosodios, como estamos consederando que os episodios 
+	 * sao so uma representacao de sua duracao em min, o parametro que recebemos e um inteiro, ele sera 
+	 * a representacao do episodio na lista, o numero do episodio e seu indice + 1.
+	 * 
+	 * @param duracao
+	 */
+	public void adicionarBluRay(int duracao){
+		episodios.add(duracao);
+	}
 
+	
+	/**
+	 * Metodo que retorna o genero da serie
+	 * @return String representando o genero da serie
+	 */
 	public String getGeneroSerie() {
 		return generoSerie;
 	}
 
 
+	/**
+	 * Metodo que retorna o numero da temporada
+	 * @return inteiro representando o numero da trempoeada
+	 */
 	public int getNumeroDaTemporada() {
 		return numeroDaTemporada;
 	}
 
 
+	/**
+	 * Metodo que retorna a descricao dada pelo dono a Bluray de temporada 
+	 * @return String com descricao do Bluray de temporada
+	 */
 	public String getDescricao() {
 		return descricao;
 	}
 	
+	
+	/**
+	 * Metodo que retorna o duracao total de uma temporada
+	 * @return inteiro retpresentando duracao total de uma temporada
+	 */
 	public int getDuracaoTotal() {
 		return duracaoTotal;
 	}
 
 
+
 	public void setDuracaoTotal(int duracaoTotal) {
 		this.duracaoTotal += duracaoTotal;
 	}
-
 
 	
 }
