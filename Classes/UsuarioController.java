@@ -4,13 +4,11 @@ import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 import itens.*;
 
-public class UsuarioController {
-	private List<Item> itensTotais;
+public class UsuarioController {;
 	private Map<String, Usuario> usuarios;
 
 	public UsuarioController() {
 		usuarios = new HashMap<>();
-		itensTotais = new ArrayList<>();
 	}
 
 	/**
@@ -151,7 +149,6 @@ public class UsuarioController {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 				usuario.getItens().put(nomeItem, game);
-				itensTotais.add(game);
 				return "Item cadastrado!";
 			}
 		}
@@ -181,7 +178,6 @@ public class UsuarioController {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 				usuario.getItens().put(nomeItem, jogo);
-				itensTotais.add(jogo);
 				return "Item cadastrado!";
 			}
 		}
@@ -208,8 +204,7 @@ public class UsuarioController {
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
-				usuario.getItens().put(nomeItem, filme);
-				itensTotais.add(filme);
+				usuario.getItens().put(nomeItem, filme);;
 				return "Item cadastrado!";
 			}
 		}
@@ -237,11 +232,8 @@ public class UsuarioController {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
 				usuario.getItens().put(nomeItem, show);
-				itensTotais.add(show);
-
 			}
 		}
-
 	}
 
 	/**
@@ -450,13 +442,5 @@ public class UsuarioController {
 
 	public Map<String, Usuario> getUsuarios() {
 		return usuarios;
-	}
-
-	public List<Item> getItensTotais() {
-		return itensTotais;
-	}
-
-	public void setItensTotais(List<Item> itensTotais) {
-		this.itensTotais = itensTotais;
 	}
 }

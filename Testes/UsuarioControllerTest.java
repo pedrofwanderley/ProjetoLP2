@@ -19,9 +19,7 @@ public class UsuarioControllerTest {
 	}
 
 	@Test
-	public void test() {
-		assertEquals(10.0, 0.1,
-				fachada.usuarioController.getUsuarios().get("Lucas").getItens().get("Resident Evil").getValor());
+	public void test() throws NumberFormatException, Exception {
+		System.out.println(fachada.usuarioController.getInfoItem("Lucas", "12345", "Resident Evil", "Nome"));
 	}
-
 }
