@@ -353,7 +353,9 @@ public class UsuarioController {
 			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
 				if (nomeItem.equals(item.getNomeItem())) {
 					item.setNomeItem(valor);
-					;
+					Item novaChave = item;
+					encontraUsuario(nome, celular).getItens().remove(nomeItem);
+					encontraUsuario(nome, celular).getItens().put(valor, novaChave);
 				}
 
 			}
