@@ -22,6 +22,10 @@ public class Fachada {
 		return email;
 	}
 
+	public String PesquisarUsuario(String nome) {
+		return usuarioController.PesquisarUsuario(nome);
+	}
+	
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
 		return usuarioController.getInfoUsuario(nome, celular, atributo);
 	}

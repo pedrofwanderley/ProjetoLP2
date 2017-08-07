@@ -68,6 +68,24 @@ public class UsuarioControllerTest {
 		fachada.atualizarUsuario("Lucas", "12345", "email", "lucasanthony@gmail.com");
 		assertEquals("lucasanthony@gmail.com", fachada.usuarioController.getInfoUsuario("Lucas", "12345", "email"));
 	}
+	
+	@Test
+	public void testRemoverItem() throws Exception {
+		fachada.removerItem("Lucas", "12345", "Jumanji");
+		assertEquals(false, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Jumanji"));
+	}
+	
+	@Test
+	public void testRemoverUsuario() throws Exception {
+		fachada.removerUsuario("Lucas", "12345");
+		assertEquals(false, fachada.usuarioController.getUsuarios().containsKey("Lucas"));
+	}
+	
+	@Test
+	public void testPesquisarUsuario() throws Exception {
+		assertEquals("Lucas, lucas@gmail.com, 12345", fachada.PesquisarUsuario("Lucas"));
+	}
+	
 }
 
 
