@@ -9,7 +9,7 @@ public class UsuarioControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Usuario usuario = new Usuario("Lucas", "Lucas@gmail.com", "12345");
+		Usuario usuario = new Usuario("Lucas", "lucas@gmail.com", "12345");
 		fachada = new Fachada();
 		fachada.cadastrarUsuario(usuario.getNome(), usuario.getEmail(), usuario.getCelular());
 		fachada.cadastrarBluRayFilme("Lucas", "12345", "Resident Evil", 10.0, 100, "Terror", "16", 2000);
@@ -59,5 +59,25 @@ public class UsuarioControllerTest {
 		assertEquals("30.0", fachada.usuarioController.getInfoItem("Lucas", "12345", "Jumanji", "Preco"));
 		fachada.atualizarItem("Lucas", "12345", "Jumanji", "Nome", "Zathura");
 		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Zathura"));
+		assertEquals("30.0", fachada.usuarioController.getInfoItem("Lucas", "12345", "Zathura", "Preco"));
+	}
+	
+	@Test
+	public void testAtualizaUsuario() throws Exception {
+		assertEquals("lucas@gmail.com", fachada.usuarioController.getInfoUsuario("Lucas", "12345", "email"));
+		fachada.atualizarUsuario("Lucas", "12345", "email", "lucasanthony@gmail.com");
+		assertEquals("lucasanthony@gmail.com", fachada.usuarioController.getInfoUsuario("Lucas", "12345", "email"));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

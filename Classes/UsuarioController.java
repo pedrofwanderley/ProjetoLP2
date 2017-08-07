@@ -86,18 +86,14 @@ public class UsuarioController {
 	 */
 
 	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
-		if (atributo.equalsIgnoreCase("email")) {
-			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+		for (Usuario usuario : usuarios.values()) {
+			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+
+				if (atributo.equalsIgnoreCase("email")) {
 					usuario.setEmail(valor);
 					return "Usuario atualizado!";
-				}
-			}
-		}
 
-		else if (atributo.equalsIgnoreCase("telefone")) {
-			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
+				} else if (atributo.equalsIgnoreCase("telefone")) {
 					usuario.setCelular(valor);
 					return "Usuario atualizado!";
 				}
@@ -123,7 +119,7 @@ public class UsuarioController {
 		}
 		if (atributo.equalsIgnoreCase("email")) {
 			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) || usuario.getCelular().equals(celular)) {
+				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
 					return usuario.getEmail();
 				}
 			}
@@ -341,17 +337,12 @@ public class UsuarioController {
 		} else if (usuarios.get(nome).getItens().containsKey(nomeItem) == false) {
 			throw new Exception("Item nao encontrado");
 		}
-		if ("Preco".equalsIgnoreCase(atributo)) {
-			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
-				if (nomeItem.equals(item.getNomeItem())) {
+		for (Item item : encontraUsuario(nome, celular).getItens().values()) {
+			if (nomeItem.equals(item.getNomeItem())) {
+				if ("Preco".equalsIgnoreCase(atributo)) {
 					Double valorDouble = Double.parseDouble(valor);
 					item.setValor(valorDouble);
-				}
-
-			}
-		} else if ("Nome".equalsIgnoreCase(atributo)) {
-			for (Item item : encontraUsuario(nome, celular).getItens().values()) {
-				if (nomeItem.equals(item.getNomeItem())) {
+				} else if ("Nome".equalsIgnoreCase(atributo)) {
 					item.setNomeItem(valor);
 					Item novaChave = item;
 					encontraUsuario(nome, celular).getItens().remove(nomeItem);
@@ -396,14 +387,14 @@ public class UsuarioController {
 
 		for (Usuario usuario : usuarios.values()) {
 			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				
+
 				for (Item item : usuario.getItens().values()) {
 					if (nomeItem.equals(item.getNomeItem())) {
-						
+
 						if (atributo.equalsIgnoreCase("preco")) {
 							return String.valueOf(item.getValor());
-						} 
-						
+						}
+
 						else if (atributo.equalsIgnoreCase("nome")) {
 							return item.getNomeItem();
 						}
