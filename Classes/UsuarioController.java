@@ -272,7 +272,6 @@ public class UsuarioController {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
 				((BluraySerie) item).setDuracaoTotal(duracao);
-
 			}
 		}
 	}
