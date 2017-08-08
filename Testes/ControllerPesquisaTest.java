@@ -62,18 +62,33 @@ public class ControllerPesquisaTest {
 
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testPesquisaDetalhesItensItemException() {
-		pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
-				"A volta dos que nao foram");
+		try {
+			usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
+			pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
+					"A volta dos que nao foram");
+			
+			
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Item nao encontrado");
+		}
+		
+		
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testPesquisaDetalhesItensUsuarioException() throws Exception {
-		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
-				50.00, 140, "comedia", "12_ANOS", 2010);
-		pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), "Pedro", "9999-9999",
-				"A volta dos que nao foram");
+		
+		try {
+			usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
+					50.00, 140, "comedia", "12_ANOS", 2010);
+			pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), "Pedro", "9999-9999",
+					"A volta dos que nao foram");
+			
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Usuario invalido");
+		}
 	}
 
 }
