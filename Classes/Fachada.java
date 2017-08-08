@@ -8,7 +8,7 @@ public class Fachada {
 	}
 
 	private ControllerPesquisa pesquisa = new ControllerPesquisa();
-	private ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
+	public ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
 	public UsuarioController usuarioController = new UsuarioController();
 
 	public void iniciarSistema() {
