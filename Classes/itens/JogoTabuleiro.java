@@ -1,6 +1,6 @@
 package itens;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 
 
 
@@ -82,16 +82,9 @@ public class JogoTabuleiro extends Item{
 	}
 
 
-	public ArrayList<String> getPecasPerdidas() {
-		return pecasPerdidas;
-	}
-
-
-	public void setPecasPerdidas(ArrayList<String> pecasPerdidas) {
-		this.pecasPerdidas = pecasPerdidas;
-	}
-
-
+	/**
+	 * Metodo toString segundo as especificacoes dadas nos testes de aceitacao
+	 */
 	@Override
 	public String toString() {
 		String temPecasPerdidas = "";
@@ -106,7 +99,16 @@ public class JogoTabuleiro extends Item{
 				", " + temPecasPerdidas ;
 				 
 	}
-		
+	
+	
+	/**
+	 * Metodo adiciona a as pecas do jogo que estao perdidas e ordena a lista a cada nova peca adicionada 
+	 * para permitir que mesmo que pecas tenham sido perdidas em ordens diferentes posam ser agrupadas
+	 * juntas para efeito de comparacao
+	 * 
+	 * @param pecaPerdida
+	 * @throws Exception
+	 */
 	public void adicionarPecaPerdida(String pecaPerdida)throws Exception{
 		if (pecaPerdida.trim().equals("")) {
 			throw new IllegalArgumentException();
@@ -116,8 +118,6 @@ public class JogoTabuleiro extends Item{
 		}
 		
 		pecasPerdidas.add(pecaPerdida);
-	}
-	
-	
-	
+		Collections.sort(pecasPerdidas);
+	}	
 }
