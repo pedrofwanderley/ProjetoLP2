@@ -45,8 +45,14 @@ public class BlurayShowTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeDoArtistaInvalida() throws Exception{
+	public void testNomeDoArtistaInvalidaVazia() throws Exception{
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "", "Show de Rock");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNomeDoArtistaInvalidaVaziaEspacos() throws Exception{
+		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "       ", "Show de Rock");
 	}
 	
 	

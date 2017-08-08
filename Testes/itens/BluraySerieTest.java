@@ -30,10 +30,14 @@ public class BluraySerieTest {
 
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testGeneroSerieInvalido() throws Exception{
+	public void testGeneroSerieInvalidoVazio() throws Exception{
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "", 7);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testGeneroSerieInvalidoVazioEspacos() throws Exception{
+		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "        ", 7);
+	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testGeneroSerieNull() throws Exception{
@@ -42,10 +46,15 @@ public class BluraySerieTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoSerieInvalido() throws Exception{
-		bluraySerie1 = new BluraySerie("GoT", 100.53, "", 600, "Maiores de 18", "", 7);
+	public void testDescricaoSerieInvalidoVazio() throws Exception{
+		bluraySerie1 = new BluraySerie("GoT", 100.53, "", 600, "Maiores de 18", "Fantasia", 7);
 	}
 	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDescricaoSerieInvalidoVazioEspacos() throws Exception{
+		bluraySerie1 = new BluraySerie("GoT", 100.53, "         ", 600, "Maiores de 18", "Fantasia", 7);
+	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testDescricaoSerieNull() throws Exception{

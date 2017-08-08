@@ -37,14 +37,26 @@ public class JogoEletronicoTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testPlataformaInvalida() throws Exception{
+	public void testPlataformaInvalidaVazia() throws Exception{
 		jogoEletronico1 = new JogoEletronico("God of War", 70.83, "");
 	}
 	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testPlataformaInvalidaVaziaEspacos() throws Exception{
+		jogoEletronico1 = new JogoEletronico("God of War", 70.83, "        ");
+	}
+	
+	
 	@Test
 	public void testEquals(){
+		// Mesmo nome e mesma plataforma
 		assertTrue(jogoEletronico2.equals(jogoEletronico3));
+		
+		// Mesmo nome e plataformas diferentes
 		assertFalse(jogoEletronico1.equals(jogoEletronico4));
+		
+		// Mesma plataforma, mesmo preco e nomes diferentes
 		assertFalse(jogoEletronico1.equals(jogoEletronico5));
 	}
 	

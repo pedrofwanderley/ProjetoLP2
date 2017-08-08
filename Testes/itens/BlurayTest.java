@@ -42,9 +42,14 @@ public class BlurayTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testClassificacaoInvalida() throws Exception{
+	public void testClassificacaoInvalidaVazia() throws Exception{
 		bluray1 = new Bluray("CDZ", 50.60, 60, "");
 	}
 	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testClassificacaoInvalidaVaziaEspacos() throws Exception{
+		bluray1 = new Bluray("CDZ", 50.60, 60, "       ");
+	}
 	
 }

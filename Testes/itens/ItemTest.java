@@ -31,8 +31,14 @@ public class ItemTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoInvalida() throws Exception{
+	public void testDescricaoInvalidaVazia() throws Exception{
 		item2 = new Bluray("", 50.60, 60, "Infantil");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDescricaoInvalidaVaziaEspacos() throws Exception{
+		item2 = new Bluray("        ", 50.60, 60, "Infantil");
 	}
 	
 	
