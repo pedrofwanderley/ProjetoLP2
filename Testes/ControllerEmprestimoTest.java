@@ -39,20 +39,20 @@ public class ControllerEmprestimoTest {
 	}
 	
 		
-	@Test(expected = "Item emprestado no momento")
-	public void testItemEmprestado(){
+	@Test(expected = IllegalArgumentException.class)
+	public void testItemEmprestado1() throws Exception{
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "10/07/2017", 7);
 	}
 	
-	@Test(expected = "Item nao encontrado")
-	public void testItemEmprestado(){
+	@Test(expected = IllegalArgumentException.class)
+	public void testItemEmprestado2() throws Exception{
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Uno", "10/07/2017", 7);
 	}
 	
-	@Test(expected = "Usuario invalido")
-	public void testItemEmprestado(){
+	@Test(expected = IllegalArgumentException.class)
+	public void testItemEmprestado3() throws Exception{
 		
 		fac.registrarEmprestimo("Jose", "0000-0000", "Ana", "9999-8888", "FIFA 17", "10/07/2017", 7);
 		fac.registrarEmprestimo("Joao", "1234-5678", "Jose", "0000-0000", "Mafia 3", "10/07/2017", 7);
@@ -60,7 +60,7 @@ public class ControllerEmprestimoTest {
 	
 	
 	@Test 
-	public void testDevolucao(){
+	public void testDevolucao() throws Exception{
 		
 		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "07/07/2017", "14/07/2017");
 		
@@ -71,8 +71,8 @@ public class ControllerEmprestimoTest {
 		assertEquals("01/08/2017", fac.controllerEmprestimo.getEmprestimos().get(0).getDataDevolucao());
 	}
 	
-	@Test(expected = "Emprestimo nao encontrado")
-	public void testItemEmprestado(){
+	@Test(expected = IllegalArgumentException.class)
+	public void testItemEmprestado() throws Exception{
 		
 		fac.devolverItem("Joao", "1234-5678", "Jose", "0000-0000", "War 2", "07/07/2017", "14/07/2017");
 		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "07/07/2017", "14/07/2017");

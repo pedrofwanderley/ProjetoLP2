@@ -28,15 +28,15 @@ public class ControllerEmprestimo {
 					usuarios.get(nomeDono).getItens().get(nomeItem).setEstado(EstadoItem.Emprestado);
 				
 				}else{
-					throw new Exception("Item emprestado no momento");
+					throw new IllegalArgumentException("Item emprestado no momento");
 				}
 				
 			}else{
-				throw new Exception("Item nao encontrado");
+				throw new IllegalArgumentException("Item nao encontrado");
 			}
 			
 		}else{
-			throw new Exception("Usuario invalido");
+			throw new IllegalArgumentException("Usuario invalido");
 		}
 				
 	}
@@ -63,7 +63,7 @@ public class ControllerEmprestimo {
 		}
 		
 		if(emprestimos.size()==empSize){
-			throw new Exception("Emprestimo nao encontrado");
+			throw new IllegalArgumentException("Emprestimo nao encontrado");
 			}
 	}
 	
