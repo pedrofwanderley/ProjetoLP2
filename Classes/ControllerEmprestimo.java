@@ -80,6 +80,9 @@ public class ControllerEmprestimo {
 		
 	}
 	
+	public ArrayList<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
 	
 	
 }
