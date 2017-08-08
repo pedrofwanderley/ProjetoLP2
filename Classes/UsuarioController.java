@@ -360,12 +360,13 @@ public class UsuarioController {
 	 * @param telefone
 	 * @param nomeItem
 	 * @param nomePeca
+	 * @throws Exception 
 	 */
 
-	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) {
+	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) throws Exception {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (item instanceof JogoTabuleiro) {
-				((JogoTabuleiro) item).getPecasPerdidas().add(nomePeca);
+				((JogoTabuleiro) item).adicionarPecaPerdida(nomePeca);
 			}
 
 		}
