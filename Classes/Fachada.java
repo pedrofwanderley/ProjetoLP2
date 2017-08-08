@@ -72,7 +72,7 @@ public class Fachada {
 		return usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
 	}
 
-	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) {
+	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) throws Exception {
 		usuarioController.adicionarPecaPerdida(nome, telefone, nomeItem, nomePeca);
 	}
 
