@@ -1,7 +1,7 @@
+package usuario;
 import java.util.*;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-
+import emprestimo.SituacaoEmprestimo;
 import itens.*;
 
 public class UsuarioController {
@@ -406,8 +406,8 @@ public class UsuarioController {
 	}
 
 	/**
-	 *
-	 *
+	 
+	 * Registra no historico do usuario informacao sobre emprestimos passados.
 	 * @param usuario
 	 * @param usuarioHistorico
 	 * @param item

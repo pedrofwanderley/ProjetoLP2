@@ -1,3 +1,4 @@
+package pesquisa;
 import java.util.Comparator;
 
 import itens.Item;

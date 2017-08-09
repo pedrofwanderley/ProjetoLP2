@@ -1,6 +1,9 @@
+package emprestimo;
 import java.util.*;
 
 import itens.EstadoItem;
+import usuario.Usuario;
+import usuario.UsuarioController;
 
 
 public class ControllerEmprestimo {
@@ -12,7 +15,8 @@ public class ControllerEmprestimo {
 		emprestimos = new ArrayList<Emprestimo>();
 	}
 	/**
-	 * 
+	 * Realiza o emprestimo. Verifica se os usuarios, itens e disponiblidades de itens estao corretos para realizar o emprestimo.
+	 * Feito isto, adiciona na lista de emprestimo, os emprestimos atuais e muda o estado do item para emprestado.
 	 * @param nomeDono
 	 * @param telefoneDono
 	 * @param nomeRequerente
@@ -33,6 +37,7 @@ public class ControllerEmprestimo {
 			if(usuarios.get(nomeDono).getItens().containsKey(nomeItem)){
 				
 				if(usuarios.get(nomeDono).getItens().get(nomeItem).getEstado() == EstadoItem.NEmprestado){
+					
 					emprestimos.add(new Emprestimo(usuarios.get(nomeDono),usuarios.get(nomeRequerente),usuarios.get(nomeDono).getItens().get(nomeItem),dataEmprestimo, periodo));
 					usuarios.get(nomeDono).getItens().get(nomeItem).setEstado(EstadoItem.Emprestado);
 				
@@ -51,7 +56,10 @@ public class ControllerEmprestimo {
 	}
 		
 	/**
-	 * 
+	 * Delvove o emprestimo. Primeiro eh verificado se o na lista de emprestimo eh o emprestimo que se deseja encerrar.
+	 * Feito isto, eh retirado o emprestimo dos da lista de emprestimos atuais e o item retorna ao seu estado original. 
+	 * Tambem eh registrado no historico dos usuarios envolvidos o registro desse emprestimo.
+	 * dos usuarios envolvidos 
 	 * @param nomeDono
 	 * @param telefoneDono
 	 * @param nomeRequerente
@@ -89,7 +97,7 @@ public class ControllerEmprestimo {
 	
 	/**
 	 * 
-	 * @return
+	 * @return emprestimo
 	 */
 	
 	public ArrayList<Emprestimo> getEmprestimos() {

@@ -1,9 +1,11 @@
+package pesquisa;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import itens.Item;
+import usuario.Usuario;
 
 /**
  * Classe de controle de pesquisas.

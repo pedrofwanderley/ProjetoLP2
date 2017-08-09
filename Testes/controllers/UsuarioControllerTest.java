@@ -1,9 +1,12 @@
+package controllers;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import fachada.Fachada;
 import itens.BluraySerie;
+import usuario.Usuario;
 
 public class UsuarioControllerTest {
 

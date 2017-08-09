@@ -1,7 +1,10 @@
-import static org.junit.Assert.*;
+package controllers;
 
+import static org.junit.Assert.*;
+import fachada.Fachada;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class ControllerEmprestimoTest {
 
@@ -12,7 +15,6 @@ public class ControllerEmprestimoTest {
 		fac.cadastrarUsuario("Joao",  "1234-5678", "joao123@gmail.com");
 		fac.cadastrarUsuario("Antonio", "5555-5555","antonio5@hotmail.com");
 		fac.cadastrarUsuario("Ana", "9999-8888","ana@gmail.com");
-		
 		fac.cadastrarJogoTabuleiro("Joao", "1234-5678", "War 2", 50.0);
 		fac.cadastrarEletronico("Joao", "1234-5678", "Mafia 3", 150.0, "PC");
 		fac.cadastrarEletronico("Ana", "9999-8888", "The Witcher 3", 100.0 , "PS4");
@@ -40,9 +42,11 @@ public class ControllerEmprestimoTest {
 	
 		
 	@Test(expected = IllegalArgumentException.class)
-	public void testItemEmprestado(){
+	public void testItemEmprestado() {
 		
-		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "10/7/2017", 7);
+		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 7);
+		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "7/7/2017", 7);
+		
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -62,11 +66,14 @@ public class ControllerEmprestimoTest {
 	@Test 
 	public void testDevolucao() {
 		
+		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 7);
+		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 7);
+		
 		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", "14/7/2017");
 		
-		assertEquals("Ana", fac.controllerEmprestimo.getEmprestimos().get(0).getDono());
-		assertEquals("Antonio", fac.controllerEmprestimo.getEmprestimos().get(0).getRequerente());
-		assertEquals("The Witcher 3", fac.controllerEmprestimo.getEmprestimos().get(0).getItem());
+		assertEquals("Ana", fac.controllerEmprestimo.getEmprestimos().get(0).getDono().getNome());
+		assertEquals("Antonio", fac.controllerEmprestimo.getEmprestimos().get(0).getRequerente().getNome());
+		assertEquals("The Witcher 3", fac.controllerEmprestimo.getEmprestimos().get(0).getItem().getNomeItem());
 		assertEquals("25/7/2017", fac.controllerEmprestimo.getEmprestimos().get(0).getDataEmprestimo());
 		assertEquals("1/8/2017", fac.controllerEmprestimo.getEmprestimos().get(0).getDataFinal());
 	}

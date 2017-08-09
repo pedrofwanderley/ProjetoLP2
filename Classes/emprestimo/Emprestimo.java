@@ -1,12 +1,12 @@
+package emprestimo;
 import java.util.Calendar;
 
 import itens.Item;
+import usuario.Usuario;
 
 
 public class Emprestimo {
-	/**
-	 * declaracao de variaveis
-	 */
+	
 	private Usuario dono;
 	private Usuario requerente;
 	private Item item;
@@ -14,14 +14,7 @@ public class Emprestimo {
 	private String dataEmprestimo;
 	private String dataFinal;
 		
-	/**
-	 * construtor
-	 * @param dono
-	 * @param Requerente
-	 * @param item
-	 * @param periodo
-	 * @param dataEmprestimo
-	 */
+
 	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo){
 		
 		this.dono = dono;
@@ -78,7 +71,7 @@ public class Emprestimo {
 	}
 	
 	/**
-	 * 
+	 * Calcula a data que eh pra ser devolvido o item
 	 * @param dataEmprestimo
 	 * @param periodo
 	 * @return

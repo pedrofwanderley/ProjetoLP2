@@ -1,7 +1,12 @@
+package controllers;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import pesquisa.ControllerPesquisa;
+import usuario.Usuario;
+import usuario.UsuarioController;
 
 public class ControllerPesquisaTest {
 

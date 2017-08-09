@@ -1,8 +1,10 @@
+package usuario;
 /**
  * @author Wesley
  */
 import java.util.Calendar;
 
+import emprestimo.SituacaoEmprestimo;
 import itens.Item;
 
 public class Historico {
@@ -24,7 +26,12 @@ public class Historico {
 		this.dataFinal= dataFinal;
 				
 	}
-	
+	/**
+	 * Calcula os dias atrasados que o item foi devolvido
+	 * @param dataFinal
+	 * @param dataDevolucao
+	 * @return
+	 */
 	private int getDiasAtrasados(String dataFinal,String dataDevolucao){
 		
 		Calendar calendarFinal = Calendar.getInstance();
