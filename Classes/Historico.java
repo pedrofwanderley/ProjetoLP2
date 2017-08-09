@@ -4,7 +4,6 @@
 import java.util.Calendar;
 
 import itens.Item;
-import itens.SituacaoEmprestimo;
 
 public class Historico {
 	
@@ -12,28 +11,33 @@ public class Historico {
 	private Item item;
 	private SituacaoEmprestimo situacao;
 	private String dataDevolucao;
+	private String dataFinal;
 	private int diasAtrasados;
 	
 	
-	public Historico(Usuario usuario, Item item, SituacaoEmprestimo situacao, String dataDevolucao){
+	public Historico(Usuario usuario, Item item, SituacaoEmprestimo situacao, String dataFinal ,String dataDevolucao){
 		
 		this.usuario=usuario;
 		this.item=item;
 		this.situacao=situacao;
 		this.dataDevolucao = dataDevolucao;
-		
-		
+		this.dataFinal= dataFinal;
+				
 	}
 	
-	private int getDiasAtrasados(String dataDevolucao){
+	private int getDiasAtrasados(String dataFinal,String dataDevolucao){
 		
-		Calendar dataAtual = Calendar.getInstance();
+		Calendar calendarFinal = Calendar.getInstance();
+		String[] datasFinal = dataFinal.split("/");
+		calendarFinal.set(Integer.parseInt(datasFinal[2]),Integer.parseInt(datasFinal[1]), Integer.parseInt(datasFinal[0]));
+		
+		
 		Calendar calendarDev = Calendar.getInstance();
-		
 		String[] datasDev = dataDevolucao.split("/");
-		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1])-1, Integer.parseInt(datasDev[0]));
+		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1]), Integer.parseInt(datasDev[0]));
 		
-		diasAtrasados = dataAtual.get(Calendar.DAY_OF_YEAR) - calendarDev.get(Calendar.DAY_OF_YEAR);
+		
+		diasAtrasados = calendarFinal.get(Calendar.DAY_OF_YEAR) - calendarDev.get(Calendar.DAY_OF_YEAR);
 		
 		if(diasAtrasados > 0){
 			return diasAtrasados;
@@ -45,6 +49,6 @@ public class Historico {
 	}
 	
 	public String toString(){
-		return usuario + " - " + item + " - " + situacao+ " - " + dataDevolucao + " - " + getDiasAtrasados(dataDevolucao); 
+		return usuario + " - " + item + " - " + situacao+ " - " + dataDevolucao + " - " + getDiasAtrasados(dataFinal,dataDevolucao); 
 	}
 }

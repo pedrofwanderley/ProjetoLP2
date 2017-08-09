@@ -97,12 +97,12 @@ public class Fachada {
 		return pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), nome, telefone, nomeItem);
 	}
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem,String dataEmprestimo, int periodo) throws Exception{
+			String nomeItem,String dataEmprestimo, int periodo){
 		controllerEmprestimo.registrarEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,dataEmprestimo,  periodo, usuarioController.getUsuarios());
 		
 	}
 	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem, String dataEmprestimo, String dataDevolucao) throws Exception{
+			String nomeItem, String dataEmprestimo, String dataDevolucao){
 		controllerEmprestimo.devolverItem(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,dataEmprestimo,dataDevolucao, usuarioController);
 		
 	}

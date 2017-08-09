@@ -407,18 +407,18 @@ public class UsuarioController {
 
 	/**
 	 *
-	 * @author Wesley
+	 *
 	 * @param usuario
 	 * @param usuarioHistorico
 	 * @param item
 	 * @param situacao
 	 */
 
-	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao,
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, String dataFinal,
 			String dataDevolucao) {
 		for (Usuario u : usuarios.values()) {
 			if (u.equals(usuario)) {
-				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataDevolucao));
+				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal ,dataDevolucao));
 			}
 		}
 	}

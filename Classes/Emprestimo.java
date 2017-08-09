@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 import itens.Item;
 
 
@@ -10,7 +12,7 @@ public class Emprestimo {
 	private Item item;
 	private int periodo;
 	private String dataEmprestimo;
-	private String dataDevolucao;
+	private String dataFinal;
 		
 	/**
 	 * construtor
@@ -20,15 +22,15 @@ public class Emprestimo {
 	 * @param periodo
 	 * @param dataEmprestimo
 	 */
-	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo, String dataDevolucao){
+	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo){
 		
 		this.dono = dono;
 		this.requerente = requerente;
 		this.item = item;
 		this.periodo = periodo;
 		this.dataEmprestimo = dataEmprestimo;
-		this.dataDevolucao = dataDevolucao;
-		
+		this.dataFinal = this.calculaDataFinal(dataEmprestimo, periodo);
+				
 	}
 
 	public Usuario getDono() {
@@ -70,19 +72,33 @@ public class Emprestimo {
 	public void setDataEmprestimo(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
-
-	public String getDataDevolucao() {
-		return dataDevolucao;
+	
+	public String getDataFinal() {
+		return dataFinal;
 	}
-
-	public void setDataDevolucao(String dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
+	
+	/**
+	 * 
+	 * @param dataEmprestimo
+	 * @param periodo
+	 * @return
+	 */
+	private String calculaDataFinal(String dataEmprestimo, int periodo){
+		
+		String[] datasEmp = dataEmprestimo.split("/");
+		Calendar calendarEmp = Calendar.getInstance();
+		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
+		calendarEmp.add(Calendar.DATE, periodo);
+		
+		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
+		
+		
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Dono do item: " + dono.getNome() + " - Requerente:  " + requerente.getNome() + " - Item: " + item.getNomeItem() 
-		+ " - Data Inicial do Emprestimo: " + dataEmprestimo + " - Data de Devoluçao do Emprestimo: " + dataDevolucao;
+		+ " - Data Inicial do Emprestimo: " + dataEmprestimo + " - Data de Devoluçao do Emprestimo: " + dataFinal;
 	
 	}
 	
