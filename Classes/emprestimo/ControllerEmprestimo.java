@@ -16,7 +16,7 @@ public class ControllerEmprestimo {
 	}
 	/**
 	 * Realiza o emprestimo. Verifica se os usuarios, itens e disponiblidades de itens estao corretos para realizar o emprestimo.
-	 * Feito isto, adiciona na lista de emprestimo, os emprestimos atuais e muda o estado do item para emprestado.
+	 * Feito isto, adiciona na lista de emprestimos atuais, o emprestimos e muda o estado do item para emprestado.
 	 * @param nomeDono
 	 * @param telefoneDono
 	 * @param nomeRequerente
@@ -56,8 +56,8 @@ public class ControllerEmprestimo {
 	}
 		
 	/**
-	 * Delvove o emprestimo. Primeiro eh verificado se o na lista de emprestimo eh o emprestimo que se deseja encerrar.
-	 * Feito isto, eh retirado o emprestimo dos da lista de emprestimos atuais e o item retorna ao seu estado original. 
+	 * Delvove o emprestimo. Primeiro eh verificado se o na lista de emprestimos atuais tem o emprestimo que se deseja encerrar.
+	 * Feito isto, eh retirado o emprestimo da lista e o item retorna ao seu estado original. 
 	 * Tambem eh registrado no historico dos usuarios envolvidos o registro desse emprestimo.
 	 * dos usuarios envolvidos 
 	 * @param nomeDono
