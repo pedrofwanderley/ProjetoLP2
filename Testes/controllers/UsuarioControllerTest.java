@@ -35,7 +35,7 @@ public class UsuarioControllerTest {
 	public void testAdicionaBluray() {
 		BluraySerie br = (BluraySerie) fachada.usuarioController.getUsuarios().get("Lucas").getItens()
 				.get("Criminal Minds");
-		assertEquals(285, br.getDuracaoTotal());
+		assertEquals(200, br.getDuracao());
 	}
 
 	@Test
@@ -99,6 +99,8 @@ public class UsuarioControllerTest {
 	public void testPesquisarUsuario() throws Exception {
 		assertEquals("Lucas, lucas@gmail.com, 12345", fachada.PesquisarUsuario("Lucas"));
 	}
+	
+	//////////////// Testes de exceção \\\\\\\\\\\\\\\\\\\\
 	
 		@Test
 	public void testCadastraUsuarioException() throws Exception {
