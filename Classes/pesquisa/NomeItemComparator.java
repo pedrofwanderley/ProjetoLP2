@@ -13,7 +13,7 @@ public class NomeItemComparator implements Comparator<Item> {
 	 */
 	@Override
 	public int compare(Item item, Item outroItem) {
-		return item.getNomeItem().compareTo(outroItem.getNomeItem());
+		return item.getNomeItem().trim().compareTo(outroItem.getNomeItem().trim());
 	}
 
 }

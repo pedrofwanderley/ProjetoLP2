@@ -29,12 +29,15 @@ public class ControllerPesquisaTest {
 				50.00, 140, "comedia", "12_ANOS", 2010);
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "Poeira em alto mar", 40.00,
 				120, "comedia", "14_ANOS", 2012);
+		usuarioController.cadastrarBluRayShow(usuario.getNome(), usuario.getCelular(), "Arctic Monkeys live at Campina Grande",
+				60.00, 67, 15, "Arctic Monkeys", "14_ANOS");
 
-		assertEquals(
-				"FILME: " + "A volta dos que nao foram" + ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " + 140
-						+ " min, " + "12_ANOS" + ", " + "comedia" + ", " + 2010 + "|" + "FILME: " + "Poeira em alto mar"
-						+ ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 120 + " min, " + "14_ANOS" + ", "
-						+ "comedia" + ", " + 2012 + "|",
+		assertEquals("FILME: " + "A volta dos que nao foram" + ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " +
+				 140 + " min, " + "12_ANOS" + ", " + "comedia" + ", " + 2010 + "|" +
+				 	 "SHOW: "+ "Arctic Monkeys live at Campina Grande" + ", R$ " + 60.00 + ", " + "Nao emprestado" + ", " +
+					67 + " min, " + "14_ANOS" + ", " +  "Arctic Monkeys" + ", " + 15 + " faixas" + "|" +
+					"FILME: " + "Poeira em alto mar"+ ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 
+						120 + " min, " + "14_ANOS" + ", " + "comedia" + ", " + 2012 + "|",
 				pesquisa.listaItensUsuariosNome(usuarioController.getUsuarios()));
 	}
 
@@ -45,10 +48,14 @@ public class ControllerPesquisaTest {
 				50.00, 140, "comedia", "12_ANOS", 2010);
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "Poeira em alto mar", 40.00,
 				120, "comedia", "14_ANOS", 2012);
-
-		assertEquals(
-				"FILME: " + "Poeira em alto mar" + ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 120 + " min, "
-						+ "14_ANOS" + ", " + "comedia" + ", " + 2012 + "|" + "FILME: " + "A volta dos que nao foram"
+		usuarioController.cadastrarEletronico(usuario.getNome(), usuario.getCelular(), "Tibia", 30.00, "PC");
+		
+	
+		assertEquals( "JOGO ELETRONICO: " + "Tibia" + ", R$ " + 30.00 + ", " + "Nao emprestado" +
+				", " + "PC" + "|" +
+						"FILME: " + "Poeira em alto mar" + ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 120 + " min, "
+						+ "14_ANOS" + ", " + "comedia" + ", " + 2012 + "|" +
+						"FILME: " + "A volta dos que nao foram"
 						+ ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " + 140 + " min, " + "12_ANOS" + ", "
 						+ "comedia" + ", " + 2010 + "|",
 				pesquisa.listaItensUsuariosValor(usuarioController.getUsuarios()));
