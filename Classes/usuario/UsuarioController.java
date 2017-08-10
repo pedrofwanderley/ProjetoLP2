@@ -266,12 +266,13 @@ public class UsuarioController {
 	 * @param telefone
 	 * @param nomeBlurayTemporada
 	 * @param duracao
+	 * @throws Exception 
 	 */
 
-	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) {
+	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) throws Exception {
 		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
 			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
-				((BluraySerie) item).setDuracaoTotal(duracao);
+				((BluraySerie) item).adicionarBluRay(duracao);
 			}
 		}
 	}

@@ -18,7 +18,6 @@ public class BluraySerie extends Bluray{
 	protected String generoSerie;
 	protected int numeroDaTemporada;
 	protected ArrayList<Integer> episodios;
-	private int duracaoTotal;
 	
 	
 
@@ -58,7 +57,6 @@ public class BluraySerie extends Bluray{
 		this.generoSerie = generoSerie;
 		this.numeroDaTemporada = numeroDaTemporada;
 		this.episodios = new ArrayList<Integer> ();
-		this.duracaoTotal = duracao;
 	}
 
 
@@ -159,20 +157,6 @@ public class BluraySerie extends Bluray{
 		return descricao;
 	}
 	
-	
-	/**
-	 * Metodo que retorna o duracao total de uma temporada
-	 * @return inteiro retpresentando duracao total de uma temporada
-	 */
-	public int getDuracaoTotal() {
-		return duracaoTotal;
-	}
-
-
-
-	public void setDuracaoTotal(int duracaoTotal) {
-		this.duracaoTotal += duracaoTotal;
-	}
 
 	
 }

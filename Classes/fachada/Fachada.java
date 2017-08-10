@@ -60,7 +60,7 @@ public class Fachada {
 		usuarioController.cadastrarBluRaySerie(nome, telefone, nomeItem, preco, descricao, duracao, classificacao,
 				genero, temporada);
 	}
-	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao){
+	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) throws Exception{
 		usuarioController.adicionarBluRay(nome, telefone, nomeBlurayTemporada, duracao);
 	}
 
