@@ -95,11 +95,11 @@ public class ControllerPesquisa {
 			
 			
 		}
-		if (confereUsuario == false) {
+		if (!confereUsuario) {
 			throw new IllegalArgumentException("Usuario invalido");
 			
 		}
-		else if(confereItem == false){
+		else if(!confereItem){
 			throw new IllegalArgumentException("Item nao encontrado");
 		}
 		
