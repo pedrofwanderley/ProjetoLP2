@@ -127,5 +127,14 @@ public class UsuarioControllerTest {
 			assertEquals(e.getMessage(), "Item nao encontrado");
 		}
 	}
+	
+	@Test
+	public void getInfoUsuarioException() throws Exception {
+		try {
+			fachada.getInfoUsuario("Pedro", "12354", "email");
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Usuario invalido");
+		}
+	}
 
 }
