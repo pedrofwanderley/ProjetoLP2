@@ -99,5 +99,33 @@ public class UsuarioControllerTest {
 	public void testPesquisarUsuario() throws Exception {
 		assertEquals("Lucas, lucas@gmail.com, 12345", fachada.PesquisarUsuario("Lucas"));
 	}
+	
+		@Test
+	public void testCadastraUsuarioException() throws Exception {
+		Usuario usuario = new Usuario("Lucas", "lucas@gmail.com", "12345");
+		try {
+			fachada.cadastrarUsuario(usuario.getNome(), usuario.getEmail(), usuario.getCelular());
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Usuario ja cadastrado");
+		}
+	}
+	
+	@Test
+	public void testAtualizaUsuarioException() throws Exception {
+		try {
+			fachada.atualizarUsuario("Pedin", "1225", "email", "pedin@email");
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Usuario invalido");
+		}
+	}
+	
+	@Test
+	public void removeItemException() throws Exception {
+		try {
+			fachada.removerItem("Lucas", "12345", "abc");
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Item nao encontrado");
+		}
+	}
 
 }
