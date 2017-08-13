@@ -1,12 +1,13 @@
 package usuario;
 import java.util.*;
 
+import chaves.ChaveUsuario;
 import emprestimo.SituacaoEmprestimo;
 import itens.*;
 
 public class UsuarioController {
-	;
-	private Map<String, Usuario> usuarios;
+	
+	private Map<ChaveUsuario, Usuario> usuarios;
 
 	public UsuarioController() {
 		usuarios = new HashMap<>();
@@ -22,15 +23,15 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String CadastrarUsuario(String nome, String celular, String email) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				throw new Exception("Usuario ja cadastrado");
-			}
+	public void CadastrarUsuario(String nome, String celular, String email) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario ja cadastrado");
 		}
+		
 		Usuario usuario = new Usuario(nome, celular, email);
-		usuarios.put(nome, usuario);
-		return "Usuario cadastrado com sucesso!";
+		usuarios.put(chave, usuario);
 	}
 
 	/**
@@ -43,15 +44,14 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String removerUsuario(String nome, String celular) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				usuarios.remove(nome);
-				return "Usuario removido com sucesso";
-			}
+	public void removerUsuario(String nome, String celular) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-
-		throw new Exception("Usuario invalido");
+		
+		usuarios.remove(chave);
 	}
 
 	/**
@@ -62,15 +62,15 @@ public class UsuarioController {
 	 * @return toString do usuario desejado
 	 */
 
-	public String PesquisarUsuario(String nome) {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim())) {
-				return usuario.toString();
-			}
+	public String PesquisarUsuario(String nome, String celular) {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-
-		return "Usuario invalido";
-
+		
+		Usuario usuario = usuarios.get(chave);
+		return usuario.toString();
 	}
 
 	/**
@@ -85,24 +85,24 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-
-				if (atributo.equalsIgnoreCase("email")) {
-					usuario.setEmail(valor);
-					return "Usuario atualizado!";
-
-				} else if (atributo.equalsIgnoreCase("telefone")) {
-					usuario.setCelular(valor);
-					return "Usuario atualizado!";
-				}
-			}
+	public void AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-
-		throw new Exception("Usuario invalido");
+		
+		Usuario usuario = usuarios.get(chave);
+		
+		if (atributo.equalsIgnoreCase("email")) {
+			usuario.setEmail(valor);
+		} else if (atributo.equalsIgnoreCase("telefone")) {
+			usuario.setCelular(valor);
+		}
 	}
 
+	
+	
 	/**
 	 * Metodo que recebe a identificaao do usuario e exibe o email do mesmo
 	 * 
@@ -114,17 +114,14 @@ public class UsuarioController {
 	 */
 
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
-		if (usuarios.containsKey(nome) == false) {
-			throw new Exception("Usuario invalido");
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		if (atributo.equalsIgnoreCase("email")) {
-			for (Usuario usuario : usuarios.values()) {
-				if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-					return usuario.getEmail();
-				}
-			}
-		}
-		throw new Exception("Usuario invalido");
+		
+		Usuario usuario = usuarios.get(chave);
+		return usuario.getEmail();		
 	}
 
 	/**
@@ -140,16 +137,17 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
+	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
 			throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
-				usuario.getItens().put(nomeItem, game);
-				return "Item cadastrado!";
-			}
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		return "Item nao cadastrado";
+		
+		Usuario usuario = usuarios.get(chave);
+		JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
+		usuario.getItens().put(nomeItem, game);
 	}
 
 	/**
@@ -163,22 +161,16 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
-		if (usuarios.containsKey(nome) == false) {
-			throw new Exception("Usuario invalido");
+	public void cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-
-		if (preco < 0) {
-			throw new Exception("Preco invalido");
-		}
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
-				usuario.getItens().put(nomeItem, jogo);
-				return "Item cadastrado!";
-			}
-		}
-		return "Item nao cadastrado";
+		
+		Usuario usuario = usuarios.get(chave);
+		JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
+		usuario.getItens().put(nomeItem, jogo);
 	}
 
 	/**
@@ -196,16 +188,18 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
+	public void cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
 			String genero, String classificacao, int anoLancamento) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
-				usuario.getItens().put(nomeItem, filme);
-				return "Item cadastrado";
-			}
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		return "Item nao cadastrado";
+	
+		Usuario usuario = usuarios.get(chave);
+			
+		BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
+		usuario.getItens().put(nomeItem, filme);
 	}
 
 	/**
@@ -225,12 +219,17 @@ public class UsuarioController {
 
 	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
 			int numeroFaixas, String artista, String classificacao) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
-				usuario.getItens().put(nomeItem, show);
-			}
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
+	
+		Usuario usuario = usuarios.get(chave);
+		
+		BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
+		usuario.getItens().put(nomeItem, show);
+	
 	}
 
 	/**
@@ -248,15 +247,18 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao,
+	public void cadastrarBluRaySerie(String nome, String celular, String nomeItem, double preco, String descricao,
 			int duracao, String classificacao, String genero, int temporada) throws Exception {
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(telefone)) {
-				Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
-				usuario.getItens().put(nomeItem, serie);
-			}
-
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
+	
+		Usuario usuario = usuarios.get(chave);
+		
+		Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
+		usuario.getItens().put(nomeItem, serie);	
 	}
 
 	/**
@@ -269,32 +271,19 @@ public class UsuarioController {
 	 * @throws Exception 
 	 */
 
-	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) throws Exception {
-		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
-			if (nomeBlurayTemporada.equals(item.getNomeItem())) {
-				((BluraySerie) item).adicionarBluRay(duracao);
-			}
+	public void adicionarBluRay(String nome, String celular, String nomeBlurayTemporada, int duracao) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
+
+		Usuario usuario = usuarios.get(chave);
+		HashMap<String, Item> itensDoUsuario = usuario.getItens();
+		Item item = itensDoUsuario.get(nomeBlurayTemporada);
+		((BluraySerie) item).adicionarBluRay(duracao);
 	}
 
-	/**
-	 * Metodo que encontra determinado usuario cadastrado no sistema
-	 * 
-	 * @param nome
-	 * @param celular
-	 * @return Usuario desejado pronto para uso
-	 */
-
-	public Usuario encontraUsuario(String nome, String celular) {
-		Usuario retorno = null;
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-				retorno = usuario;
-			}
-		}
-		return retorno;
-
-	}
 
 	/**
 	 * Metodo que remove o item desejado de um determinado usuario
@@ -306,17 +295,21 @@ public class UsuarioController {
 	 * @throws Exception
 	 */
 
-	public String removerItem(String nome, String celular, String nomeItem) throws Exception {
-		if (usuarios.containsKey(nome) == false) {
-			throw new Exception("Usuario invalido");
+	public void removerItem(String nome, String celular, String nomeItem) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		for (Item item : encontraUsuario(nome, celular).getItens().values()) {
-			if (item.getNomeItem().equals(nomeItem)) {
-				encontraUsuario(nome, celular).getItens().values().remove(item);
-				return "Item removido!";
-			}
+		
+		Usuario usuario = usuarios.get(chave);
+		HashMap<String, Item> itensDoUsuario = usuario.getItens();
+		
+		if (!itensDoUsuario.containsKey(nomeItem)) {
+			throw new IllegalArgumentException("Item nao encontrado");
 		}
-		throw new Exception("Item nao encontrado");
+		
+		itensDoUsuario.remove(nomeItem);
 	}
 
 	/**
@@ -332,30 +325,36 @@ public class UsuarioController {
 
 	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
 			throws Exception {
-		if (usuarios.containsKey(nome) == false) {
-			throw new Exception("Usuario invalido");
-		} else if (usuarios.get(nome).getItens().containsKey(nomeItem) == false) {
-			throw new Exception("Item nao encontrado");
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		for (Item item : encontraUsuario(nome, celular).getItens().values()) {
-			if (nomeItem.equals(item.getNomeItem())) {
-				if ("Preco".equalsIgnoreCase(atributo)) {
-					Double valorDouble = Double.parseDouble(valor);
-					item.setValor(valorDouble);
-				} else if ("Nome".equalsIgnoreCase(atributo)) {
-					item.setNomeItem(valor);
-					Item novaChave = item;
-					encontraUsuario(nome, celular).getItens().remove(nomeItem);
-					encontraUsuario(nome, celular).getItens().put(valor, novaChave);
-				}
-
-			}
+		
+		Usuario usuario = usuarios.get(chave);
+		HashMap<String, Item> itensDoUsuario = usuario.getItens();
+		
+		if (!itensDoUsuario.containsKey(nomeItem)) {
+			throw new IllegalArgumentException("Item nao encontrado");
 		}
-
+		
+		Item item = itensDoUsuario.get(nomeItem);
+	
+		if ("Preco".equalsIgnoreCase(atributo)) {
+			Double valorDouble = Double.parseDouble(valor);
+			item.setValor(valorDouble);
+		} else if ("Nome".equalsIgnoreCase(atributo)) {
+			item.setNomeItem(valor);
+			
+			itensDoUsuario.remove(nomeItem);
+			itensDoUsuario.put(valor, item);
+		}
 	}
 
 	/**
 	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
+	 * poderiamos consideram um caso em que o item escolhido não fosse um 
+	 * jogo de tabuleiro, entao neste caso com iriamos lidar com este erro?
 	 * 
 	 * @param nome
 	 * @param telefone
@@ -364,13 +363,23 @@ public class UsuarioController {
 	 * @throws Exception 
 	 */
 
-	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) throws Exception {
-		for (Item item : encontraUsuario(nome, telefone).getItens().values()) {
-			if (item instanceof JogoTabuleiro) {
-				((JogoTabuleiro) item).adicionarPecaPerdida(nomePeca);
-			}
-
+	public void adicionarPecaPerdida(String nome, String celular, String nomeItem, String nomePeca) throws Exception {
+		
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
+		
+		Usuario usuario = usuarios.get(chave);
+		HashMap<String, Item> itensDoUsuario = usuario.getItens();
+		
+		if (!itensDoUsuario.containsKey(nomeItem)) {
+			throw new IllegalArgumentException("Item nao encontrado");
+		}
+		
+		Item item = itensDoUsuario.get(nomeItem);
+	
+		((JogoTabuleiro) item).adicionarPecaPerdida(nomePeca);
 	}
 
 	/**
@@ -386,24 +395,31 @@ public class UsuarioController {
 
 	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
 
-		for (Usuario usuario : usuarios.values()) {
-			if (usuario.getNome().trim().equals(nome.trim()) && usuario.getCelular().equals(celular)) {
-
-				for (Item item : usuario.getItens().values()) {
-					if (nomeItem.equals(item.getNomeItem())) {
-
-						if (atributo.equalsIgnoreCase("preco")) {
-							return String.valueOf(item.getValor());
-						}
-
-						else if (atributo.equalsIgnoreCase("nome")) {
-							return item.getNomeItem();
-						}
-					}
-				}
-			}
+		ChaveUsuario chave = new ChaveUsuario(nome, celular);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
 		}
-		throw new Exception("Item nao encontrado");
+		
+		Usuario usuario = usuarios.get(chave);
+		HashMap<String, Item> itensDoUsuario = usuario.getItens();
+		
+		if (!itensDoUsuario.containsKey(nomeItem)) {
+			throw new IllegalArgumentException("Item nao encontrado");
+		}
+		
+		Item item = itensDoUsuario.get(nomeItem);
+
+
+		if (atributo.equalsIgnoreCase("preco")) {
+			return String.valueOf(item.getValor());
+		}
+
+		else if (atributo.equalsIgnoreCase("nome")) {
+			return item.getNomeItem();
+		}
+		else {
+			throw new IllegalArgumentException("Atributo invalido!");
+		}
 	}
 
 	/**
@@ -415,16 +431,19 @@ public class UsuarioController {
 	 * @param situacao
 	 */
 
-	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, String dataFinal,
-			String dataDevolucao) {
-		for (Usuario u : usuarios.values()) {
-			if (u.equals(usuario)) {
-				usuario.getHistoricos().add(new Historico(usuarioHistorico, item, situacao, dataFinal ,dataDevolucao));
+	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, 
+			String dataFinal,String dataDevolucao) {
+			
+			if (usuarios.containsValue(usuario)) {
+				throw new IllegalArgumentException("Usuario invalido");
 			}
-		}
+
+			ArrayList<Historico> historicoDoUsuario = usuario.getHistoricos();
+			Historico novoHistorico = new Historico(usuarioHistorico, item, situacao, dataFinal ,dataDevolucao);
+			historicoDoUsuario.add(novoHistorico);
 	}
 
-	public Map<String, Usuario> getUsuarios() {
+	public Map<ChaveUsuario, Usuario> getUsuarios() {
 		return usuarios;
 	}
 }

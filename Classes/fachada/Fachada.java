@@ -27,8 +27,8 @@ public class Fachada {
 		return email;
 	}
 
-	public String PesquisarUsuario(String nome) {
-		return usuarioController.PesquisarUsuario(nome);
+	public String PesquisarUsuario(String nome, String celular) {
+		return usuarioController.PesquisarUsuario(nome, celular);
 	}
 	
 	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
