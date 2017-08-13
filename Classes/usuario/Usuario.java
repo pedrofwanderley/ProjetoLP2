@@ -56,7 +56,7 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public HashMap<String,Item> getItens() {
+	public HashMap<String, Item> getItens() {
 		return itens;
 	}
 

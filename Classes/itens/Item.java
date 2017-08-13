@@ -14,13 +14,13 @@ public class Item {
 	
 	public Item(String nome, double valor) throws Exception{
 		if (nome.trim().equals("")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Nome vazio ou composto de espacos!");
 		}
 		if (nome.equals(null)) {
-			throw new NullPointerException();
+			throw new NullPointerException("Nome nulo!");
 		}
 		if (valor <= 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Preco invalido");
 		}
 		
 		

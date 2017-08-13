@@ -95,10 +95,6 @@ public class UsuarioControllerTest {
 		assertEquals(false, fachada.usuarioController.getUsuarios().containsKey("Lucas"));
 	}
 
-	@Test
-	public void testPesquisarUsuario() throws Exception {
-		assertEquals("Lucas, lucas@gmail.com, 12345", fachada.PesquisarUsuario("Lucas"));
-	}
 	
 	//////////////// Testes de exceção \\\\\\\\\\\\\\\\\\\\
 	

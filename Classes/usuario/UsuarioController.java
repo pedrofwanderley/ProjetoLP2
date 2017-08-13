@@ -96,8 +96,12 @@ public class UsuarioController {
 		
 		if (atributo.equalsIgnoreCase("email")) {
 			usuario.setEmail(valor);
+			
 		} else if (atributo.equalsIgnoreCase("telefone")) {
 			usuario.setCelular(valor);
+			ChaveUsuario novaChave = new ChaveUsuario(nome, valor);
+			usuarios.remove(chave);
+			usuarios.put(novaChave, usuario);
 		}
 	}
 

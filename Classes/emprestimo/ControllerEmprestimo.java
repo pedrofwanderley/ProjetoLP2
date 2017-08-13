@@ -3,6 +3,7 @@ import java.util.*;
 
 import chaves.ChaveUsuario;
 import itens.EstadoItem;
+import itens.Item;
 import usuario.Usuario;
 import usuario.UsuarioController;
 
@@ -31,29 +32,31 @@ public class ControllerEmprestimo {
 	
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
 			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios){
+		
+		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
+		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
 				
-		if(usuarios.containsKey(nomeDono) && usuarios.get(nomeDono).getCelular().equals(telefoneDono)
-				&& usuarios.containsKey(nomeRequerente) && usuarios.get(nomeRequerente).getCelular().equals(telefoneRequerente)){
-									
-			if(usuarios.get(nomeDono).getItens().containsKey(nomeItem)){
-				
-				if(usuarios.get(nomeDono).getItens().get(nomeItem).getEstado() == EstadoItem.NEmprestado){
-					
-					emprestimos.add(new Emprestimo(usuarios.get(nomeDono),usuarios.get(nomeRequerente),usuarios.get(nomeDono).getItens().get(nomeItem),dataEmprestimo, periodo));
-					usuarios.get(nomeDono).getItens().get(nomeItem).setEstado(EstadoItem.Emprestado);
-				
-				}else{
-					throw new IllegalArgumentException("Item emprestado no momento");
-				}
-				
-			}else{
-				throw new IllegalArgumentException("Item nao encontrado");
-			}
-			
-		}else{
+		if (!usuarios.containsKey(chaveDono) || !usuarios.containsKey(chaveRequerente)) {
 			throw new IllegalArgumentException("Usuario invalido");
 		}
-				
+		
+		Usuario usuarioDono = usuarios.get(chaveDono);
+		Usuario usuarioRequerente = usuarios.get(chaveRequerente);
+		HashMap<String, Item> itensDoDono = usuarioDono.getItens();
+		
+		if (!itensDoDono.containsKey(nomeItem)) {
+			throw new IllegalArgumentException("Item nao encontrado");
+		}
+		
+		Item itemDesejado = itensDoDono.get(nomeItem);
+		
+		if (itemDesejado.getEstado() == EstadoItem.Emprestado) {
+			throw new IllegalArgumentException("Item emprestado no momento");
+		}
+		
+		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
+		emprestimos.add(emprestimo);
+		itemDesejado.setEstado(EstadoItem.Emprestado);
 	}
 		
 	/**

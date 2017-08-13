@@ -39,5 +39,12 @@ public class ChaveUsuario {
 			return false;
 		return true;
 	}
-	
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 }
