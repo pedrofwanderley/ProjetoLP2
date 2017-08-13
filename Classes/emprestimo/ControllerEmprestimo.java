@@ -1,6 +1,7 @@
 package emprestimo;
 import java.util.*;
 
+import chaves.ChaveUsuario;
 import itens.EstadoItem;
 import usuario.Usuario;
 import usuario.UsuarioController;
@@ -29,7 +30,7 @@ public class ControllerEmprestimo {
 	
 	
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem,String dataEmprestimo, int periodo, Map<String, Usuario> usuarios){
+			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios){
 				
 		if(usuarios.containsKey(nomeDono) && usuarios.get(nomeDono).getCelular().equals(telefoneDono)
 				&& usuarios.containsKey(nomeRequerente) && usuarios.get(nomeRequerente).getCelular().equals(telefoneRequerente)){

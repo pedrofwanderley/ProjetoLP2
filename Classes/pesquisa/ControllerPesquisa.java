@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import chaves.ChaveUsuario;
 import itens.Item;
 import usuario.Usuario;
 
@@ -25,7 +26,7 @@ public class ControllerPesquisa {
 	 * @param usuarios, tem como parametro um hashmap de usuarios.
 	 * @return, retorna uma lista de itens.
 	 */
-	public List<Item> geraListaItens(Map<String,Usuario> usuarios){
+	public List<Item> geraListaItens(Map<ChaveUsuario,Usuario> usuarios){
 		List<Item> itensSistema = new ArrayList<>();
 		for (Usuario usuario : usuarios.values()){
 			for(Item item : usuario.getItens().values()){
@@ -36,11 +37,11 @@ public class ControllerPesquisa {
 	}
 	
 	/**
-	 * Método de ordenacao e exibicao de itens em ordem alfabetica.
+	 * Metodo de ordenacao e exibicao de itens em ordem alfabetica.
 	 * @param itens, o parametro é uma lista de itens.
 	 * @return, retorna as representacoes dos itens em forma de string.
 	 */
-	public String listaItensUsuariosNome(Map<String,Usuario> usuarios) {
+	public String listaItensUsuariosNome(Map<ChaveUsuario, Usuario> usuarios) {
 		List<Item> itens = geraListaItens(usuarios);
 		NomeItemComparator comparator = new NomeItemComparator();
 		Collections.sort(itens, comparator);
@@ -56,7 +57,7 @@ public class ControllerPesquisa {
 	 * @param itens, o parametro é uma lista de itens
 	 * @return, retorna uma representacao em string de todos os itens dos usuários.
 	 */
-	public String listaItensUsuariosValor(Map<String,Usuario> usuarios) {
+	public String listaItensUsuariosValor(Map<ChaveUsuario, Usuario> usuarios) {
 		List<Item> itens = geraListaItens(usuarios);
 		ValorItemComparator comparator = new ValorItemComparator();
 		Collections.sort(itens, comparator);
@@ -76,7 +77,7 @@ public class ControllerPesquisa {
 	 * @param nomeitem, tem como quarto parametro o nome do item a ser detalhado.
 	 * @return, retorna uma representacao em string do item desejado.
 	 */
-	public String pesquisarDetalhesItem(Map<String,Usuario> usuarios, String nome, String telefone, String nomeitem){
+	public String pesquisarDetalhesItem(Map<ChaveUsuario, Usuario> usuarios, String nome, String telefone, String nomeitem){
 		String itemDetalhado = "";
 		boolean confereUsuario = false;
 		boolean confereItem = false;
