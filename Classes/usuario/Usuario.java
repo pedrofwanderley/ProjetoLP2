@@ -14,6 +14,7 @@ public class Usuario {
 	private HashMap<String ,Item> itens;
 	private ArrayList<Historico> historicos;
 	private CartaoFidelidade cartao;
+	private double reputacao;
 	
 	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
@@ -30,6 +31,7 @@ public class Usuario {
 		itens = new HashMap<>();
 		historicos = new ArrayList<>();
 		cartao = CartaoFidelidade.NOOB;
+		reputacao = 0;
 	}
 
 	
@@ -70,6 +72,18 @@ public class Usuario {
 
 	public void setCartao(CartaoFidelidade cartao) {
 		this.cartao = cartao;
+	}
+
+
+
+	public double getReputacao() {
+		return reputacao;
+	}
+
+
+
+	public void setReputacao(double reputacao) {
+		this.reputacao = reputacao;
 	}
 
 
