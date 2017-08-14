@@ -157,6 +157,8 @@ public class UsuarioController {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
+		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
 		JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 		usuario.getItens().put(nomeItem, game);
 	}
@@ -180,6 +182,8 @@ public class UsuarioController {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
+		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
 		JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 		usuario.getItens().put(nomeItem, jogo);
 	}
@@ -208,7 +212,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-			
+		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
 		BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
 		usuario.getItens().put(nomeItem, filme);
 	}
@@ -237,7 +242,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		
+		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
 		BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
 		usuario.getItens().put(nomeItem, show);
 	
@@ -267,7 +273,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		
+		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
 		Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
 		usuario.getItens().put(nomeItem, serie);	
 	}
@@ -431,6 +438,16 @@ public class UsuarioController {
 		else {
 			throw new IllegalArgumentException("Atributo invalido!");
 		}
+	}
+	
+	/**
+	 * Metodo que retorna o valor de 5% sobre o preco total do item em questao
+	 * @param preco
+	 * @return valor requerido
+	 */
+	
+	public double getPorcentagem5(double preco) {
+		return preco * 0.05;
 	}
 
 	/**

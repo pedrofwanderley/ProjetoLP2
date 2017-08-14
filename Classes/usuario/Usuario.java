@@ -30,7 +30,7 @@ public class Usuario {
 		this.setCelular(celular);
 		itens = new HashMap<>();
 		historicos = new ArrayList<>();
-		cartao = CartaoFidelidade.NOOB;
+		cartao = CartaoFidelidade.FreeRider;
 		reputacao = 0;
 	}
 
