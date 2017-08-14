@@ -26,6 +26,11 @@ public class Historico {
 		this.dataFinal= dataFinal;
 				
 	}
+	
+	public Item getItem() {
+		return item;
+	}
+
 	/**
 	 * Calcula os dias atrasados que o item foi devolvido
 	 * @param dataFinal

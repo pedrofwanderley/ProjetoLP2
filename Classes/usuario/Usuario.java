@@ -2,6 +2,7 @@ package usuario;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import itens.Item;
@@ -93,6 +94,17 @@ public class Usuario {
 	public ArrayList<Historico> getHistoricos() {
 		return historicos;
 	}
+	
+	public String listaHistorico(){
+        String listaHistoricos = "";
+       HistoricoComparator comparator = new HistoricoComparator();
+       Collections.sort(historicos,comparator);
+       for (Historico historico : historicos) {
+           listaHistoricos += historico.toString() + "|";    
+        }
+       return listaHistoricos;
+       
+   }
 	
 	@Override
 	public String toString() {
