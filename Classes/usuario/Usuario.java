@@ -17,6 +17,7 @@ public class Usuario {
 	private HashMap<String ,Item> itens;
 	private ArrayList<Historico> historicos;
 	private List<Emprestimo> emprestimos;
+	private List<Emprestimo> emprestimosPegos;
 	private CartaoFidelidade cartao;
 	private double reputacao;
 	
@@ -35,6 +36,7 @@ public class Usuario {
 		itens = new HashMap<>();
 		historicos = new ArrayList<>();
 		emprestimos = new ArrayList<>();
+		emprestimosPegos = new ArrayList<>();
 		cartao = CartaoFidelidade.FreeRider;
 		reputacao = 0;
 	}
@@ -103,24 +105,48 @@ public class Usuario {
 	public List<Emprestimo> getEmprestimos() {
 		return emprestimos;
 	}
+	
 
-	public String listaHistorico(){
-       String listaHistoricos = "Emprestimos:";
+	public List<Emprestimo> getEmprestimosPegos() {
+		return emprestimosPegos;
+	}
+
+	public String listaEmprestimo(){
+       String listaEmprestimos = "Emprestimos:";
        if (emprestimos.size() == 0) {
-			listaHistoricos = "Nenhum item Emprestado";
+			listaEmprestimos = "Nenhum item emprestado";
 		}else{
-			HistoricoComparator comparator = new HistoricoComparator();
-			emprestimos.get(emprestimos.size() -1).setDataFinal("Emprestimo em andamento");
+			EmprestimosComparator comparator = new EmprestimosComparator();
+			
 			Collections.sort(emprestimos,comparator);
 			for (Emprestimo emprestimo : emprestimos) {
-				listaHistoricos += emprestimo.toString() + "|";   
+				listaEmprestimos += emprestimo.toString() + "|";   
 			}
            
         }
-       return listaHistoricos;
+       return listaEmprestimos;
        
    }
 	
+	public String listaEmprestimosPegos() {
+		String listaEmprestimosPegos = "Emprestimos pegos:";
+		if (emprestimosPegos.size() == 0) {
+			listaEmprestimosPegos = "Nenhum item pego emprestado";
+		} else {
+			EmprestimosComparator comparator = new EmprestimosComparator();
+			emprestimosPegos.get(emprestimosPegos.size() - 1).setDataFinal("Emprestimo em andamento");
+			Collections.sort(emprestimosPegos, comparator);
+			for (Emprestimo emprestimo : emprestimosPegos) {
+				listaEmprestimosPegos += emprestimo.toString() + "|";
+			}
+
+		}
+		return listaEmprestimosPegos;
+
+	}
+
+	
+
 	@Override
 	public String toString() {
 		return nome + ", " + email + ", " + celular;

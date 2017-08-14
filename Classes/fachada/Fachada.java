@@ -326,11 +326,11 @@ public class Fachada {
 		
 	}
 	public String listarEmprestimosUsuarioEmprestando(String nome, String telefone){
-		return usuarioController.listaHistorico(nome, telefone);
+		return usuarioController.listaEmprestimos(nome, telefone);
 		
 	}
 	
 	public String listarEmprestimosUsuarioPegandoEmprestado(String nome, String telefone){
-		return usuarioController.listaHistorico(nome, telefone);
+		return usuarioController.listaEmprestimosPegos(nome, telefone);
 	}
 }

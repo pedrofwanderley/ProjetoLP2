@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import emprestimo.Emprestimo;
 
-public class HistoricoComparator implements Comparator<Emprestimo> {
+public class EmprestimosComparator implements Comparator<Emprestimo> {
 
 	@Override
 	public int compare(Emprestimo emprestimo, Emprestimo outroEmprestimo) {

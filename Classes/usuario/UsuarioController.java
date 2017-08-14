@@ -474,8 +474,14 @@ public class UsuarioController {
 	public Map<ChaveUsuario, Usuario> getUsuarios() {
 		return usuarios;
 	}
-	public String listaHistorico(String nome, String telefone){
+	public String listaEmprestimos(String nome, String telefone){
 		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
-		return usuarios.get(chave).listaHistorico();
-	   }
+		return usuarios.get(chave).listaEmprestimo();
+	}
+	
+	public String listaEmprestimosPegos(String nome, String telefone){
+		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
+		return usuarios.get(chave).listaEmprestimosPegos();
+		
+	}
 }
