@@ -13,6 +13,7 @@ public class Usuario {
 	private String celular;
 	private HashMap<String ,Item> itens;
 	private ArrayList<Historico> historicos;
+	private CartaoFidelidade cartao;
 	
 	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
@@ -28,6 +29,7 @@ public class Usuario {
 		this.setCelular(celular);
 		itens = new HashMap<>();
 		historicos = new ArrayList<>();
+		cartao = CartaoFidelidade.NOOB;
 	}
 
 	
