@@ -112,12 +112,12 @@ public class Usuario {
 	}
 
 	public String listaEmprestimo(){
-       String listaEmprestimos = "Emprestimos:";
+       String listaEmprestimos = "Emprestimos: ";
        if (emprestimos.size() == 0) {
 			listaEmprestimos = "Nenhum item emprestado";
 		}else{
 			EmprestimosComparator comparator = new EmprestimosComparator();
-			
+			emprestimos.get(emprestimos.size() - 1).setDataFinal("Emprestimo em andamento");
 			Collections.sort(emprestimos,comparator);
 			for (Emprestimo emprestimo : emprestimos) {
 				listaEmprestimos += emprestimo.toString() + "|";   
@@ -129,7 +129,7 @@ public class Usuario {
    }
 	
 	public String listaEmprestimosPegos() {
-		String listaEmprestimosPegos = "Emprestimos pegos:";
+		String listaEmprestimosPegos = "Emprestimos pegos: ";
 		if (emprestimosPegos.size() == 0) {
 			listaEmprestimosPegos = "Nenhum item pego emprestado";
 		} else {
