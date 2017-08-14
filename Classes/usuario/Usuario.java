@@ -34,8 +34,6 @@ public class Usuario {
 		reputacao = 0;
 	}
 
-	
-
 	public String getCelular() {
 		return celular;
 	}

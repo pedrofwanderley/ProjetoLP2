@@ -125,7 +125,14 @@ public class UsuarioController {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
-		return usuario.getEmail();		
+		if (atributo.equalsIgnoreCase("email")) {
+		return usuario.getEmail();	
+		}
+		
+		else if (atributo.equalsIgnoreCase("reputacao")) {
+			return String.valueOf(usuario.getReputacao());
+		}
+		return "";
 	}
 
 	/**
@@ -357,7 +364,7 @@ public class UsuarioController {
 
 	/**
 	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
-	 * poderiamos consideram um caso em que o item escolhido não fosse um 
+	 * poderiamos consideram um caso em que o item escolhido nï¿½o fosse um 
 	 * jogo de tabuleiro, entao neste caso com iriamos lidar com este erro?
 	 * 
 	 * @param nome
