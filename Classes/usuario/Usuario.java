@@ -62,6 +62,18 @@ public class Usuario {
 		return itens;
 	}
 
+	public CartaoFidelidade getCartao() {
+		return cartao;
+	}
+
+
+
+	public void setCartao(CartaoFidelidade cartao) {
+		this.cartao = cartao;
+	}
+
+
+
 	public void setItens(HashMap<String,Item> itens) {
 		this.itens = itens;
 	}
