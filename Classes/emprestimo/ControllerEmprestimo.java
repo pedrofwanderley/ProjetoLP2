@@ -54,7 +54,10 @@ public class ControllerEmprestimo {
 			throw new IllegalArgumentException("Item emprestado no momento");
 		}
 		
+		double dezporcento = (itemDesejado.getValor() * 0.10) + usuarioDono.getReputacao();
+		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
+		usuarios.get(chaveDono).setReputacao(dezporcento);
 		emprestimos.add(emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
 	}
