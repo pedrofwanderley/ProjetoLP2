@@ -2,10 +2,13 @@ package usuario;
 
 import java.util.Comparator;
 
-public class HistoricoComparator implements Comparator<Historico> {
-	  @Override
-	   public int compare(Historico historico, Historico outroHistorico) {
-	       return historico.getItem().getNomeItem().compareTo(outroHistorico.getItem().getNomeItem());
-	   }
+import emprestimo.Emprestimo;
 
+public class HistoricoComparator implements Comparator<Emprestimo> {
+
+	@Override
+	public int compare(Emprestimo emprestimo, Emprestimo outroEmprestimo) {
+		return emprestimo.getItem().getNomeItem().compareTo(outroEmprestimo.getItem().getNomeItem());
+	}
+	 
 }

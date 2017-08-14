@@ -4,7 +4,9 @@ package usuario;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
+import emprestimo.Emprestimo;
 import itens.Item;
 
 public class Usuario {
@@ -14,6 +16,7 @@ public class Usuario {
 	private String celular;
 	private HashMap<String ,Item> itens;
 	private ArrayList<Historico> historicos;
+	private List<Emprestimo> emprestimos;
 	private CartaoFidelidade cartao;
 	private double reputacao;
 	
@@ -31,6 +34,7 @@ public class Usuario {
 		this.setCelular(celular);
 		itens = new HashMap<>();
 		historicos = new ArrayList<>();
+		emprestimos = new ArrayList<>();
 		cartao = CartaoFidelidade.FreeRider;
 		reputacao = 0;
 	}
@@ -95,12 +99,23 @@ public class Usuario {
 		return historicos;
 	}
 	
+	
+	public List<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
+
 	public String listaHistorico(){
-        String listaHistoricos = "";
-       HistoricoComparator comparator = new HistoricoComparator();
-       Collections.sort(historicos,comparator);
-       for (Historico historico : historicos) {
-           listaHistoricos += historico.toString() + "|";    
+       String listaHistoricos = "Emprestimos:";
+       if (emprestimos.size() == 0) {
+			listaHistoricos = "Nenhum item Emprestado";
+		}else{
+			HistoricoComparator comparator = new HistoricoComparator();
+			emprestimos.get(emprestimos.size() -1).setDataFinal("Emprestimo em andamento");
+			Collections.sort(emprestimos,comparator);
+			for (Emprestimo emprestimo : emprestimos) {
+				listaHistoricos += emprestimo.toString() + "|";   
+			}
+           
         }
        return listaHistoricos;
        

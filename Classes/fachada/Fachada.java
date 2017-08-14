@@ -8,7 +8,7 @@ import usuario.UsuarioController;
 public class Fachada {
 	public static void main(String[] args) {
 		args = new String[] { "fachada.Fachada", "Acceptance_test/us1_test.txt.txt", "Acceptance_test/us2_test.txt.txt",
-				"Acceptance_test/us3_test.txt.txt", "Acceptance_test/us4_test.txt.txt", "Acceptance_test/us6_test.txt.txt" };
+				"Acceptance_test/us3_test.txt.txt", "Acceptance_test/us4_test.txt.txt","Acceptance_test/us5_test.txt.txt", "Acceptance_test/us6_test.txt.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -324,5 +324,13 @@ public class Fachada {
 			String nomeItem, String dataEmprestimo, String dataDevolucao){
 		controllerEmprestimo.devolverItem(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,dataEmprestimo,dataDevolucao, usuarioController);
 		
+	}
+	public String listarEmprestimosUsuarioEmprestando(String nome, String telefone){
+		return usuarioController.listaHistorico(nome, telefone);
+		
+	}
+	
+	public String listarEmprestimosUsuarioPegandoEmprestado(String nome, String telefone){
+		return usuarioController.listaHistorico(nome, telefone);
 	}
 }

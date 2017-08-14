@@ -70,6 +70,12 @@ public class Emprestimo {
 		return dataFinal;
 	}
 	
+	
+	
+	public void setDataFinal(String dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
 	/**
 	 * Calcula a data que eh pra ser devolvido o item
 	 * @param dataEmprestimo
@@ -87,11 +93,10 @@ public class Emprestimo {
 		
 		
 	}
-	
 	@Override
 	public String toString() {
-		return "Dono do item: " + dono.getNome() + " - Requerente:  " + requerente.getNome() + " - Item: " + item.getNomeItem() 
-		+ " - Data Inicial do Emprestimo: " + dataEmprestimo + " - Data de Devoluçao do Emprestimo: " + dataFinal;
+		return "EMPRESTIMO - De: " + dono.getNome() + ", Para: " + requerente.getNome() + ", "+ item.getNomeItem() 
+		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataFinal;
 	
 	}
 	

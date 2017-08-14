@@ -60,6 +60,7 @@ public class ControllerEmprestimo {
 		usuarios.get(chaveDono).setReputacao(dezporcento);
 		emprestimos.add(emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
+		usuarioDono.getEmprestimos().add(emprestimo);
 	}
 		
 	/**
