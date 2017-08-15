@@ -79,6 +79,26 @@ public class ControllerPesquisa {
 
 	}
 	/**
+	 * Metodo que lista itens emprestados no momento
+	 * @param usuarios, mapa de usuarios.
+	 * @return, retorna uma representacao em string dos nomes dos donos dos itens e dos nome dos itens emprestados.
+	 */
+	public String listarItensEmprestados(Map<ChaveUsuario, Usuario> usuarios) {
+		String itensEmprestados = "";
+		for (Usuario usuario : usuarios.values()) {
+			for (Item item : usuario.getItens().values()) {
+				if ("Emprestado".equals(item.getEstado().getEstadoItem())) {
+					itensEmprestados += "Dono do item: " + usuario.getNome() + ", " + "Nome do item emprestado: "
+							+ item.getNomeItem() + "|";
+				}
+
+			}
+
+		}
+		return itensEmprestados;
+
+	}
+	/**
 	 * Metodo de ordenacao e exibicao de itens em ordem alfabetica.
 	 * @param itens, o parametro é uma lista de itens.
 	 * @return, retorna as representacoes dos itens em forma de string.
