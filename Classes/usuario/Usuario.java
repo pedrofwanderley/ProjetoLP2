@@ -69,8 +69,8 @@ public class Usuario {
 		return itens;
 	}
 
-	public CartaoFidelidade getCartao() {
-		return cartao;
+	public String getCartao() {
+		return cartao.getEstadoItem();
 	}
 
 
