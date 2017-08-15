@@ -337,4 +337,8 @@ public class Fachada {
 	public String listarEmprestimosItem(String nomeItem) {
 		return pesquisa.listarEmprestimosItem(usuarioController.getUsuarios(), nomeItem);
 	}
+	
+	public String listarItensNaoEmprestados() {
+		return pesquisa.listarItensNaoEmprestados(usuarioController.getUsuarios());
+	}
 }

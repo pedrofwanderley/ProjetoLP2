@@ -31,27 +31,52 @@ public class ControllerPesquisa {
 		for (Usuario usuario : usuarios.values()){
 			for(Item item : usuario.getItens().values()){
 				itensSistema.add(item);
+				
 			}
 		}
 		return itensSistema;
 	}
 	/**
-	 * Metodo que pesquisa em uma lista de item, um determinado item e  lista o historico de emprestimo desse item
+	 * Metodo que pesquisa em uma lista de item, um determinado item e  lista o historico de emprestimo de item
 	 * @param usuarios, mapa de usuarios.
 	 * @param nomeItem, nome do item a ser avaliado o historico
 	 * @return, retorna os emprestimos do item em questão;
 	 */
 	
-	public String listarEmprestimosItem(Map<ChaveUsuario,Usuario> usuarios, String nomeItem) {
+	public String listarEmprestimosItem(Map<ChaveUsuario, Usuario> usuarios, String nomeItem) {
 		List<Item> itens = geraListaItens(usuarios);
 		String listaHistorico = "Nenhum mprestimos associados ao item";
 		for (Item item : itens) {
 			if (nomeItem.equals(item.getNomeItem()) && item.getHistoricoItem().size() > 0) {
 				listaHistorico = item.listarEmprestimosItem();
-				
+
 			}
 		}
 		return listaHistorico;
+	}
+	/**
+	 * Metodo que lista os itens que nao foram emprestados no sistema.
+	 * @param usuarios, mapa de usuarios
+	 * @return, retorna um representacao em string dos itens nao emprestados, ordenados pelo nome do item.
+	 */
+	public String listarItensNaoEmprestados(Map<ChaveUsuario, Usuario> usuarios) {
+		List<Item> itens = geraListaItens(usuarios);
+		List<Item> listaItensNaoEmprestados = new ArrayList<>();
+		for (Item item : itens) {
+			if (item.getHistoricoItem().size() == 0) {
+				listaItensNaoEmprestados.add(item);
+
+			}
+		}
+		NomeItemComparator comparator = new NomeItemComparator();
+		Collections.sort(listaItensNaoEmprestados, comparator);
+		String itensNaoEmprestados = "";
+		for (Item item : listaItensNaoEmprestados) {
+			itensNaoEmprestados += item.toString() + "|";
+
+		}
+		return itensNaoEmprestados;
+
 	}
 	/**
 	 * Metodo de ordenacao e exibicao de itens em ordem alfabetica.
