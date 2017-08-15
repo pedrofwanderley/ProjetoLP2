@@ -30,12 +30,23 @@ public class ControllerPesquisa {
 		List<Item> itensSistema = new ArrayList<>();
 		for (Usuario usuario : usuarios.values()){
 			for(Item item : usuario.getItens().values()){
-				itensSistema .add(item);
+				itensSistema.add(item);
 			}
 		}
 		return itensSistema;
 	}
 	
+	public String listarEmprestimosItem(Map<ChaveUsuario,Usuario> usuarios, String nomeItem) {
+		List<Item> itens = geraListaItens(usuarios);
+		String listaHistorico = "";
+		for (Item item : itens) {
+			if (nomeItem.equals(item.getNomeItem())) {
+				listaHistorico = item.listarEmprestimosItem(nomeItem);
+				
+			}
+		}
+		return listaHistorico;
+	}
 	/**
 	 * Metodo de ordenacao e exibicao de itens em ordem alfabetica.
 	 * @param itens, o parametro é uma lista de itens.

@@ -1,5 +1,10 @@
 package itens;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import emprestimo.Emprestimo;
+
 /**
  * Classe abstrata Item, tem como funcionalidade servir como modelo para os demais itens. 
  * Por ser uma classe abstrata ela nao pode ser instanceada
@@ -11,6 +16,7 @@ public class Item {
 	protected String nomeItem;
 	protected double valor;
 	protected EstadoItem estado;
+	protected List<Emprestimo> historicoItem;
 	
 	public Item(String nome, double valor) throws Exception{
 		if (nome.trim().equals("")) {
@@ -27,6 +33,7 @@ public class Item {
 		this.nomeItem = nome;
 		this.valor = valor;
 		this.estado= EstadoItem.NEmprestado;
+		historicoItem = new ArrayList<>();
 	}
 
 	public String getNomeItem() {
@@ -52,5 +59,20 @@ public class Item {
 	public void setEstado(EstadoItem estado) {
 		this.estado = estado;
 	}
+
+	public List<Emprestimo> getHistoricoItem() {
+		return historicoItem;
+	}
+
+	public String listarEmprestimosItem(String nomeItem) {
+		String listarItens = "Emprestimos associados ao item: ";
+		for (Emprestimo emprestimo : historicoItem) {
+			listarItens += emprestimo.toString() + "|";
+
+		}
+		return listarItens;
+
+	}
+	
 	
 }

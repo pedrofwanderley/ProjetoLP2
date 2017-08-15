@@ -333,4 +333,8 @@ public class Fachada {
 	public String listarEmprestimosUsuarioPegandoEmprestado(String nome, String telefone){
 		return usuarioController.listaEmprestimosPegos(nome, telefone);
 	}
+	
+	public String listarEmprestimosItem(String nomeItem) {
+		return pesquisa.listarEmprestimosItem(usuarioController.getUsuarios(), nomeItem);
+	}
 }

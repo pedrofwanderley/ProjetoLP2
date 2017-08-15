@@ -62,6 +62,7 @@ public class ControllerEmprestimo {
 		itemDesejado.setEstado(EstadoItem.Emprestado);
 		usuarioDono.getEmprestimos().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
+		itemDesejado.getHistoricoItem().add(emprestimo);
 	}
 		
 	/**
