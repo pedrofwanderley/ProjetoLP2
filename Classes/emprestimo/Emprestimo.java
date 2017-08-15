@@ -21,7 +21,7 @@ public class Emprestimo {
 		this.requerente = requerente;
 		this.item = item;
 		this.periodo = periodo;
-		this.dataEmprestimo = dataEmprestimo;
+		this.dataEmprestimo = this.formataDataEmprestimo(dataEmprestimo);
 		this.dataFinal = this.calculaDataFinal(dataEmprestimo, periodo);
 				
 	}
@@ -87,12 +87,21 @@ public class Emprestimo {
 		String[] datasEmp = dataEmprestimo.split("/");
 		Calendar calendarEmp = Calendar.getInstance();
 		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
-		calendarEmp.add(Calendar.DATE, periodo);
+		calendarEmp.add(Calendar.DATE, periodo-1);
 		
 		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
-		
-		
 	}
+	
+	private String formataDataEmprestimo(String dataEmprestimo){
+		
+		String[] datasEmp = dataEmprestimo.split("/");
+		Calendar calendarEmp = Calendar.getInstance();
+		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
+		
+		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "EMPRESTIMO - De: " + dono.getNome() + ", Para: " + requerente.getNome() + ", "+ item.getNomeItem() 
