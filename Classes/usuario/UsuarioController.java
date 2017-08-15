@@ -132,6 +132,10 @@ public class UsuarioController {
 		else if (atributo.equalsIgnoreCase("reputacao")) {
 			return String.valueOf(usuario.getReputacao());
 		}
+		
+		else if (atributo.equalsIgnoreCase("cartao")) {
+			return usuario.getCartao();
+		}
 		return "";
 	}
 
@@ -157,10 +161,33 @@ public class UsuarioController {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
-		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
+		calculaPorcentagem(preco, usuario);
 		JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 		usuario.getItens().put(nomeItem, game);
+	}
+
+	private void calculaPorcentagem(double preco, Usuario usuario) {
+		double aumentoreputacao = (0.05 *(preco)) + usuario.getReputacao();
+		usuario.setReputacao(aumentoreputacao);
+	}
+	
+	private void verificaCartao(Usuario usuario) {
+		if(usuario.getReputacao() > 100.0) {
+			usuario.setCartao(CartaoFidelidade.BomAmigo);
+		}
+		
+		if(usuario.getReputacao() < 0) {
+			usuario.setCartao(CartaoFidelidade.Caloteiro);
+		}
+		
+		if(usuario.getReputacao() >= 0 && usuario.getItens().size() == 0) {
+			usuario.setCartao(CartaoFidelidade.FreeRider);
+		}
+		
+		if(usuario.getReputacao() > 0 && usuario.getReputacao() < 100 && usuario.getItens().size() > 0) {
+			usuario.setCartao(CartaoFidelidade.NOOB);
+		}
+		
 	}
 
 	/**
@@ -182,8 +209,8 @@ public class UsuarioController {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
-		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
+		calculaPorcentagem(preco, usuario);
+		verificaCartao(usuario);
 		JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 		usuario.getItens().put(nomeItem, jogo);
 	}
@@ -212,8 +239,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
+		calculaPorcentagem(preco, usuario);
+		verificaCartao(usuario);
 		BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
 		usuario.getItens().put(nomeItem, filme);
 	}
@@ -242,8 +269,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
+		calculaPorcentagem(preco, usuario);
+		verificaCartao(usuario);
 		BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
 		usuario.getItens().put(nomeItem, show);
 	
@@ -273,8 +300,8 @@ public class UsuarioController {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		double aumentoreputacao = getPorcentagem5(preco) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
+		calculaPorcentagem(preco, usuario);
+		verificaCartao(usuario);
 		Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
 		usuario.getItens().put(nomeItem, serie);	
 	}
@@ -446,10 +473,6 @@ public class UsuarioController {
 	 * @return valor requerido
 	 */
 	
-	public double getPorcentagem5(double preco) {
-		return preco * 0.05;
-	}
-
 	/**
 	 
 	 * Registra no historico do usuario informacao sobre emprestimos passados.
