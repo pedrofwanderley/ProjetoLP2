@@ -2,7 +2,7 @@ package usuario;
 
 public enum CartaoFidelidade {
 
-	NOOB(""), Caloteiro(""), FreeRider(""), BomAmigo("");
+	NOOB("Noob"), Caloteiro("Caloteiro"), FreeRider("FreeRyder"), BomAmigo("BomAmigo");
 
 	protected String CartaoFidelidade;
 
