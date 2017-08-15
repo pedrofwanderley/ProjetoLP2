@@ -83,26 +83,26 @@ public class ControllerEmprestimo {
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);	
-				
-		int empSize = emprestimos.size();
+		
+		
 		
 		for(Emprestimo emprestimo : emprestimos){
 						
-			if(emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
+			if(!(emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
 					&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
-					&& emprestimo.getItem().getNomeItem().equals(nomeItem)){
+					&& emprestimo.getItem().getNomeItem().equals(nomeItem))){
 				
-				emprestimos.remove(emprestimo);
-				conUsuario.getUsuarios().get(nomeDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-				
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
+				throw new IllegalArgumentException("Emprestimo nao encontrado");
 			}
+				
+			emprestimos.remove(emprestimo);
+			conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
+				
+			conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
+			conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
+			
 		}
-		
-		if(emprestimos.size()==empSize){
-			throw new IllegalArgumentException("Emprestimo nao encontrado");
-			}
+				
 	}
 	
 	
