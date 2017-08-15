@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import chaves.ChaveUsuario;
 import fachada.Fachada;
 import itens.BluraySerie;
 import usuario.Usuario;
@@ -11,6 +12,7 @@ import usuario.Usuario;
 public class UsuarioControllerTest {
 
 	Fachada fachada;
+	ChaveUsuario chave;
 
 	@Before
 	public void setUp() throws Exception {
@@ -24,16 +26,18 @@ public class UsuarioControllerTest {
 		fachada.adicionarBluRay("Lucas", "12345", "Criminal Minds", 42);
 		fachada.cadastrarJogoTabuleiro("Lucas", "12345", "Jumanji", 20.0);
 		fachada.adicionarPecaPerdida("Lucas", "12345", "Jumanji", "Alguma");
+		chave = new ChaveUsuario(usuario.getNome(), "12345");
+		System.out.println(chave.toString());
 	}
 
 	@Test
 	public void testCadastroUsuario() {
-		assertEquals(true, fachada.usuarioController.getUsuarios().containsKey("Lucas"));
+		assertEquals(true, fachada.usuarioController.getUsuarios().containsKey(chave));
 	}
 
 	@Test
 	public void testAdicionaBluray() {
-		BluraySerie br = (BluraySerie) fachada.usuarioController.getUsuarios().get("Lucas").getItens()
+		BluraySerie br = (BluraySerie) fachada.usuarioController.getUsuarios().get(chave).getItens()
 				.get("Criminal Minds");
 		assertEquals(200, br.getDuracao());
 	}
@@ -41,24 +45,24 @@ public class UsuarioControllerTest {
 	@Test
 	public void testCadastroBlurayFilme() {
 		assertEquals(true,
-				fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Resident Evil"));
+				fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Resident Evil"));
 	}
 
 	@Test
 	public void testCadastroBluraySerie() {
 		assertEquals(true,
-				fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Resident Evil"));
+				fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Resident Evil"));
 	}
 
 	@Test
 	public void testCadastroEletronico() {
 		assertEquals(true,
-				fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Criminal Minds"));
+				fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Criminal Minds"));
 	}
 
 	@Test
 	public void testCadastroJogoTabuleiro() {
-		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Jumanji"));
+		assertEquals(true, fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Jumanji"));
 	}
 
 	@Test
@@ -72,7 +76,7 @@ public class UsuarioControllerTest {
 		fachada.atualizarItem("Lucas", "12345", "Jumanji", "Preco", "30.0");
 		assertEquals("30.0", fachada.usuarioController.getInfoItem("Lucas", "12345", "Jumanji", "Preco"));
 		fachada.atualizarItem("Lucas", "12345", "Jumanji", "Nome", "Zathura");
-		assertEquals(true, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Zathura"));
+		assertEquals(true, fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Zathura"));
 		assertEquals("30.0", fachada.usuarioController.getInfoItem("Lucas", "12345", "Zathura", "Preco"));
 	}
 
@@ -86,13 +90,13 @@ public class UsuarioControllerTest {
 	@Test
 	public void testRemoverItem() throws Exception {
 		fachada.removerItem("Lucas", "12345", "Jumanji");
-		assertEquals(false, fachada.usuarioController.getUsuarios().get("Lucas").getItens().containsKey("Jumanji"));
+		assertEquals(false, fachada.usuarioController.getUsuarios().get(chave).getItens().containsKey("Jumanji"));
 	}
 
 	@Test
 	public void testRemoverUsuario() throws Exception {
 		fachada.removerUsuario("Lucas", "12345");
-		assertEquals(false, fachada.usuarioController.getUsuarios().containsKey("Lucas"));
+		assertEquals(false, fachada.usuarioController.getUsuarios().containsKey(chave));
 	}
 
 	
