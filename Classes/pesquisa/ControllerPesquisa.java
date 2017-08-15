@@ -35,13 +35,19 @@ public class ControllerPesquisa {
 		}
 		return itensSistema;
 	}
+	/**
+	 * Metodo que pesquisa em uma lista de item, um determinado item e  lista o historico de emprestimo desse item
+	 * @param usuarios, mapa de usuarios.
+	 * @param nomeItem, nome do item a ser avaliado o historico
+	 * @return, retorna os emprestimos do item em questão;
+	 */
 	
 	public String listarEmprestimosItem(Map<ChaveUsuario,Usuario> usuarios, String nomeItem) {
 		List<Item> itens = geraListaItens(usuarios);
-		String listaHistorico = "";
+		String listaHistorico = "Nenhum mprestimos associados ao item";
 		for (Item item : itens) {
-			if (nomeItem.equals(item.getNomeItem())) {
-				listaHistorico = item.listarEmprestimosItem(nomeItem);
+			if (nomeItem.equals(item.getNomeItem()) && item.getHistoricoItem().size() > 0) {
+				listaHistorico = item.listarEmprestimosItem();
 				
 			}
 		}

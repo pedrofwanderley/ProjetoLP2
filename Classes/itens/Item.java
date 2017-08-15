@@ -63,8 +63,11 @@ public class Item {
 	public List<Emprestimo> getHistoricoItem() {
 		return historicoItem;
 	}
-
-	public String listarEmprestimosItem(String nomeItem) {
+	/**
+	 * Metodo que gera uma string com todos os emprestimos de um determinado item,
+	 * @return, retorna um representacao em string dos emprestimos de um item.
+	 */
+	public String listarEmprestimosItem() {
 		String listarItens = "Emprestimos associados ao item: ";
 		for (Emprestimo emprestimo : historicoItem) {
 			listarItens += emprestimo.toString() + "|";
