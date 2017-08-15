@@ -81,6 +81,9 @@ public class ControllerEmprestimo {
 	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
 			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
 		
+		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
+		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);	
+				
 		int empSize = emprestimos.size();
 		
 		for(Emprestimo emprestimo : emprestimos){
@@ -92,8 +95,8 @@ public class ControllerEmprestimo {
 				emprestimos.remove(emprestimo);
 				conUsuario.getUsuarios().get(nomeDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
 				
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(nomeDono), conUsuario.getUsuarios().get(nomeRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(nomeRequerente), conUsuario.getUsuarios().get(nomeDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
 			}
 		}
 		
