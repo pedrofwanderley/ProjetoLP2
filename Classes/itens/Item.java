@@ -68,9 +68,6 @@ public class Item {
 	 * item, @return, retorna um representacao em string dos emprestimos de um item.
 	 */
 	public String listarEmprestimosItem() {
-		if (historicoItem.size() > 2) {
-			historicoItem.get(historicoItem.size() - 1).setDataFinal("Emprestimo em andamento");
-		}
 		String listarItens = "Emprestimos associados ao item: ";
 		for (Emprestimo emprestimo : historicoItem) {
 			listarItens += emprestimo.toString() + "|";

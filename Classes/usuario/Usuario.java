@@ -117,7 +117,6 @@ public class Usuario {
 			listaEmprestimos = "Nenhum item emprestado";
 		}else{
 			EmprestimosComparator comparator = new EmprestimosComparator();
-			emprestimos.get(emprestimos.size() - 1).setDataFinal("Emprestimo em andamento");
 			Collections.sort(emprestimos,comparator);
 			for (Emprestimo emprestimo : emprestimos) {
 				listaEmprestimos += emprestimo.toString() + "|";   
@@ -134,7 +133,6 @@ public class Usuario {
 			listaEmprestimosPegos = "Nenhum item pego emprestado";
 		} else {
 			EmprestimosComparator comparator = new EmprestimosComparator();
-			emprestimosPegos.get(emprestimosPegos.size() - 1).setDataFinal("Emprestimo em andamento");
 			Collections.sort(emprestimosPegos, comparator);
 			for (Emprestimo emprestimo : emprestimosPegos) {
 				listaEmprestimosPegos += emprestimo.toString() + "|";

@@ -75,6 +75,13 @@ public class Emprestimo {
 	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 	}
+	public String estadoDataFinal() {
+		if ("Emprestado".equals(item.getEstado().getEstadoItem())) {
+			return "Emprestimo em andamento";
+		}else {
+			return dataFinal;
+		}
+	}
 
 	/**
 	 * Calcula a data que eh pra ser devolvido o item
@@ -105,7 +112,7 @@ public class Emprestimo {
 	@Override
 	public String toString() {
 		return "EMPRESTIMO - De: " + dono.getNome() + ", Para: " + requerente.getNome() + ", "+ item.getNomeItem() 
-		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataFinal;
+		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + estadoDataFinal();
 	
 	}
 	
