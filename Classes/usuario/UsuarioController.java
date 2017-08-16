@@ -499,11 +499,17 @@ public class UsuarioController {
 	}
 	public String listaEmprestimos(String nome, String telefone){
 		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
+		}
 		return usuarios.get(chave).listaEmprestimo();
 	}
 	
 	public String listaEmprestimosPegos(String nome, String telefone){
 		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
+		if (!usuarios.containsKey(chave)) {
+			throw new IllegalArgumentException("Usuario invalido");
+		}
 		return usuarios.get(chave).listaEmprestimosPegos();
 		
 	}

@@ -92,12 +92,13 @@ public class ControllerPesquisa {
 			}
 			top10 += cont + ") " + item.getHistoricoItem().size() + " emprestimos - " + item.toString() + "|";
 			cont++;
-			
+
 		}
 
 		return top10;
 
-	}	
+	}
+
 	/**
 	 * Metodo que lista itens emprestados no momento
 	 * @param usuarios, mapa de usuarios.
