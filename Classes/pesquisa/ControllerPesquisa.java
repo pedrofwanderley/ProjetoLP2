@@ -63,7 +63,7 @@ public class ControllerPesquisa {
 		List<Item> itens = geraListaItens(usuarios);
 		List<Item> listaItensNaoEmprestados = new ArrayList<>();
 		for (Item item : itens) {
-			if (item.getHistoricoItem().size() == 0) {
+			if ("Nao emprestado".equals(item.getEstado().getEstadoItem())) {
 				listaItensNaoEmprestados.add(item);
 
 			}

@@ -83,26 +83,32 @@ public class ControllerEmprestimo {
 			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
-		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);	
+		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
+
 		
-		
+		boolean confereEmprestimo = false;
 		
 		for(Emprestimo emprestimo : emprestimos){
 						
-			if(!(emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
+			if((emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
 					&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
 					&& emprestimo.getItem().getNomeItem().equals(nomeItem))){
+				confereEmprestimo = true;
+				emprestimos.remove(emprestimo);
+				conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
+					
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
 				
-				throw new IllegalArgumentException("Emprestimo nao encontrado");
 			}
 				
-			emprestimos.remove(emprestimo);
-			conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-				
-			conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
-			conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
+			
 			
 		}
+		if (!confereEmprestimo) {
+			throw new IllegalArgumentException("Emprestimo nao encontrado");
+		}
+		
 				
 	}
 	
