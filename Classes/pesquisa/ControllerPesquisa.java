@@ -78,6 +78,26 @@ public class ControllerPesquisa {
 		return itensNaoEmprestados;
 
 	}
+
+	public String listaTopitens(Map<ChaveUsuario, Usuario> usuarios) {
+
+		List<Item> itens = geraListaItens(usuarios);
+		TopItensComparator comparator = new TopItensComparator();
+		Collections.sort(itens, comparator);
+		String top10 = "";
+		int cont = 1;
+		for (Item item : itens) {
+			if (item.getHistoricoItem().size() == 0 || cont > 10) {
+				break;
+			}
+			top10 += cont + ") " + item.getHistoricoItem().size() + " emprestimos - " + item.toString() + "|";
+			cont++;
+			
+		}
+
+		return top10;
+
+	}	
 	/**
 	 * Metodo que lista itens emprestados no momento
 	 * @param usuarios, mapa de usuarios.

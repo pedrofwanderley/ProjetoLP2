@@ -344,4 +344,7 @@ public class Fachada {
 	public String listarItensEmprestados() {
 		return pesquisa.listarItensEmprestados(usuarioController.getUsuarios());
 	}
+	public String listarTop10Itens() {
+		return pesquisa.listaTopitens(usuarioController.getUsuarios());
+	}
 }
