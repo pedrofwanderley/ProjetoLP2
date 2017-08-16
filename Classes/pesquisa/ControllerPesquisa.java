@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import chaves.ChaveUsuario;
+import emprestimo.Emprestimo;
 import itens.Item;
 import usuario.Usuario;
 
@@ -45,12 +46,21 @@ public class ControllerPesquisa {
 	
 	public String listarEmprestimosItem(Map<ChaveUsuario, Usuario> usuarios, String nomeItem) {
 		List<Item> itens = geraListaItens(usuarios);
-		String listaHistorico = "Nenhum mprestimos associados ao item";
+		String listaHistorico =  "Emprestimos associados ao item: ";
+		boolean conferehistorico = false;
 		for (Item item : itens) {
 			if (nomeItem.equals(item.getNomeItem()) && item.getHistoricoItem().size() > 0) {
-				listaHistorico = item.listarEmprestimosItem();
+				conferehistorico = true;
+				for (Emprestimo emprestimo : item.getHistoricoItem()) {
+					listaHistorico += emprestimo.toString() + "|";
+
+				}
 
 			}
+		}
+		if (!conferehistorico) {
+			listaHistorico = "Nenhum mprestimos associados ao item";
+			
 		}
 		return listaHistorico;
 	}
@@ -89,16 +99,16 @@ public class ControllerPesquisa {
 		for (Item item : itens) {
 			if (item.getHistoricoItem().size() == 0 || cont > 10) {
 				break;
+
 			}
 			top10 += cont + ") " + item.getHistoricoItem().size() + " emprestimos - " + item.toString() + "|";
 			cont++;
-
+			
 		}
 
 		return top10;
 
-	}
-
+	}	
 	/**
 	 * Metodo que lista itens emprestados no momento
 	 * @param usuarios, mapa de usuarios.
