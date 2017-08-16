@@ -485,7 +485,9 @@ public class UsuarioController {
 	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, 
 			String dataFinal,String dataDevolucao) {
 			
-			if (usuarios.containsValue(usuario)) {
+			ChaveUsuario chave = new ChaveUsuario(usuario.getNome(),usuario.getCelular());
+		
+			if (usuarios.containsValue(chave)) {
 				throw new IllegalArgumentException("Usuario invalido");
 			}
 
