@@ -102,7 +102,7 @@ public class ControllerEmprestimo {
 				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
 						SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
 				
-				int atraso = getDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
+				int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 				
 				if (atraso > 0) {
 					double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
