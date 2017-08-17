@@ -59,7 +59,7 @@ public class ControllerEmprestimo {
 		
 		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
 		
-		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,this.formataData(dataEmprestimo), periodo);
+		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
 		usuarios.get(chaveDono).setReputacao(dezporcento);
 		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
@@ -90,7 +90,6 @@ public class ControllerEmprestimo {
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
 		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
 		
-		dataDevolucao = this.formataData(dataDevolucao);
 		
 		if (!emprestimos.containsKey(chaveEmprestimo)) {
 			throw new IllegalArgumentException("Emprestimo nao encontrado");
@@ -123,15 +122,20 @@ public class ControllerEmprestimo {
 	}
 		
 	
-	
-	private String formataData(String dataEmprestimo){
-		
-		String[] datasEmp = dataEmprestimo.split("/");
-		Calendar calendarEmp = Calendar.getInstance();
-		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
-		
-		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
-	}
+	/**
+	 * Como houve mudança no us5, este metodo nao tem mais funcionalidade no sistema; 
+	 * @param dataFinal
+	 * @param dataDevolucao
+	 * @return
+	 */
+//	private String formataData(String dataEmprestimo){
+//		
+//		String[] datasEmp = dataEmprestimo.split("/");
+//		Calendar calendarEmp = Calendar.getInstance();
+//		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
+//		
+//		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
+//	}
 
 	private int calculaDiasAtrasados(String dataFinal,String dataDevolucao){
 		

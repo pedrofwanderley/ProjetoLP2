@@ -59,7 +59,7 @@ public class ControllerPesquisa {
 			}
 		}
 		if (!conferehistorico) {
-			listaHistorico = "Nenhum mprestimos associados ao item";
+			listaHistorico = "Nenhum emprestimos associados ao item";
 			
 		}
 		return listaHistorico;
