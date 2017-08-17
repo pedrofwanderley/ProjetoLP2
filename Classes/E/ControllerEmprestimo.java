@@ -97,24 +97,23 @@ public class ControllerEmprestimo {
 				confereEmprestimo = true;
 				conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
 				
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
+						SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
+				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
+						SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
 				
 				int atraso = getDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 				
 				if (atraso > 0) {
 					double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
 					emprestimo.getRequerente().setReputacao(newReputacao);
-					emprestimos.remove(emprestimo);
-					System.out.println(newReputacao);
-					System.out.println(emprestimo.getItem().getValor());
-					System.out.println(atraso);
+					
 				}
 				
 				 if (atraso <= 0){
 					double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
 					emprestimo.getRequerente().setReputacao(newReputacao);
-					emprestimos.remove(emprestimo);
+					
 				}
 			}
 		}
@@ -130,7 +129,7 @@ public class ControllerEmprestimo {
 				&& emprestimo.getItem().getNomeItem().equals(nomeItem);
 	}
 	
-private int getDiasAtrasados(String dataFinal,String dataDevolucao){
+private int calculaDiasAtrasados(String dataFinal,String dataDevolucao){
 		
 		Calendar calendarFinal = Calendar.getInstance();
 		String[] datasFinal = dataFinal.split("/");
