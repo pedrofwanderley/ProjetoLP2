@@ -1,4 +1,4 @@
-package emprestimo;
+package E;
 import java.util.*;
 
 import chaves.ChaveUsuario;
@@ -69,6 +69,7 @@ public class ControllerEmprestimo {
 	 * Delvove o emprestimo. Primeiro eh verificado se o na lista de emprestimos atuais tem o emprestimo que se deseja encerrar.
 	 * Feito isto, eh retirado o emprestimo da lista e o item retorna ao seu estado original. 
 	 * Tambem eh registrado no historico dos usuarios envolvidos o registro desse emprestimo.
+	 * @param <E>
 	 * @param nomeDono
 	 * @param telefoneDono
 	 * @param nomeRequerente
@@ -79,7 +80,7 @@ public class ControllerEmprestimo {
 	 * @param conUsuario
 	 */
 	
-	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
+	public <E> void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
 			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
@@ -88,30 +89,67 @@ public class ControllerEmprestimo {
 		
 		boolean confereEmprestimo = false;
 		
+		
 		for(Emprestimo emprestimo : emprestimos){
 						
-			if((emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
-					&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
-					&& emprestimo.getItem().getNomeItem().equals(nomeItem))){
+			if(checaEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem, emprestimo) == true){
+				
 				confereEmprestimo = true;
-				emprestimos.remove(emprestimo);
 				conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-					
+				
 				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), SituacaoEmprestimo.EMPRESTOU, emprestimo.getDataFinal(), dataDevolucao);
 				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), SituacaoEmprestimo.DEVOLVIDO, emprestimo.getDataFinal(), dataDevolucao);
 				
-			}
+				int atraso = getDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 				
-			
-			
-		}
-		if (!confereEmprestimo) {
-			throw new IllegalArgumentException("Emprestimo nao encontrado");
+				if (atraso > 0) {
+					double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
+					emprestimo.getRequerente().setReputacao(newReputacao);
+					emprestimos.remove(emprestimo);
+					System.out.println(newReputacao);
+					System.out.println(emprestimo.getItem().getValor());
+					System.out.println(atraso);
+				}
+				
+				 if (atraso <= 0){
+					double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
+					emprestimo.getRequerente().setReputacao(newReputacao);
+					emprestimos.remove(emprestimo);
+				}
+			}
 		}
 		
-				
+		if (!confereEmprestimo) 
+			throw new IllegalArgumentException("Emprestimo nao encontrado");
 	}
 	
+	private boolean checaEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente,
+			String telefoneRequerente, String nomeItem, Emprestimo emprestimo) {
+		return emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
+				&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
+				&& emprestimo.getItem().getNomeItem().equals(nomeItem);
+	}
+	
+private int getDiasAtrasados(String dataFinal,String dataDevolucao){
+		
+		Calendar calendarFinal = Calendar.getInstance();
+		String[] datasFinal = dataFinal.split("/");
+		calendarFinal.set(Integer.parseInt(datasFinal[2]),Integer.parseInt(datasFinal[1]), Integer.parseInt(datasFinal[0]));
+		
+		
+		Calendar calendarDev = Calendar.getInstance();
+		String[] datasDev = dataDevolucao.split("/");
+		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1]), Integer.parseInt(datasDev[0]));
+		
+		
+		int diasAtrasados = calendarFinal.get(Calendar.DAY_OF_YEAR) - calendarDev.get(Calendar.DAY_OF_YEAR);
+		
+		if(diasAtrasados > 0){
+			return diasAtrasados;
+			
+		}else{
+			return 0;
+		}}
 	
 	/**
 	 * 
@@ -121,6 +159,4 @@ public class ControllerEmprestimo {
 	public ArrayList<Emprestimo> getEmprestimos() {
 		return emprestimos;
 	}
-	
-	
 }

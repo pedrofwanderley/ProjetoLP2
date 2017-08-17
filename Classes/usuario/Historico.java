@@ -4,7 +4,7 @@ package usuario;
  */
 import java.util.Calendar;
 
-import emprestimo.SituacaoEmprestimo;
+import E.SituacaoEmprestimo;
 import itens.Item;
 
 public class Historico {

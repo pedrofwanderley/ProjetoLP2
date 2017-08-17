@@ -1,4 +1,4 @@
-package emprestimo;
+package E;
 import java.util.Calendar;
 
 import itens.Item;

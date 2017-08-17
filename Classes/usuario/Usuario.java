@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import emprestimo.Emprestimo;
+import E.Emprestimo;
 import itens.Item;
 
 public class Usuario {

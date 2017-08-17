@@ -3,7 +3,7 @@ package itens;
 import java.util.ArrayList;
 import java.util.List;
 
-import emprestimo.Emprestimo;
+import E.Emprestimo;
 
 /**
  * Classe abstrata Item, tem como funcionalidade servir como modelo para os
