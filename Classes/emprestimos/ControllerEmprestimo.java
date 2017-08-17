@@ -1,6 +1,7 @@
-package emprestimo;
+package emprestimos;
 import java.util.*;
 
+import chaves.ChaveEmprestimo;
 import chaves.ChaveUsuario;
 import itens.EstadoItem;
 import itens.Item;
@@ -10,11 +11,11 @@ import usuario.UsuarioController;
 
 public class ControllerEmprestimo {
 	
+	private HashMap <ChaveEmprestimo, Emprestimo> emprestimos;
 	
-	private ArrayList <Emprestimo> emprestimos;
 	
 	public ControllerEmprestimo(){
-		emprestimos = new ArrayList<Emprestimo>();
+		emprestimos = new HashMap<ChaveEmprestimo, Emprestimo>();
 	}
 	/**
 	 * Realiza o emprestimo. Verifica se os usuarios, item e disponiblidades do item estao corretos para realizar o emprestimo.
@@ -56,9 +57,11 @@ public class ControllerEmprestimo {
 		
 		double dezporcento = (itemDesejado.getValor() * 0.10) + usuarioDono.getReputacao();
 		
+		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
+		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,this.formataData(dataEmprestimo), periodo);
 		usuarios.get(chaveDono).setReputacao(dezporcento);
-		emprestimos.add(emprestimo);
+		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
 		usuarioDono.getEmprestimos().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
@@ -85,44 +88,40 @@ public class ControllerEmprestimo {
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
+		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
+		
 		dataDevolucao = this.formataData(dataDevolucao);
 		
-		boolean confereEmprestimo = false;
-		
-		
-		for(Emprestimo emprestimo : emprestimos){
-						
-			if(emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
-					&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
-					&& emprestimo.getItem().getNomeItem().equals(nomeItem) && emprestimo.getDataEmprestimo().equals(dataEmprestimo)){
-				
-				confereEmprestimo = true;
-				conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-				
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
-						SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-				conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
-						SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-				
-				int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
-				
-				if (atraso > 0) {
-					double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
-					emprestimo.getRequerente().setReputacao(newReputacao);
-				
-				}
-				
-				 if (atraso <= 0){
-					double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
-					emprestimo.getRequerente().setReputacao(newReputacao);
-					
-				}
-			}
+		if (!emprestimos.containsKey(chaveEmprestimo)) {
+			throw new IllegalArgumentException("Emprestimo nao encontrado");
 		}
 		
-		if (!confereEmprestimo) 
-			throw new IllegalArgumentException("Emprestimo nao encontrado");
+		Emprestimo emprestimo = emprestimos.get(chaveEmprestimo);
+			
+		
+		conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
+				
+		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
+				SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
+		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
+				SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
+				
+		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
+				
+		if (atraso > 0) {
+			double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
+			emprestimo.getRequerente().setReputacao(newReputacao);
+				
+		}
+				
+		if (atraso <= 0){
+			double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
+			emprestimo.getRequerente().setReputacao(newReputacao);
+					
+			}
+			
 	}
+		
 	
 	
 	private String formataData(String dataEmprestimo){
@@ -146,7 +145,7 @@ public class ControllerEmprestimo {
 		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1]), Integer.parseInt(datasDev[0]));
 		
 		
-		int diasAtrasados = calendarFinal.get(Calendar.DAY_OF_YEAR) - calendarDev.get(Calendar.DAY_OF_YEAR);
+		int diasAtrasados =  calendarDev.get(Calendar.DAY_OF_YEAR) - calendarFinal.get(Calendar.DAY_OF_YEAR);
 		
 		if(diasAtrasados > 0){
 			return diasAtrasados;

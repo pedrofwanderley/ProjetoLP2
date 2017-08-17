@@ -1,4 +1,4 @@
-package E;
+package emprestimos;
 public enum SituacaoEmprestimo {
 	EMPRESTOU, DEVOLVIDO;
 }

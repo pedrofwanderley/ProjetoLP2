@@ -2,7 +2,7 @@ package usuario;
 
 import java.util.Comparator;
 
-import E.Emprestimo;
+import emprestimos.Emprestimo;
 
 public class EmprestimosComparator implements Comparator<Emprestimo> {
 

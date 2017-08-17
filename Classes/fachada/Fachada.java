@@ -1,7 +1,7 @@
 package fachada;
 
-import E.ControllerEmprestimo;
 import easyaccept.EasyAccept;
+import emprestimos.ControllerEmprestimo;
 import pesquisa.ControllerPesquisa;
 import usuario.UsuarioController;
 

@@ -1,8 +1,8 @@
 package usuario;
 import java.util.*;
 
-import E.SituacaoEmprestimo;
 import chaves.ChaveUsuario;
+import emprestimos.SituacaoEmprestimo;
 import itens.*;
 
 public class UsuarioController {

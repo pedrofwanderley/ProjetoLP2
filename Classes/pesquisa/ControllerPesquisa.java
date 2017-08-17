@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import E.Emprestimo;
 import chaves.ChaveUsuario;
+import emprestimos.Emprestimo;
 import itens.Item;
 import usuario.Usuario;
 
