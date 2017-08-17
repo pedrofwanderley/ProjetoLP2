@@ -1,4 +1,4 @@
-package E;
+package emprestimo;
 import java.util.*;
 
 import chaves.ChaveUsuario;
@@ -56,7 +56,7 @@ public class ControllerEmprestimo {
 		
 		double dezporcento = (itemDesejado.getValor() * 0.10) + usuarioDono.getReputacao();
 		
-		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
+		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,this.formataData(dataEmprestimo), periodo);
 		usuarios.get(chaveDono).setReputacao(dezporcento);
 		emprestimos.add(emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
@@ -80,19 +80,21 @@ public class ControllerEmprestimo {
 	 * @param conUsuario
 	 */
 	
-	public <E> void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
+	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
 			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
-
+		dataDevolucao = this.formataData(dataDevolucao);
 		
 		boolean confereEmprestimo = false;
 		
 		
 		for(Emprestimo emprestimo : emprestimos){
 						
-			if(checaEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem, emprestimo) == true){
+			if(emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
+					&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
+					&& emprestimo.getItem().getNomeItem().equals(nomeItem) && emprestimo.getDataEmprestimo().equals(dataEmprestimo)){
 				
 				confereEmprestimo = true;
 				conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
@@ -107,7 +109,7 @@ public class ControllerEmprestimo {
 				if (atraso > 0) {
 					double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
 					emprestimo.getRequerente().setReputacao(newReputacao);
-					
+				
 				}
 				
 				 if (atraso <= 0){
@@ -122,14 +124,17 @@ public class ControllerEmprestimo {
 			throw new IllegalArgumentException("Emprestimo nao encontrado");
 	}
 	
-	private boolean checaEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente,
-			String telefoneRequerente, String nomeItem, Emprestimo emprestimo) {
-		return emprestimo.getDono().getNome().equals(nomeDono) && emprestimo.getDono().getCelular().equals(telefoneDono)
-				&& emprestimo.getRequerente().getNome().equals(nomeRequerente) && emprestimo.getRequerente().getCelular().equals(telefoneRequerente)
-				&& emprestimo.getItem().getNomeItem().equals(nomeItem);
-	}
 	
-private int calculaDiasAtrasados(String dataFinal,String dataDevolucao){
+	private String formataData(String dataEmprestimo){
+		
+		String[] datasEmp = dataEmprestimo.split("/");
+		Calendar calendarEmp = Calendar.getInstance();
+		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
+		
+		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
+	}
+
+	private int calculaDiasAtrasados(String dataFinal,String dataDevolucao){
 		
 		Calendar calendarFinal = Calendar.getInstance();
 		String[] datasFinal = dataFinal.split("/");
