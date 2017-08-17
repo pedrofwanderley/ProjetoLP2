@@ -481,20 +481,20 @@ public class UsuarioController {
 	 * @param item
 	 * @param situacao
 	 */
-
 	public void registraHistorico(Usuario usuario, Usuario usuarioHistorico, Item item, SituacaoEmprestimo situacao, 
-			String dataFinal,String dataDevolucao) {
+			String dataDevolucao, int diasAtrasados) {
 			
 			ChaveUsuario chave = new ChaveUsuario(usuario.getNome(),usuario.getCelular());
 		
-			if (usuarios.containsValue(chave)) {
+			if (!usuarios.containsKey(chave)) {
 				throw new IllegalArgumentException("Usuario invalido");
 			}
 
 			ArrayList<Historico> historicoDoUsuario = usuario.getHistoricos();
-			Historico novoHistorico = new Historico(usuarioHistorico, item, situacao, dataFinal ,dataDevolucao);
+			Historico novoHistorico = new Historico(usuarioHistorico, item, situacao, dataDevolucao, diasAtrasados);
 			historicoDoUsuario.add(novoHistorico);
 	}
+	
 
 	public Map<ChaveUsuario, Usuario> getUsuarios() {
 		return usuarios;
