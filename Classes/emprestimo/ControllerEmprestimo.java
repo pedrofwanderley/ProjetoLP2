@@ -1,4 +1,4 @@
-package emprestimos;
+package emprestimo;
 import java.util.*;
 
 import chaves.ChaveEmprestimo;
@@ -87,7 +87,6 @@ public class ControllerEmprestimo {
 			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
-		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
 		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
 		
 		
@@ -96,17 +95,20 @@ public class ControllerEmprestimo {
 		}
 		
 		Emprestimo emprestimo = emprestimos.get(chaveEmprestimo);
-			
+		
+		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 		
 		conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
+		
 		emprestimo.setDataDevolucao(dataDevolucao);		
-//		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
-//				SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-//		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
-//				SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-//				
-		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
+	
+		conUsuario.registraHistorico(nomeDono, telefoneDono, nomeRequerente, nomeItem,"Emprestou"
+				, dataDevolucao, atraso);
 				
+		conUsuario.registraHistorico(nomeRequerente, telefoneRequerente, nomeDono , nomeItem, "Devolvido"
+				, dataDevolucao, atraso);
+			
+						
 		if (atraso > 0) {
 			double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
 			emprestimo.getRequerente().setReputacao(newReputacao);
@@ -120,22 +122,13 @@ public class ControllerEmprestimo {
 			}
 			
 	}
-		
-	
+			
 	/**
-	 * Como houve mudança no us5, este metodo nao tem mais funcionalidade no sistema; 
+	 *  
 	 * @param dataFinal
 	 * @param dataDevolucao
 	 * @return
 	 */
-//	private String formataData(String dataEmprestimo){
-//		
-//		String[] datasEmp = dataEmprestimo.split("/");
-//		Calendar calendarEmp = Calendar.getInstance();
-//		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
-//		
-//		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
-//	}
 
 	private int calculaDiasAtrasados(String dataFinal,String dataDevolucao){
 		
@@ -156,7 +149,8 @@ public class ControllerEmprestimo {
 			
 		}else{
 			return 0;
-		}}
+		}
+	}
 	
 	/**
 	 * 

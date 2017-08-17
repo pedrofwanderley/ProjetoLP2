@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import chaves.ChaveUsuario;
-import emprestimos.Emprestimo;
+import emprestimo.Emprestimo;
 import itens.Item;
 import usuario.Usuario;
 

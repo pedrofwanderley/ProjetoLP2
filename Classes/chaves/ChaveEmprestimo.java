@@ -1,7 +1,5 @@
 package chaves;
 
-import itens.Item;
-
 public class ChaveEmprestimo {
 
 	private String nomeDono;
@@ -14,7 +12,7 @@ public class ChaveEmprestimo {
 	
 	public ChaveEmprestimo(String nomeDono, String nomeRequerente, String telefoneDono, String telefoneRequerente,
 			String dataEmprestimo, String item) {
-		super();
+		
 		this.nomeDono = nomeDono;
 		this.nomeRequerente = nomeRequerente;
 		this.telefoneDono = telefoneDono;
