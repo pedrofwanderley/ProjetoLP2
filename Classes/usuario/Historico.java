@@ -3,7 +3,10 @@ package usuario;
 
 //import emprestimo.SituacaoEmprestimo;
 import itens.Item;
-
+/**
+ * Analisar a possibilidade de exclusao dessa classe, sem funcionalidades;
+ *
+ */
 public class Historico {
 	
 //	private Usuario usuario;

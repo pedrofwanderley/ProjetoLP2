@@ -15,7 +15,7 @@ public class Usuario {
 	private String email;
 	private String celular;
 	private HashMap<String ,Item> itens;
-	private ArrayList<Historico> historicos;
+//	private ArrayList<Historico> historicos;
 	private List<Emprestimo> emprestimos;
 	private List<Emprestimo> emprestimosPegos;
 	private CartaoFidelidade cartao;
@@ -34,7 +34,7 @@ public class Usuario {
 		this.setEmail(email);
 		this.setCelular(celular);
 		itens = new HashMap<>();
-		historicos = new ArrayList<>();
+//		historicos = new ArrayList<>();
 		emprestimos = new ArrayList<>();
 		emprestimosPegos = new ArrayList<>();
 		cartao = CartaoFidelidade.FreeRider;
@@ -97,9 +97,9 @@ public class Usuario {
 		this.itens = itens;
 	}
 	
-	public ArrayList<Historico> getHistoricos() {
-		return historicos;
-	}
+//	public ArrayList<Historico> getHistoricos() {
+//		return historicos;
+//	}
 	
 	
 	public List<Emprestimo> getEmprestimos() {
