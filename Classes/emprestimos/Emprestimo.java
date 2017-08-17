@@ -13,6 +13,7 @@ public class Emprestimo {
 	private int periodo;
 	private String dataEmprestimo;
 	private String dataFinal;
+	private String dataDevolucao;
 		
 
 	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo){
@@ -23,7 +24,7 @@ public class Emprestimo {
 		this.periodo = periodo;
 		this.dataEmprestimo =dataEmprestimo;
 		this.dataFinal = this.calculaDataFinal(dataEmprestimo, periodo);
-				
+		this.dataDevolucao = null; 		
 	}
 
 	public Usuario getDono() {
@@ -71,15 +72,22 @@ public class Emprestimo {
 	}
 	
 	
-	
+	public String getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(String dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
+	}
+
 	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	public String estadoDataFinal() {
+	public String dataFinal() {
 		if ("Emprestado".equals(item.getEstado().getEstadoItem())) {
 			return "Emprestimo em andamento";
 		}else {
-			return dataFinal;
+			return dataDevolucao;
 		}
 	}
 
@@ -105,7 +113,7 @@ public class Emprestimo {
 	@Override
 	public String toString() {
 		return "EMPRESTIMO - De: " + dono.getNome() + ", Para: " + requerente.getNome() + ", "+ item.getNomeItem() 
-		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + estadoDataFinal();
+		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataFinal();
 	
 	}
 	

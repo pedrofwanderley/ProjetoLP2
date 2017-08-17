@@ -100,12 +100,12 @@ public class ControllerEmprestimo {
 			
 		
 		conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-				
-		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
-				SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
-				SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
-				
+		emprestimo.setDataDevolucao(dataDevolucao);		
+//		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveDono), conUsuario.getUsuarios().get(chaveRequerente), emprestimo.getItem(), 
+//				SituacaoEmprestimo.EMPRESTOU, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
+//		conUsuario.registraHistorico(conUsuario.getUsuarios().get(chaveRequerente), conUsuario.getUsuarios().get(chaveDono), emprestimo.getItem(), 
+//				SituacaoEmprestimo.DEVOLVIDO, dataDevolucao, calculaDiasAtrasados(emprestimo.getDataFinal(),dataDevolucao));
+//				
 		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 				
 		if (atraso > 0) {
@@ -159,7 +159,7 @@ public class ControllerEmprestimo {
 	 * @return emprestimo
 	 */
 	
-	public ArrayList<Emprestimo> getEmprestimos() {
+	public HashMap<ChaveEmprestimo, Emprestimo> getEmprestimos() {
 		return emprestimos;
 	}
 }
