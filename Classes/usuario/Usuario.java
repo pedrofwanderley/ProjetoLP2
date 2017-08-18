@@ -26,19 +26,19 @@ public class Usuario {
 			throw new Exception("Parametros de usuario nao podem ser nulos");
 		}
 		
-		else if (nome.trim().equals("") || email.trim().equals("") || celular.trim().equals("")) {
+		if (nome.trim().equals("") || email.trim().equals("") || celular.trim().equals("")) {
 			throw new Exception("Parametros de usuario nao podem ser vazios");
 		}
 		
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCelular(celular);
-		itens = new HashMap<>();
-		historico = new ArrayList<>();
-		emprestimos = new ArrayList<>();
-		emprestimosPegos = new ArrayList<>();
-		cartao = CartaoFidelidade.FreeRider;
-		reputacao = 0;
+		this.itens = new HashMap<>();
+		this.historico = new ArrayList<>();
+		this.emprestimos = new ArrayList<>();
+		this.emprestimosPegos = new ArrayList<>();
+		this.cartao = CartaoFidelidade.FreeRider;
+		this.reputacao = 0.0;
 	}
 
 	public String getCelular() {

@@ -3,7 +3,7 @@ package fachada;
 import easyaccept.EasyAccept;
 import emprestimo.ControllerEmprestimo;
 import pesquisa.ControllerPesquisa;
-import usuario.UsuarioController;
+import usuario.ControllerUsuario;
 
 public class Fachada {
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Fachada {
 
 	private ControllerPesquisa pesquisa = new ControllerPesquisa();
 	public ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
-	public UsuarioController usuarioController = new UsuarioController();
+	public ControllerUsuario usuarioController = new ControllerUsuario();
 
 	/**
 	 * Metodo inicializa sistema

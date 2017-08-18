@@ -6,7 +6,7 @@ import chaves.ChaveUsuario;
 import itens.EstadoItem;
 import itens.Item;
 import usuario.Usuario;
-import usuario.UsuarioController;
+import usuario.ControllerUsuario;
 
 
 public class ControllerEmprestimo {
@@ -57,7 +57,8 @@ public class ControllerEmprestimo {
 		
 		double dezporcento = (itemDesejado.getValor() * 0.10) + usuarioDono.getReputacao();
 		
-		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
+		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, 
+				telefoneRequerente, dataEmprestimo, nomeItem);
 		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
 		usuarios.get(chaveDono).setReputacao(dezporcento);
@@ -84,10 +85,11 @@ public class ControllerEmprestimo {
 	 */
 	
 	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem, String dataEmprestimo, String dataDevolucao, UsuarioController conUsuario){
+			String nomeItem, String dataEmprestimo, String dataDevolucao, ControllerUsuario conUsuario){
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
-		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, dataEmprestimo, nomeItem);
+		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, 
+				dataEmprestimo, nomeItem);
 		
 		
 		if (!emprestimos.containsKey(chaveEmprestimo)) {
@@ -119,7 +121,7 @@ public class ControllerEmprestimo {
 			double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
 			emprestimo.getRequerente().setReputacao(newReputacao);
 					
-			}
+		}
 			
 	}
 			

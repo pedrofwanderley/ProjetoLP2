@@ -4,11 +4,11 @@ import java.util.*;
 import chaves.ChaveUsuario;
 import itens.*;
 
-public class UsuarioController {
+public class ControllerUsuario {
 	
 	private Map<ChaveUsuario, Usuario> usuarios;
 
-	public UsuarioController() {
+	public ControllerUsuario() {
 		usuarios = new HashMap<>();
 	}
 

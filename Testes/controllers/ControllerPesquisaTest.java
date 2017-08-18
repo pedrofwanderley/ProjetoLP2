@@ -6,19 +6,19 @@ import org.junit.Test;
 
 import pesquisa.ControllerPesquisa;
 import usuario.Usuario;
-import usuario.UsuarioController;
+import usuario.ControllerUsuario;
 
 public class ControllerPesquisaTest {
 
 	private ControllerPesquisa pesquisa;
-	private UsuarioController usuarioController;
+	private ControllerUsuario usuarioController;
 	private Usuario usuario;
 
 	@Before
 	public void controllerPesquisa() throws Exception {
 		pesquisa = new ControllerPesquisa();
 		usuario = new Usuario("Pedro", "0000-0000", "projeto@gmail.com");
-		usuarioController = new UsuarioController();
+		usuarioController = new ControllerUsuario();
 
 	}
 
