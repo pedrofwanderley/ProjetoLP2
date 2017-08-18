@@ -5,6 +5,13 @@ public class ChaveUsuario {
 	private String celular;
 	
 	public ChaveUsuario(String nome, String telefone){
+		if (nome.trim().equals("") || telefone.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (nome.equals(null) || telefone.equals(null)) {
+			throw new NullPointerException();
+		}
+		
 		this.nome = nome;
 		this.celular = telefone;
 	}

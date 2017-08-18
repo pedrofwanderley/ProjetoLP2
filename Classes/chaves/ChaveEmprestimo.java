@@ -13,6 +13,26 @@ public class ChaveEmprestimo {
 	public ChaveEmprestimo(String nomeDono, String nomeRequerente, String telefoneDono, String telefoneRequerente,
 			String dataEmprestimo, String item) {
 		
+		if (nomeDono.trim().equals("") || nomeRequerente.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (telefoneDono.trim().equals("") || telefoneRequerente.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (dataEmprestimo.trim().equals("") || item.trim().equals("")) {
+			throw new IllegalArgumentException();
+		}
+		if (nomeDono.equals(null) || nomeRequerente.equals(null)) {
+			throw new NullPointerException();
+		}
+		if (telefoneDono.equals(null) || telefoneRequerente.equals(null)) {
+			throw new NullPointerException();
+		}
+		if (dataEmprestimo.equals(null) || item.equals(null)) {
+			throw new NullPointerException();
+		}
+		
+		
 		this.nomeDono = nomeDono;
 		this.nomeRequerente = nomeRequerente;
 		this.telefoneDono = telefoneDono;
