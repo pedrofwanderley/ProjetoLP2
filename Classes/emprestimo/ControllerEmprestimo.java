@@ -6,6 +6,7 @@ import chaves.ChaveUsuario;
 import itens.EstadoItem;
 import itens.Item;
 import usuario.Usuario;
+import usuario.CartaoFidelidade;
 import usuario.ControllerUsuario;
 
 
@@ -28,26 +29,29 @@ public class ControllerEmprestimo {
 	 * @param dataEmprestimo
 	 * @param periodo
 	 * @param usuarios
+	 * @throws Exception 
 	 */
 	
 	
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios){
+			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios) throws Exception{
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
 				
-		if (!usuarios.containsKey(chaveDono) || !usuarios.containsKey(chaveRequerente)) {
+		if (!usuarios.containsKey(chaveDono) || !usuarios.containsKey(chaveRequerente)) 
 			throw new IllegalArgumentException("Usuario invalido");
-		}
 		
 		Usuario usuarioDono = usuarios.get(chaveDono);
 		Usuario usuarioRequerente = usuarios.get(chaveRequerente);
+		
+		if (usuarioRequerente.getReputacao() < 0) 
+			throw new Exception("Usuario nao pode pegar nenhum item emprestado");
+		
 		HashMap<String, Item> itensDoDono = usuarioDono.getItens();
 		
-		if (!itensDoDono.containsKey(nomeItem)) {
+		if (!itensDoDono.containsKey(nomeItem)) 
 			throw new IllegalArgumentException("Item nao encontrado");
-		}
 		
 		Item itemDesejado = itensDoDono.get(nomeItem);
 		
@@ -62,6 +66,7 @@ public class ControllerEmprestimo {
 		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
 		usuarioDono.reputacaoEmprestimoItem(itemDesejado.getValor());
+		verificaCartao(usuarioDono);
 		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
 		usuarioDono.getEmprestimos().add(emprestimo);
@@ -117,6 +122,8 @@ public class ControllerEmprestimo {
 		}else {
 			requerente.reputacaoDevolucaoNoPrazo(valorItem);
 		}
+		
+		verificaCartao(requerente);
 			
 	}
 			
@@ -163,5 +170,10 @@ public class ControllerEmprestimo {
 	
 	public HashMap<ChaveEmprestimo, Emprestimo> getEmprestimos() {
 		return emprestimos;
+	}
+	
+	private void verificaCartao(Usuario usuario) {
+		ControllerUsuario con = new ControllerUsuario();
+		con.verificaCartao(usuario);
 	}
 }
