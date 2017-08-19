@@ -17,6 +17,18 @@ public class Emprestimo {
 		
 
 	public Emprestimo(Usuario dono, Usuario requerente, Item item, String dataEmprestimo ,int periodo){
+		if (dono == null || requerente == null) {
+			throw new NullPointerException("Usuario nao pode ser nulo");
+		}
+		if (item == null) {
+			throw new NullPointerException("Item nao pode ser nulo");
+		}
+		if (dataEmprestimo.trim().equals("")) {
+			throw new IllegalArgumentException("Data de emprestimo nao pode ser vazia ou composta de espacos");
+		}
+		if (periodo <= 0) {
+			throw new IllegalArgumentException("Periodo menor ou igual a zero");
+		}
 		
 		this.dono = dono;
 		this.requerente = requerente;
