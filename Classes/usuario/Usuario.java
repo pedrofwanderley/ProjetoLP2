@@ -23,11 +23,11 @@ public class Usuario {
 	
 	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
-			throw new Exception("Parametros de usuario nao podem ser nulos");
+			throw new NullPointerException("Parametros de usuario nao podem ser nulos");
 		}
 		
 		if (nome.trim().equals("") || email.trim().equals("") || celular.trim().equals("")) {
-			throw new Exception("Parametros de usuario nao podem ser vazios");
+			throw new IllegalArgumentException("Parametros de usuario nao podem ser vazios");
 		}
 		
 		this.setNome(nome);
@@ -84,14 +84,6 @@ public class Usuario {
 	public double getReputacao() {
 		return reputacao;
 	}
-
-
-
-	public void setReputacao(double reputacao) {
-		this.reputacao += reputacao;
-	}
-
-
 
 	public void setItens(HashMap<String,Item> itens) {
 		this.itens = itens;
@@ -185,21 +177,21 @@ public class Usuario {
 	
 	public void reputacaoNovoItem(double preco) {
 		double adicaoReputacao = 0.05 * preco;
-		setReputacao(adicaoReputacao);
+		this.reputacao += adicaoReputacao;
 	}
 	
 	public void reputacaoEmprestimoItem(double preco) {
 		double adicaoReputacao = 0.1 * preco;
-		setReputacao(adicaoReputacao);
+		this.reputacao += adicaoReputacao;
 	}
 	
 	public void reputacaoDevolucaoNoPrazo(double preco) {
 		double adicaoReputacao = 0.05 * preco;
-		setReputacao(adicaoReputacao);
+		this.reputacao += adicaoReputacao;
 	}
 	
 	public void reputacaoDevolucaoForaDoPrazo(double preco, int atraso) {
-		double subtracaoReputacao = (atraso / 100.0) * preco * -1;
-		setReputacao(subtracaoReputacao);
+		double subtracaoReputacao = atraso * 0.01 * preco;
+		this.reputacao -= subtracaoReputacao;
 	}
 }
