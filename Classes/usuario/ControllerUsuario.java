@@ -161,11 +161,12 @@ public class ControllerUsuario {
 		
 		Usuario usuario = usuarios.get(chave);
 		usuario.reputacaoNovoItem(preco);
+		verificaCartao(usuario);
 		JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 		usuario.getItens().put(nomeItem, game);
 	}
 	
-	private void verificaCartao(Usuario usuario) {
+	public void verificaCartao(Usuario usuario) {
 		if(usuario.getReputacao() > 100.0) {
 			usuario.setCartao(CartaoFidelidade.BomAmigo);
 		}
@@ -392,7 +393,7 @@ public class ControllerUsuario {
 
 	/**
 	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
-	 * poderiamos consideram um caso em que o item escolhido n�o fosse um 
+	 * poderiamos consideram um caso em que o item escolhido nï¿½o fosse um 
 	 * jogo de tabuleiro, entao neste caso com iriamos lidar com este erro?
 	 * 
 	 * @param nome
