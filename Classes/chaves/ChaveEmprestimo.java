@@ -97,5 +97,36 @@ public class ChaveEmprestimo {
 			return false;
 		return true;
 	}
+
+
+	public String getNomeDono() {
+		return nomeDono;
+	}
+
+
+	public String getNomeRequerente() {
+		return nomeRequerente;
+	}
+
+
+	public String getTelefoneDono() {
+		return telefoneDono;
+	}
+
+
+	public String getTelefoneRequerente() {
+		return telefoneRequerente;
+	}
+
+
+	public String getDataEmprestimo() {
+		return dataEmprestimo;
+	}
+
+
+	public String getItem() {
+		return item;
+	}
+	
 	
 }

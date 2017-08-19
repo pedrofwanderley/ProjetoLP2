@@ -54,4 +54,14 @@ public class ChaveUsuario {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+	
+	
 }

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import usuario.Usuario;
 
-public class TestUsuario {
+public class UsuarioTest {
 
 	Usuario usuario1;
 	Usuario usuario2;
