@@ -88,7 +88,7 @@ public class Usuario {
 
 
 	public void setReputacao(double reputacao) {
-		this.reputacao = reputacao;
+		this.reputacao += reputacao;
 	}
 
 
@@ -179,5 +179,27 @@ public class Usuario {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+	
+	
+	
+	public void reputacaoNovoItem(double preco) {
+		double adicaoReputacao = 0.05 * preco;
+		setReputacao(adicaoReputacao);
+	}
+	
+	public void reputacaoEmprestimoItem(double preco) {
+		double adicaoReputacao = 0.1 * preco;
+		setReputacao(adicaoReputacao);
+	}
+	
+	public void reputacaoDevolucaoNoPrazo(double preco) {
+		double adicaoReputacao = 0.05 * preco;
+		setReputacao(adicaoReputacao);
+	}
+	
+	public void reputacaoDevolucaoForaDoPrazo(double preco, int atraso) {
+		double subtracaoReputacao = (atraso / 100.0) * preco * -1;
+		setReputacao(subtracaoReputacao);
 	}
 }

@@ -160,14 +160,9 @@ public class ControllerUsuario {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
-		calculaPorcentagem(preco, usuario);
+		usuario.reputacaoNovoItem(preco);
 		JogoEletronico game = new JogoEletronico(nomeItem, preco, plataforma);
 		usuario.getItens().put(nomeItem, game);
-	}
-
-	private void calculaPorcentagem(double preco, Usuario usuario) {
-		double aumentoreputacao = (0.05 *(preco)) + usuario.getReputacao();
-		usuario.setReputacao(aumentoreputacao);
 	}
 	
 	private void verificaCartao(Usuario usuario) {
@@ -208,7 +203,7 @@ public class ControllerUsuario {
 		}
 		
 		Usuario usuario = usuarios.get(chave);
-		calculaPorcentagem(preco, usuario);
+		usuario.reputacaoNovoItem(preco);
 		verificaCartao(usuario);
 		JogoTabuleiro jogo = new JogoTabuleiro(nomeItem, preco);
 		usuario.getItens().put(nomeItem, jogo);
@@ -238,7 +233,7 @@ public class ControllerUsuario {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		calculaPorcentagem(preco, usuario);
+		usuario.reputacaoNovoItem(preco);
 		verificaCartao(usuario);
 		BlurayFilme filme = new BlurayFilme(nomeItem, preco, duracao, genero, classificacao, anoLancamento);
 		usuario.getItens().put(nomeItem, filme);
@@ -268,7 +263,7 @@ public class ControllerUsuario {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		calculaPorcentagem(preco, usuario);
+		usuario.reputacaoNovoItem(preco);
 		verificaCartao(usuario);
 		BlurayShow show = new BlurayShow(nomeItem, preco, duracao, numeroFaixas, artista, classificacao);
 		usuario.getItens().put(nomeItem, show);
@@ -299,7 +294,7 @@ public class ControllerUsuario {
 		}
 	
 		Usuario usuario = usuarios.get(chave);
-		calculaPorcentagem(preco, usuario);
+		usuario.reputacaoNovoItem(preco);
 		verificaCartao(usuario);
 		Bluray serie = new BluraySerie(nomeItem, preco, descricao, duracao, classificacao, genero, temporada);
 		usuario.getItens().put(nomeItem, serie);	

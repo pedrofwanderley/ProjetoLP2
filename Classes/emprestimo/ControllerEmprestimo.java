@@ -55,13 +55,13 @@ public class ControllerEmprestimo {
 			throw new IllegalArgumentException("Item emprestado no momento");
 		}
 		
-		double dezporcento = (itemDesejado.getValor() * 0.10) + usuarioDono.getReputacao();
+		
 		
 		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, 
 				telefoneRequerente, dataEmprestimo, nomeItem);
 		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
-		usuarios.get(chaveDono).setReputacao(dezporcento);
+		usuarioDono.reputacaoEmprestimoItem(itemDesejado.getValor());
 		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
 		usuarioDono.getEmprestimos().add(emprestimo);
@@ -100,31 +100,33 @@ public class ControllerEmprestimo {
 		
 		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
 		
-		conUsuario.getUsuarios().get(chaveDono).getItens().get(nomeItem).setEstado(EstadoItem.NEmprestado);
-		
+		modificaEstadoEmprestimoItem(conUsuario, chaveDono, nomeItem);
 		emprestimo.setDataDevolucao(dataDevolucao);		
-	
+		
 		conUsuario.registraHistorico(nomeDono, telefoneDono, nomeRequerente, nomeItem,"Emprestou"
 				, dataDevolucao, atraso);
 				
 		conUsuario.registraHistorico(nomeRequerente, telefoneRequerente, nomeDono , nomeItem, "Devolvido"
 				, dataDevolucao, atraso);
 			
-						
+		Usuario requerente = emprestimo.getRequerente();
+		double valorItem = emprestimo.getItem().getValor();
+		
 		if (atraso > 0) {
-			double newReputacao = emprestimo.getRequerente().getReputacao() - (emprestimo.getItem().getValor() * 2 * 0.01);
-			emprestimo.getRequerente().setReputacao(newReputacao);
-				
-		}
-				
-		if (atraso <= 0){
-			double newReputacao = emprestimo.getRequerente().getReputacao() + (emprestimo.getItem().getValor() * 0.05);
-			emprestimo.getRequerente().setReputacao(newReputacao);
-					
+			requerente.reputacaoDevolucaoForaDoPrazo(valorItem, atraso);	
+		}else {
+			requerente.reputacaoDevolucaoNoPrazo(valorItem);
 		}
 			
 	}
 			
+	private void modificaEstadoEmprestimoItem(ControllerUsuario conUsuario, ChaveUsuario chaveDono, String nomeItem) {
+		
+		Usuario usuarioDono = conUsuario.getUsuarios().get(chaveDono);
+		Item itemEmprestimo = usuarioDono.getItens().get(nomeItem);
+		itemEmprestimo.setEstado(EstadoItem.NEmprestado);	
+	}
+	
 	/**
 	 *  
 	 * @param dataFinal
