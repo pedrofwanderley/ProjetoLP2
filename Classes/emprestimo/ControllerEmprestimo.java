@@ -59,12 +59,13 @@ public class ControllerEmprestimo {
 			throw new IllegalArgumentException("Item emprestado no momento");
 		}
 		
-		
-		
 		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, 
 				telefoneRequerente, dataEmprestimo, nomeItem);
 		
 		Emprestimo emprestimo = new Emprestimo(usuarioDono, usuarioRequerente, itemDesejado,dataEmprestimo, periodo);
+		
+		podePedirEmprestado(usuarioRequerente, periodo);
+		
 		usuarioDono.reputacaoEmprestimoItem(itemDesejado.getValor());
 		verificaCartao(usuarioDono);
 		emprestimos.put(chaveEmprestimo, emprestimo);
@@ -132,6 +133,20 @@ public class ControllerEmprestimo {
 		Usuario usuarioDono = conUsuario.getUsuarios().get(chaveDono);
 		Item itemEmprestimo = usuarioDono.getItens().get(nomeItem);
 		itemEmprestimo.setEstado(EstadoItem.NEmprestado);	
+	}
+	
+	private void podePedirEmprestado(Usuario requerente, int periodo) throws Exception {
+		if (requerente.getCartao().equals("Noob") && periodo > 7) {
+			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+		}
+		
+		if (requerente.getCartao().equals("BomAmigo") && periodo > 14) {
+			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+		}
+		
+		if (requerente.getCartao().equals("FreeRyder") && periodo > 5) {
+			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+		}
 	}
 	
 	/**
