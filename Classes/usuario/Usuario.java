@@ -1,6 +1,5 @@
 package usuario;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,28 +13,28 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String celular;
-	private HashMap<String ,Item> itens;
+	private HashMap<String, Item> itens;
 	private ArrayList<String> historico;
-	private List<Emprestimo> emprestimos;
+	private List<Emprestimo> emprestimosEmprestando;
 	private List<Emprestimo> emprestimosPegos;
 	private CartaoFidelidade cartao;
 	private double reputacao;
-	
+
 	public Usuario(String nome, String celular, String email) throws Exception {
 		if (nome == null || email == null || celular == null) {
 			throw new NullPointerException("Parametros de usuario nao podem ser nulos");
 		}
-		
+
 		if (nome.trim().equals("") || email.trim().equals("") || celular.trim().equals("")) {
 			throw new IllegalArgumentException("Parametros de usuario nao podem ser vazios");
 		}
-		
+
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCelular(celular);
 		this.itens = new HashMap<>();
 		this.historico = new ArrayList<>();
-		this.emprestimos = new ArrayList<>();
+		this.emprestimosEmprestando = new ArrayList<>();
 		this.emprestimosPegos = new ArrayList<>();
 		this.cartao = CartaoFidelidade.FreeRider;
 		this.reputacao = 0.0;
@@ -73,52 +72,46 @@ public class Usuario {
 		return cartao.getEstadoItem();
 	}
 
-
-
 	public void setCartao(CartaoFidelidade cartao) {
 		this.cartao = cartao;
 	}
-
-
 
 	public double getReputacao() {
 		return reputacao;
 	}
 
-	public void setItens(HashMap<String,Item> itens) {
+	public void setItens(HashMap<String, Item> itens) {
 		this.itens = itens;
 	}
-	
+
 	public ArrayList<String> getHistorico() {
 		return historico;
 	}
-	
-	
-	public List<Emprestimo> getEmprestimos() {
-		return emprestimos;
+
+	public List<Emprestimo> getEmprestimosEmprestando() {
+		return emprestimosEmprestando;
 	}
-	
 
 	public List<Emprestimo> getEmprestimosPegos() {
 		return emprestimosPegos;
 	}
 
-	public String listaEmprestimo(){
-       String listaEmprestimos = "Emprestimos: ";
-       if (emprestimos.size() == 0) {
+	public String listaEmprestimo() {
+		String listaEmprestimos = "Emprestimos: ";
+		if (emprestimosEmprestando.size() == 0) {
 			listaEmprestimos = "Nenhum item emprestado";
-		}else{
+		} else {
 			EmprestimosComparator comparator = new EmprestimosComparator();
-			Collections.sort(emprestimos,comparator);
-			for (Emprestimo emprestimo : emprestimos) {
-				listaEmprestimos += emprestimo.toString() + "|";   
+			Collections.sort(emprestimosEmprestando, comparator);
+			for (Emprestimo emprestimo : emprestimosEmprestando) {
+				listaEmprestimos += emprestimo.toString() + "|";
 			}
-           
-        }
-       return listaEmprestimos;
-       
-   }
-	
+
+		}
+		return listaEmprestimos;
+
+	}
+
 	public String listaEmprestimosPegos() {
 		String listaEmprestimosPegos = "Emprestimos pegos: ";
 		if (emprestimosPegos.size() == 0) {
@@ -134,8 +127,6 @@ public class Usuario {
 		return listaEmprestimosPegos;
 
 	}
-
-	
 
 	@Override
 	public String toString() {
@@ -172,24 +163,22 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 	public void reputacaoNovoItem(double preco) {
 		double adicaoReputacao = 0.05 * preco;
 		this.reputacao += adicaoReputacao;
 	}
-	
+
 	public void reputacaoEmprestimoItem(double preco) {
 		double adicaoReputacao = 0.1 * preco;
 		this.reputacao += adicaoReputacao;
 	}
-	
+
 	public void reputacaoDevolucaoNoPrazo(double preco) {
 		double adicaoReputacao = 0.05 * preco;
 		this.reputacao += adicaoReputacao;
 	}
-	
+
 	public void reputacaoDevolucaoForaDoPrazo(double preco, int atraso) {
 		double subtracaoReputacao = atraso * 0.01 * preco;
 		this.reputacao -= subtracaoReputacao;

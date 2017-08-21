@@ -70,7 +70,7 @@ public class ControllerEmprestimo {
 		verificaCartao(usuarioDono);
 		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
-		usuarioDono.getEmprestimos().add(emprestimo);
+		usuarioDono.getEmprestimosEmprestando().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
 		itemDesejado.getHistoricoItem().add(emprestimo);
 	}
@@ -132,7 +132,8 @@ public class ControllerEmprestimo {
 		
 		Usuario usuarioDono = conUsuario.getUsuarios().get(chaveDono);
 		Item itemEmprestimo = usuarioDono.getItens().get(nomeItem);
-		itemEmprestimo.setEstado(EstadoItem.NEmprestado);	
+		itemEmprestimo.setEstado(EstadoItem.NEmprestado);
+		
 	}
 	
 	private void podePedirEmprestado(Usuario requerente, int periodo) throws Exception {
