@@ -10,7 +10,7 @@ public class Fachada {
 		args = new String[] { "fachada.Fachada", "Acceptance_test/us1_test.txt.txt", "Acceptance_test/us2_test.txt.txt",
 				"Acceptance_test/us3_test.txt.txt", "Acceptance_test/us4_test.txt.txt",
 				"Acceptance_test/us5_test.txt.txt", "Acceptance_test/us6_test.txt.txt",
-				"Acceptance_test/us7_test.txt.txt" };
+				"Acceptance_test/us7_test.txt.txt", "Acceptance_test/us8_test.txt.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -369,9 +369,10 @@ public class Fachada {
 	 *            == data em que o emprestimo foi feito
 	 * @param periodo
 	 *            == periodo em que o item permanecera emprestado
+	 * @throws Exception 
 	 */
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente,
-			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) {
+			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) throws Exception {
 		controllerEmprestimo.registrarEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,
 				dataEmprestimo, periodo, usuarioController.getUsuarios());
 
@@ -425,5 +426,34 @@ public class Fachada {
 
 	public String listarTop10Itens() {
 		return pesquisa.listaTopitens(usuarioController.getUsuarios());
+		
 	}
+	public String listarCaloteiros(){
+		return pesquisa.listarCaloteiros(usuarioController.getUsuarios());
+	}
+	public String listarTop10MelhoresUsuarios(){
+		return pesquisa.listarTop10MelhoresUsuarios(usuarioController.getUsuarios());
+	}
+	public String listarTop10PioresUsuarios(){
+		return pesquisa.listarTop10PioresUsuarios(usuarioController.getUsuarios());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

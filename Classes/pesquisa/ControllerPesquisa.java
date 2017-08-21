@@ -159,7 +159,6 @@ public class ControllerPesquisa {
 			listaItens += itens.get(i).toString() + "|";
 
 		}
-
 		return listaItens;
 	}
 	/**
@@ -198,6 +197,67 @@ public class ControllerPesquisa {
 		}
 		
 		return itemDetalhado;
+	}
+	
+	public String listarCaloteiros(Map<ChaveUsuario, Usuario> usuarios){
+		
+		List <String> caloteiros = new ArrayList <String>();
+		String listaCaloteiros = "Lista de usuarios com reputacao negativa: ";
+		
+		for(Usuario usuario: usuarios.values()){
+			
+			if(usuario.getCartao().equals("Caloteiro")){
+				caloteiros.add(usuario.toString());
+				
+			}
+		}
+		Collections.sort(caloteiros, new NomeComparator());
+		
+		for(String caloteiro : caloteiros){
+			listaCaloteiros += caloteiro + "|";
+		}
+	
+		return listaCaloteiros;
+	}
+	
+	public String listarTop10MelhoresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
+		
+		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
+		String Top10Usuarios = "";
+		
+		for (Usuario u:usuarios.values()){
+			listaUsuarios.add(u);
+			
+		}
+			
+		Collections.sort(listaUsuarios, new ReputacaoComparator());
+		
+		for(int i = 0; i==9; i++){
+			
+			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
+		}
+		
+		return Top10Usuarios;
+	}
+	
+public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
+		
+		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
+		String Top10Usuarios = "";
+		
+		for (Usuario u:usuarios.values()){
+			listaUsuarios.add(u);
+			
+		}
+			
+		Collections.sort(listaUsuarios, new ReputacaoComparator());
+		
+		for(int i = listaUsuarios.size(); i == i-10 ; i--){
+			
+			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
+		}
+		
+		return Top10Usuarios;
 	}
 	
 	
