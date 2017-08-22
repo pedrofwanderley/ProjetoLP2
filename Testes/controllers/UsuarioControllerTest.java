@@ -110,11 +110,28 @@ public class UsuarioControllerTest {
 	public void testAlteraReputacao() throws Exception {
 		assertEquals("Noob", fachada.usuarioController.getUsuarios().get(chaveLucas).getCartao());
 		assertEquals("FreeRyder", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
+		
 		fachada.registrarEmprestimo("Lucas", "12345", "Pedro", "67890", "Jumanji", "10/01/2017", 3);
 		fachada.devolverItem("Lucas", "12345", "Pedro", "67890", "Jumanji", "10/01/2017", "15/01/2017");
+		
 		assertEquals("Caloteiro", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
+		
+		fachada.cadastrarEletronico("Pedro", "67890", "GTA: SA", 200.0, "PC");
+		
+		assertEquals("Noob", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
+		
+		fachada.removerItem("Pedro", "67890", "GTA: SA");
+		
+		assertEquals("Caloteiro", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
+		
+		fachada.cadastrarEletronico("Pedro", "67890", "GTA IV", 200.0, "PC");
+		fachada.cadastrarEletronico("Pedro", "67890", "GTA: V", 300.0, "PC");
+		fachada.cadastrarEletronico("Pedro", "67890", "Resident Evil: Coleção Completa", 600.0, "PC");
+		fachada.cadastrarEletronico("Pedro", "67890", "Gog of WAR 2", 1000.0, "PC");
+		fachada.cadastrarBluRaySerie("Pedro", "67890", "HOUSE MD.", 500.0, "alguma coisa", 800, "14", "Drama", 7);
+		
+		assertEquals("BomAmigo", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
 	}
-
 	
 	//////////////// Testes de exceção \\\\\\\\\\\\\\\\\\\\
 	
