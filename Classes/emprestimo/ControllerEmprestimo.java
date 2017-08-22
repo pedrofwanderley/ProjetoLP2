@@ -69,6 +69,7 @@ public class ControllerEmprestimo {
 		verificaCartao(usuarioDono);
 		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
+		emprestimo.setDataDevolucao("Emprestimo em andamento");
 		usuarioDono.getEmprestimosEmprestando().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
 		itemDesejado.getHistoricoItem().add(emprestimo);

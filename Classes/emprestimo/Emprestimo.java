@@ -109,15 +109,6 @@ public class Emprestimo {
 	}
 	
 	
-	public String dataFinal() {
-		if ("Emprestado".equals(item.getEstado().getEstadoItem())) {
-			return "Emprestimo em andamento";
-		}else {
-			return dataDevolucao;
-		}
-	}
-
-	
 	/**
 	 * Calcula a data que eh pra ser devolvido o item
 	 * @param dataEmprestimo
@@ -138,7 +129,7 @@ public class Emprestimo {
 	@Override
 	public String toString() {
 		return "EMPRESTIMO - De: " + dono.getNome() + ", Para: " + requerente.getNome() + ", "+ item.getNomeItem() 
-		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataFinal();
+		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataDevolucao;
 	
 	}
 	
