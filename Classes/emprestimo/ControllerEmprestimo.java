@@ -18,6 +18,15 @@ public class ControllerEmprestimo {
 		emprestimos = new HashMap<ChaveEmprestimo, Emprestimo>();
 	}
 	/**
+	 * 
+	 * @return emprestimo
+	 */
+	
+	public HashMap<ChaveEmprestimo, Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
+	
+	/**
 	 * Realiza o emprestimo. Verifica se os usuarios, item e disponiblidades do item estao corretos para realizar o emprestimo.
 	 * Feito isto, adiciona na lista de emprestimos atuais, o emprestimos e muda o estado do item para emprestado.
 	 * @param nomeDono
@@ -90,42 +99,41 @@ public class ControllerEmprestimo {
 	 * @param conUsuario
 	 */
 	
-	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem, String dataEmprestimo, String dataDevolucao, ControllerUsuario conUsuario){
-		
+	public void devolverItem(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente,
+			String nomeItem, String dataEmprestimo, String dataDevolucao, ControllerUsuario controllerUsuario) {
+
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
-		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono, telefoneRequerente, 
-				dataEmprestimo, nomeItem);
-		
-		
+		ChaveEmprestimo chaveEmprestimo = new ChaveEmprestimo(nomeDono, nomeRequerente, telefoneDono,
+				telefoneRequerente, dataEmprestimo, nomeItem);
+
 		if (!emprestimos.containsKey(chaveEmprestimo)) {
 			throw new IllegalArgumentException("Emprestimo nao encontrado");
 		}
-		
+
 		Emprestimo emprestimo = emprestimos.get(chaveEmprestimo);
-		
+
 		int atraso = calculaDiasAtrasados(emprestimo.getDataFinal(), dataDevolucao);
-		
-		modificaEstadoEmprestimoItem(conUsuario, chaveDono, nomeItem);
-		emprestimo.setDataDevolucao(dataDevolucao);		
-		
-		conUsuario.registraHistorico(nomeDono, telefoneDono, nomeRequerente, nomeItem,"Emprestou"
-				, dataDevolucao, atraso);
-				
-		conUsuario.registraHistorico(nomeRequerente, telefoneRequerente, nomeDono , nomeItem, "Devolvido"
-				, dataDevolucao, atraso);
-			
+
+		modificaEstadoEmprestimoItem(controllerUsuario, chaveDono, nomeItem);
+		emprestimo.setDataDevolucao(dataDevolucao);
+
+		controllerUsuario.registraHistorico(nomeDono, telefoneDono, nomeRequerente, nomeItem, "Emprestou", dataDevolucao,
+				atraso);
+
+		controllerUsuario.registraHistorico(nomeRequerente, telefoneRequerente, nomeDono, nomeItem, "Devolvido", dataDevolucao,
+				atraso);
+
 		Usuario requerente = emprestimo.getRequerente();
 		double valorItem = emprestimo.getItem().getValor();
-		
+
 		if (atraso > 0) {
-			requerente.reputacaoDevolucaoForaDoPrazo(valorItem, atraso);	
-		}else {
+			requerente.reputacaoDevolucaoForaDoPrazo(valorItem, atraso);
+		} else {
 			requerente.reputacaoDevolucaoNoPrazo(valorItem);
 		}
-		
+
 		verificaCartao(requerente);
-			
+
 	}
 			
 	private void modificaEstadoEmprestimoItem(ControllerUsuario conUsuario, ChaveUsuario chaveDono, String nomeItem) {
@@ -177,14 +185,6 @@ public class ControllerEmprestimo {
 		}
 	}
 	
-	/**
-	 * 
-	 * @return emprestimo
-	 */
-	
-	public HashMap<ChaveEmprestimo, Emprestimo> getEmprestimos() {
-		return emprestimos;
-	}
 	
 	private void verificaCartao(Usuario usuario) {
 		ControllerUsuario con = new ControllerUsuario();

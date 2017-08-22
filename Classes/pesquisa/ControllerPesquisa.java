@@ -93,7 +93,6 @@ public class ControllerPesquisa {
 	 * @return, retorna uma representacao em string dos itens mais requisitados.
 	 */
 	public String listaTop10itens(Map<ChaveUsuario, Usuario> usuarios) {
-
 		List<Item> itens = geraListaItens(usuarios);
 		Collections.sort(itens, new TopItensComparator());
 		String top10 = "";
@@ -140,8 +139,8 @@ public class ControllerPesquisa {
 		List<Item> itens = geraListaItens(usuarios);
 		Collections.sort(itens, new NomeItemComparator());
 		String listaItens = "";
-		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + "|";
+		for (Item item : itens) {
+			listaItens += item.toString() + "|";
 
 		}
 		return listaItens;
@@ -155,8 +154,8 @@ public class ControllerPesquisa {
 		List<Item> itens = geraListaItens(usuarios);
 		Collections.sort(itens, new ValorItemComparator());
 		String listaItens = "";
-		for (int i = 0; i < itens.size(); i++) {
-			listaItens += itens.get(i).toString() + "|";
+		for(Item item : itens) {
+			listaItens += item.toString() + "|";
 
 		}
 		return listaItens;
@@ -176,10 +175,10 @@ public class ControllerPesquisa {
 		for (Usuario usuario : usuarios.values()){
 			if (nome.equals(usuario.getNome()) && telefone.equals(usuario.getCelular())) {
 				confereUsuario = true;
-				for(Item itens : usuario.getItens().values()){
-					if (nomeitem.equals(itens.getNomeItem())){
+				for(Item item : usuario.getItens().values()){
+					if (nomeitem.equals(item.getNomeItem())){
 						confereItem = true;
-						itemDetalhado = itens.toString();
+						itemDetalhado = item.toString();
 					}
 					
 				}
