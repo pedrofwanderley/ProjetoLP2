@@ -6,7 +6,6 @@ import chaves.ChaveUsuario;
 import itens.EstadoItem;
 import itens.Item;
 import usuario.Usuario;
-import usuario.CartaoFidelidade;
 import usuario.ControllerUsuario;
 
 
@@ -138,15 +137,15 @@ public class ControllerEmprestimo {
 	
 	private void podePedirEmprestado(Usuario requerente, int periodo) throws Exception {
 		if (requerente.getCartao().equals("Noob") && periodo > 7) {
-			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+			throw new IllegalArgumentException("Usuario impossiblitado de pegar emprestado por esse periodo");
 		}
 		
 		if (requerente.getCartao().equals("BomAmigo") && periodo > 14) {
-			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+			throw new IllegalArgumentException("Usuario impossiblitado de pegar emprestado por esse periodo");
 		}
 		
 		if (requerente.getCartao().equals("FreeRyder") && periodo > 5) {
-			throw new Exception("Usuario impossiblitado de pegar emprestado por esse periodo");
+			throw new IllegalArgumentException("Usuario impossiblitado de pegar emprestado por esse periodo");
 		}
 	}
 	
