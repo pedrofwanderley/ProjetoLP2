@@ -76,8 +76,8 @@ public class ControllerEmprestimo {
 		
 		usuarioDono.reputacaoEmprestimoItem(itemDesejado.getValor());
 		verificaCartao(usuarioDono);
-		emprestimos.put(chaveEmprestimo, emprestimo);
 		itemDesejado.setEstado(EstadoItem.Emprestado);
+		emprestimos.put(chaveEmprestimo, emprestimo);
 		emprestimo.setDataDevolucao("Emprestimo em andamento");
 		usuarioDono.getEmprestimosEmprestando().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
