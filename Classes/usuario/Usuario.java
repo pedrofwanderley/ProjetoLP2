@@ -80,6 +80,10 @@ public class Usuario {
 		return reputacao;
 	}
 
+	public void setReputacao(double reputacao) {
+		this.reputacao = reputacao;
+	}
+
 	public void setItens(HashMap<String, Item> itens) {
 		this.itens = itens;
 	}
