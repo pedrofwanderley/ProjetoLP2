@@ -11,7 +11,10 @@ public class ControllerUsuario {
 	public ControllerUsuario() {
 		usuarios = new HashMap<>();
 	}
-
+	
+	public Map<ChaveUsuario, Usuario> getUsuarios() {
+		return usuarios;
+	}
 	/**
 	 * Recebe os parametros do usuario e adiciona o mesmo a colecao de usuarios
 	 * 
@@ -509,17 +512,25 @@ public class ControllerUsuario {
 	
 	
 
-	public Map<ChaveUsuario, Usuario> getUsuarios() {
-		return usuarios;
-	}
-	public String listaEmprestimos(String nome, String telefone){
+	/**
+	 * Metodo que lista os emprestimos emprestados por um usuario.
+	 * @param nome, nome do usuario.
+	 * @param telefone, telefone do usuario.
+	 * @return, representacao em string dos emprestimos emprestados por o usario em questao.
+	 */
+	public String listaEmprestimosEmprestando(String nome, String telefone){
 		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
 		if (!usuarios.containsKey(chave)) {
 			throw new IllegalArgumentException("Usuario invalido");
 		}
-		return usuarios.get(chave).listaEmprestimo();
+		return usuarios.get(chave).listaEmprestimoEmprestando();
 	}
-	
+	/**
+	 * Metodo que lista os emprestimos pegos pelo usuario desejado.
+	 * @param nome, nome do usuario.
+	 * @param telefone, telefone do usuario.
+	 * @return, representacao em string dos emprestimos pegos pelo usuario em questao.
+	 */
 	public String listaEmprestimosPegos(String nome, String telefone){
 		ChaveUsuario chave = new ChaveUsuario(nome, telefone);
 		if (!usuarios.containsKey(chave)) {

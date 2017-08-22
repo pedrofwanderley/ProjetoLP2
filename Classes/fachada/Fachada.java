@@ -319,7 +319,7 @@ public class Fachada {
 
 	
 	public String listarEmprestimosUsuarioEmprestando(String nome, String telefone) {
-		return usuarioController.listaEmprestimos(nome, telefone);
+		return usuarioController.listaEmprestimosEmprestando(nome, telefone);
 
 	}
 
@@ -345,7 +345,7 @@ public class Fachada {
 
 	
 	public String listarTop10Itens() {
-		return pesquisa.listaTopitens(usuarioController.getUsuarios());
+		return pesquisa.listaTop10itens(usuarioController.getUsuarios());
 	}
 	
 	

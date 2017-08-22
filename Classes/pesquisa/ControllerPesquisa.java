@@ -78,8 +78,7 @@ public class ControllerPesquisa {
 
 			}
 		}
-		NomeItemComparator comparator = new NomeItemComparator();
-		Collections.sort(listaItensNaoEmprestados, comparator);
+		Collections.sort(listaItensNaoEmprestados, new NomeItemComparator());
 		String itensNaoEmprestados = "";
 		for (Item item : listaItensNaoEmprestados) {
 			itensNaoEmprestados += item.toString() + "|";
@@ -88,12 +87,15 @@ public class ControllerPesquisa {
 		return itensNaoEmprestados;
 
 	}
-
-	public String listaTopitens(Map<ChaveUsuario, Usuario> usuarios) {
+	/**
+	 * Metodo que lista o top 10 de itens mais emprestados;
+	 * @param usuarios, mapa de usuarois
+	 * @return, retorna uma representacao em string dos itens mais requisitados.
+	 */
+	public String listaTop10itens(Map<ChaveUsuario, Usuario> usuarios) {
 
 		List<Item> itens = geraListaItens(usuarios);
-		TopItensComparator comparator = new TopItensComparator();
-		Collections.sort(itens, comparator);
+		Collections.sort(itens, new TopItensComparator());
 		String top10 = "";
 		int cont = 1;
 		for (Item item : itens) {
@@ -136,8 +138,7 @@ public class ControllerPesquisa {
 	 */
 	public String listaItensUsuariosNome(Map<ChaveUsuario, Usuario> usuarios) {
 		List<Item> itens = geraListaItens(usuarios);
-		NomeItemComparator comparator = new NomeItemComparator();
-		Collections.sort(itens, comparator);
+		Collections.sort(itens, new NomeItemComparator());
 		String listaItens = "";
 		for (int i = 0; i < itens.size(); i++) {
 			listaItens += itens.get(i).toString() + "|";
@@ -152,8 +153,7 @@ public class ControllerPesquisa {
 	 */
 	public String listaItensUsuariosValor(Map<ChaveUsuario, Usuario> usuarios) {
 		List<Item> itens = geraListaItens(usuarios);
-		ValorItemComparator comparator = new ValorItemComparator();
-		Collections.sort(itens, comparator);
+		Collections.sort(itens, new ValorItemComparator());
 		String listaItens = "";
 		for (int i = 0; i < itens.size(); i++) {
 			listaItens += itens.get(i).toString() + "|";

@@ -99,8 +99,11 @@ public class Usuario {
 	public List<Emprestimo> getEmprestimosPegos() {
 		return emprestimosPegos;
 	}
-
-	public String listaEmprestimo() {
+	/**
+	 * Metodo que retorna uma representacao em string dos emprestimos onde o usuario esta emprestando.
+	 * @return, retorna os emprestimos emprestados de um usuario.
+	 */
+	public String listaEmprestimoEmprestando() {
 		String listaEmprestimos = "Emprestimos: ";
 		if (emprestimosEmprestando.size() == 0) {
 			listaEmprestimos = "Nenhum item emprestado";
@@ -115,8 +118,11 @@ public class Usuario {
 		return listaEmprestimos;
 
 	}
-
-	public String listaEmprestimosPegos() {
+	/**
+	 * Metodo que retorna um representacao em string dos emprestimos onde o usuario esta pegando emprestado.
+	 * @return, retorna os emprestimos pegos de um usuario.
+	 */
+	public String listaEmprestimosPegos() { 
 		String listaEmprestimosPegos = "Emprestimos pegos: ";
 		if (emprestimosPegos.size() == 0) {
 			listaEmprestimosPegos = "Nenhum item pego emprestado";
