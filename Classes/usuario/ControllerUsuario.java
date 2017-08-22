@@ -327,8 +327,6 @@ public class ControllerUsuario {
 		Usuario usuario = usuarios.get(chave);
 		HashMap<String, Item> itensDoUsuario = usuario.getItens();
 		Item item = itensDoUsuario.get(nomeBlurayTemporada);
-		usuario.reputacaoNovoItem(item.getValor());
-		verificaCartao(usuario);
 		((BluraySerie) item).adicionarBluRay(duracao);
 	}
 
