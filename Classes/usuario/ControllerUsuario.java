@@ -502,7 +502,7 @@ public class ControllerUsuario {
 		ArrayList <String> historico = getUsuarios().get(chaveUsuario).getHistorico();
 		
 		String historicoDeEmprestimo = situacao + " a: " + nomeUsuarioRelacionado + " - Item:  " + nomeItem + " - Data de devolucao: " +  dataDevolucao + " - Dia(s) de atraso: " + diasAtrasados; 
-		System.out.println(historicoDeEmprestimo);
+		
 		historico.add(historicoDeEmprestimo);
 		
 	}
