@@ -225,21 +225,21 @@ public class ControllerPesquisa {
 		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
 		String Top10Usuarios = "";
 		
-		for (Usuario u:usuarios.values()){
-			listaUsuarios.add(u);
+		for (Usuario usuario:usuarios.values()){
+			listaUsuarios.add(usuario);
 			
 		}
 			
 		Collections.sort(listaUsuarios, new ReputacaoComparator());
 		
-		for(int i = 0; i==9; i++){
+		for(int i = 0; i<10; i++){
 			
 			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
 		}
 		
 		return Top10Usuarios;
 	}
-	
+//!!
 public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 		
 		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
@@ -250,9 +250,9 @@ public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 			
 		}
 			
-		Collections.sort(listaUsuarios, new ReputacaoComparator());
+		//Collections.sort(listaUsuarios, new ReputacaoComparator());
 		
-		for(int i = listaUsuarios.size(); i == i-10 ; i--){
+		for(int i = 0; i<10; i++){
 			
 			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
 		}
