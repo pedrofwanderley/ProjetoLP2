@@ -167,20 +167,23 @@ public class ControllerUsuario {
 	}
 	
 	public void verificaCartao(Usuario usuario) {
-		if(usuario.getReputacao() > 100.0) {
+		if(usuario.getReputacao() > 0 && usuario.getReputacao() < 100) {
+			usuario.setCartao(CartaoFidelidade.NOOB);
+			return;
+		}
+
+		 if(usuario.getReputacao() > 100.0) {
 			usuario.setCartao(CartaoFidelidade.BomAmigo);
+			return;
 		}
 		
 		if(usuario.getReputacao() < 0) {
 			usuario.setCartao(CartaoFidelidade.Caloteiro);
+			return;
 		}
 		
-		if(usuario.getReputacao() >= 0 && usuario.getItens().size() == 0) {
+		else if(usuario.getReputacao() >= 0 && usuario.getItens().isEmpty()) {
 			usuario.setCartao(CartaoFidelidade.FreeRider);
-		}
-		
-		if(usuario.getReputacao() > 0 && usuario.getReputacao() < 100 && usuario.getItens().size() > 0) {
-			usuario.setCartao(CartaoFidelidade.NOOB);
 		}
 		
 	}
