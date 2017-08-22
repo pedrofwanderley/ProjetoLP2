@@ -21,7 +21,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testRegistraEmprestimo(){
+	public void testRegistraEmprestimo() throws Exception{
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);
@@ -31,7 +31,7 @@ public class ControllerEmprestimoTest {
 	
 		
 	@Test(expected = IllegalArgumentException.class)
-	public void testItemEmprestado() {
+	public void testItemEmprestado() throws Exception {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 7);
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "7/7/2017", 7);
@@ -39,13 +39,13 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testItemNaoExistente(){
+	public void testItemNaoExistente() throws Exception{
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Uno", "10/7/2017", 7);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testIUsuarioNaoExistente(){
+	public void testIUsuarioNaoExistente() throws Exception{
 		
 		fac.registrarEmprestimo("Jose", "0000-0000", "Ana", "9999-8888", "FIFA 17", "10/7/2017", 7);
 		fac.registrarEmprestimo("Joao", "1234-5678", "Jose", "0000-0000", "Mafia 3", "10/7/2017", 7);
@@ -53,7 +53,7 @@ public class ControllerEmprestimoTest {
 	
 	
 	@Test 
-	public void testDevolucao() {
+	public void testDevolucao() throws Exception {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);
