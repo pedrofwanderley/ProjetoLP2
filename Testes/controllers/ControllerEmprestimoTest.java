@@ -40,31 +40,49 @@ public class ControllerEmprestimoTest {
 	}
 	
 		
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testItemEmprestado() throws Exception {
 		
-		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 7);
-		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "7/7/2017", 7);
+			
+		try {
+			fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
+			fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "War 2", "7/7/2017", 5);
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Item emprestado no momento");
+		}
+		
 		
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testItemNaoExistente() throws Exception{
 		
-		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Uno", "10/7/2017", 7);
+		try {
+			fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Uno", "10/7/2017", 7);
+		} catch (Exception e) {
+			assertEquals(e.getMessage(), "Item nao encontrado");
+		}
+	
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testIUsuarioNaoExistente() throws Exception{
-		
+		try{
 		fac.registrarEmprestimo("Jose", "0000-0000", "Ana", "9999-8888", "FIFA 17", "10/7/2017", 7);
 		fac.registrarEmprestimo("Joao", "1234-5678", "Jose", "0000-0000", "Mafia 3", "10/7/2017", 7);
+		
+		}catch (Exception e) {
+			assertEquals(e.getMessage(), "Usuario invalido");
+		}
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testIUsuarioNaoPodePedirEmprestado() throws Exception{
-				
+		try{
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Mafia 3", "10/7/2017", 8);
+		} catch(Exception e) {
+			assertEquals(e.getMessage(), "Usuario impossiblitado de pegar emprestado por esse periodo");
+		}
 	}
 		
 	@Test 
@@ -81,14 +99,19 @@ public class ControllerEmprestimoTest {
 		
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testDevolucaoExececao(){
 		
-		fac.devolverItem("Joao", "1234-5678", "Jose", "0000-0000", "War 2", "7/7/2017", "14/7/2017");
-		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", "14/7/2017");
-		fac.devolverItem("Ana", "1234-5678", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", "2/8/2017");
-		fac.devolverItem("Ana", "1234-5678", "Joao", "1234-5678", "The Witcher 3", "12/7/2017", "19/7/2017");
 		
+		try{
+			fac.devolverItem("Joao", "1234-5678", "Jose", "0000-0000", "War 2", "7/7/2017", "14/7/2017");
+			fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", "14/7/2017");
+			fac.devolverItem("Ana", "1234-5678", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", "2/8/2017");
+			fac.devolverItem("Ana", "1234-5678", "Joao", "1234-5678", "The Witcher 3", "12/7/2017", "19/7/2017");
+			} catch(Exception e) {
+				assertEquals(e.getMessage(), "Emprestimo nao encontrado");
+			}
 	}
+	
 	
 }
