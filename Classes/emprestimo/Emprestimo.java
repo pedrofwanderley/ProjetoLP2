@@ -43,41 +43,51 @@ public class Emprestimo {
 		return dono;
 	}
 
+	
 	public void setDonoItem(Usuario dono) {
 		this.dono = dono;
 	}
 
+	
 	public Usuario getRequerente() {
 		return requerente;
 	}
 
+	
 	public void setUsuarioEmprestado(Usuario requerente) {
 		this.requerente = requerente;
 	}
 
+	
 	public Item getItem() {
 		return item;
 	}
 
+	
 	public void setItem(Item item) {
 		this.item = item;
 	}
 
+	
 	public int getPeriodo() {
 		return periodo;
 	}
 
+	
 	public void setPeriodo(int periodo) {
 		this.periodo = periodo;
 	}
 
+	
 	public String getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
+	
 	public void setDataEmprestimo(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
+	
 	
 	public String getDataFinal() {
 		return dataFinal;
@@ -88,13 +98,17 @@ public class Emprestimo {
 		return dataDevolucao;
 	}
 
+	
 	public void setDataDevolucao(String dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
+	
 	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 	}
+	
+	
 	public String dataFinal() {
 		if ("Emprestado".equals(item.getEstado().getEstadoItem())) {
 			return "Emprestimo em andamento";
@@ -103,6 +117,7 @@ public class Emprestimo {
 		}
 	}
 
+	
 	/**
 	 * Calcula a data que eh pra ser devolvido o item
 	 * @param dataEmprestimo
@@ -114,12 +129,10 @@ public class Emprestimo {
 		String[] datasEmp = dataEmprestimo.split("/");
 		Calendar calendarEmp = Calendar.getInstance();
 		calendarEmp.set(Integer.parseInt(datasEmp[2]),Integer.parseInt(datasEmp[1]), Integer.parseInt(datasEmp[0]));
-		calendarEmp.add(Calendar.DATE, periodo-1);
+		calendarEmp.add(Calendar.DATE, periodo);
 		
 		return calendarEmp.get(Calendar.DAY_OF_MONTH) + "/" + calendarEmp.get(Calendar.MONTH)+ "/" + calendarEmp.get(Calendar.YEAR);
 	}
-	
-	
 	
 	
 	@Override
@@ -128,8 +141,5 @@ public class Emprestimo {
 		+ ", " + dataEmprestimo + ", " + periodo + " dias, " + "ENTREGA: " + dataFinal();
 	
 	}
-	
-
-
 	
 }

@@ -161,13 +161,11 @@ public class ControllerEmprestimo {
 		
 		Calendar calendarFinal = Calendar.getInstance();
 		String[] datasFinal = dataFinal.split("/");
-		calendarFinal.set(Integer.parseInt(datasFinal[2]),Integer.parseInt(datasFinal[1]), Integer.parseInt(datasFinal[0]));
-		
+		calendarFinal.set(Integer.parseInt(datasFinal[2]), Integer.parseInt(datasFinal[1]), Integer.parseInt(datasFinal[0]));
 		
 		Calendar calendarDev = Calendar.getInstance();
 		String[] datasDev = dataDevolucao.split("/");
-		calendarDev.set(Integer.parseInt(datasDev[2]),Integer.parseInt(datasDev[1]), Integer.parseInt(datasDev[0]));
-		
+		calendarDev.set(Integer.parseInt(datasDev[2]), Integer.parseInt(datasDev[1]), Integer.parseInt(datasDev[0]));
 		
 		int diasAtrasados =  calendarDev.get(Calendar.DAY_OF_YEAR) - calendarFinal.get(Calendar.DAY_OF_YEAR);
 		
