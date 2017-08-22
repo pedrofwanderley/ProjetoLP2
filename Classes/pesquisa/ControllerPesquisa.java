@@ -230,17 +230,17 @@ public class ControllerPesquisa {
 			
 		}
 			
-		Collections.sort(listaUsuarios, new ReputacaoComparator());
+		Collections.sort(listaUsuarios, new MaiorReputacaoComparator());
 		
 		for(int i = 0; i<10; i++){
-			
-			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
+			String reputacao = String.format("%1$,.2f", listaUsuarios.get(i).getReputacao());
+			Top10Usuarios += i+1 +": " + listaUsuarios.get(i).getNome() + " - Reputacao: " + reputacao + "|" ;
 		}
 		
 		return Top10Usuarios;
 	}
-//!!
-public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
+	
+	public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 		
 		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
 		String Top10Usuarios = "";
@@ -250,17 +250,15 @@ public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 			
 		}
 			
-		//Collections.sort(listaUsuarios, new ReputacaoComparator());
+		Collections.sort(listaUsuarios, new MenorReputacaoComparator());
 		
 		for(int i = 0; i<10; i++){
 			
-			Top10Usuarios += i+1 +":" + listaUsuarios.get(i).getNome() + " - Reputacao" + listaUsuarios.get(i).getReputacao() + "|" ;
+			String reputacao = String.format("%1$,.2f", listaUsuarios.get(i).getReputacao());
+			Top10Usuarios += i+1 +": " + listaUsuarios.get(i).getNome() + " - Reputacao: " + reputacao + "|" ;
 		}
 		
 		return Top10Usuarios;
 	}
-	
-	
-	
 
 }
