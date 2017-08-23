@@ -198,6 +198,11 @@ public class ControllerPesquisa {
 		return itemDetalhado;
 	}
 	
+	/**
+	 * Lista todos os usuarios que possuem reputacao negativa
+	 * @param usuarios
+	 * @return
+	 */
 	public String listarCaloteiros(Map<ChaveUsuario, Usuario> usuarios){
 		
 		List <String> caloteiros = new ArrayList <String>();
@@ -218,7 +223,11 @@ public class ControllerPesquisa {
 	
 		return listaCaloteiros;
 	}
-	
+	/**
+	 * Lista os dez melhores usuarios em reputacao
+	 * @param usuarios
+	 * @return
+	 */
 	public String listarTop10MelhoresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 		
 		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
@@ -238,7 +247,11 @@ public class ControllerPesquisa {
 		
 		return Top10Usuarios;
 	}
-	
+	/**
+	 *	Lista os dez piores usuarios em reputacao
+	 * @param usuarios
+	 * @return
+	 */
 	public String listarTop10PioresUsuarios(Map<ChaveUsuario, Usuario> usuarios){
 		
 		ArrayList <Usuario> listaUsuarios = new ArrayList<Usuario>();
