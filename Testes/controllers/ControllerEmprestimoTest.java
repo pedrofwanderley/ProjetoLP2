@@ -13,7 +13,7 @@ public class ControllerEmprestimoTest {
 	private Fachada fac = new Fachada();
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		fac.cadastrarUsuario("Joao",  "1234-5678", "joao123@gmail.com");
 		fac.cadastrarUsuario("Ana", "9999-8888","ana@gmail.com");
 		fac.cadastrarUsuario("Antonio", "5555-5555","antonio5@hotmail.com");
@@ -24,7 +24,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testRegistraEmprestimo() throws Exception{
+	public void testRegistraEmprestimo() {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);
@@ -41,7 +41,7 @@ public class ControllerEmprestimoTest {
 	
 		
 	@Test
-	public void testItemEmprestado() throws Exception {
+	public void testItemEmprestado() {
 		
 			
 		try {
@@ -55,7 +55,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testItemNaoExistente() throws Exception{
+	public void testItemNaoExistente() {
 		
 		try {
 			fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Uno", "10/7/2017", 7);
@@ -66,7 +66,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testIUsuarioNaoExistente() throws Exception{
+	public void testIUsuarioNaoExistente() {
 		try{
 		fac.registrarEmprestimo("Jose", "0000-0000", "Ana", "9999-8888", "FIFA 17", "10/7/2017", 7);
 		fac.registrarEmprestimo("Joao", "1234-5678", "Jose", "0000-0000", "Mafia 3", "10/7/2017", 7);
@@ -77,7 +77,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testIUsuarioNaoPodePedirEmprestado() throws Exception{
+	public void testIUsuarioNaoPodePedirEmprestado() {
 		try{
 		fac.registrarEmprestimo("Joao", "1234-5678", "Ana", "9999-8888", "Mafia 3", "10/7/2017", 8);
 		} catch(Exception e) {
@@ -86,7 +86,7 @@ public class ControllerEmprestimoTest {
 	}
 		
 	@Test 
-	public void testDevolucao() throws Exception {
+	public void testDevolucao() {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);

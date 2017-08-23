@@ -26,7 +26,7 @@ public class BlurayFilme extends Bluray{
 	 * @param anoDeLancamento
 	 */
 	public BlurayFilme(String nome, double valor, int duracao, String classificacao, 
-			String genero, int anoDeLancamento) throws Exception{
+			String genero, int anoDeLancamento) {
 		super(nome, valor, duracao, classificacao);
 		
 		if (genero.trim().equals("")) {

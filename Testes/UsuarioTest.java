@@ -13,7 +13,7 @@ public class UsuarioTest {
 	Usuario usuario4;
 	
 	@Before
-	public void inicializaUsuario() throws Exception {
+	public void inicializaUsuario() {
 		usuario1 = new Usuario("Guilherme", "89 91929395", "guilherme@email");
 		usuario2 = new Usuario("Karla", "89 91929395", "karla@email");
 		usuario3 = new Usuario("Guilherme", "89 79791212", "matheus@email");
@@ -42,43 +42,43 @@ public class UsuarioTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeInvalidoVazio() throws Exception {
+	public void testNomeInvalidoVazio() {
 		usuario1 = new Usuario("", "89 91929395", "guilherme@email");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeInvalidoEspacos() throws Exception {
+	public void testNomeInvalidoEspacos() {
 		usuario1 = new Usuario("       ", "89 91929395", "guilherme@email");
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testNomeInvalidoNulo() throws Exception {
+	public void testNomeInvalidoNulo() {
 		usuario1 = new Usuario(null, "89 91929395", "guilherme@email");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testCelularInvalidoVazio() throws Exception {
+	public void testCelularInvalidoVazio() {
 		usuario1 = new Usuario("Guilherme", "", "guilherme@email");
 	}
 	
 	
 	@Test(expected = NullPointerException.class)
-	public void testCelularInvalidoNulo() throws Exception {
+	public void testCelularInvalidoNulo() {
 		usuario1 = new Usuario("Guilherme", null, "guilherme@email");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testEmailInvalidoVazio() throws Exception {
+	public void testEmailInvalidoVazio() {
 		usuario1 = new Usuario("Guilherme", "89 91929395", "");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testEmailInvalidoEspacos() throws Exception {
+	public void testEmailInvalidoEspacos() {
 		usuario1 = new Usuario("Guilherme", "89 91929395", "");
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testEmailInvalidoNulo() throws Exception {
+	public void testEmailInvalidoNulo() {
 		usuario1 = new Usuario("Guilherme", "89 91929395", null);
 	}
 	

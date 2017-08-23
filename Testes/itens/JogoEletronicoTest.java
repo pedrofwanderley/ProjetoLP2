@@ -14,7 +14,7 @@ public class JogoEletronicoTest {
 	private JogoEletronico jogoEletronico5;
 	
 	@Before
-	public void inicializaJogosEletronicos() throws Exception{
+	public void inicializaJogosEletronicos() {
 		jogoEletronico1 = new JogoEletronico("God of War", 70.83, "PS2");
 		jogoEletronico2 = new JogoEletronico("Mario", 40.26, "PC");
 		jogoEletronico3 = new JogoEletronico("Mario", 50.47, "PC");
@@ -31,19 +31,19 @@ public class JogoEletronicoTest {
 
 	
 	@Test(expected = NullPointerException.class)
-	public void testPlataformaNull() throws Exception{
+	public void testPlataformaNull() {
 		jogoEletronico1 = new JogoEletronico("God of War", 70.83, null);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testPlataformaInvalidaVazia() throws Exception{
+	public void testPlataformaInvalidaVazia() {
 		jogoEletronico1 = new JogoEletronico("God of War", 70.83, "");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testPlataformaInvalidaVaziaEspacos() throws Exception{
+	public void testPlataformaInvalidaVaziaEspacos() {
 		jogoEletronico1 = new JogoEletronico("God of War", 70.83, "        ");
 	}
 	

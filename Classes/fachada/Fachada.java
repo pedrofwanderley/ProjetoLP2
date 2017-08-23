@@ -39,7 +39,7 @@ public class Fachada {
 	 * @return
 	 * @throws Exception os tratamentos estao na classe itens
 	 */
-	public String cadastrarUsuario(String nome, String email, String celular) throws Exception {
+	public String cadastrarUsuario(String nome, String email, String celular) {
 		usuarioController.CadastrarUsuario(nome, email, celular);
 		return email;
 	}
@@ -66,7 +66,7 @@ public class Fachada {
 	 * @return representaocao textual do atributo desejado
 	 * @throws Exception
 	 */
-	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
+	public String getInfoUsuario(String nome, String celular, String atributo) {
 		return usuarioController.getInfoUsuario(nome, celular, atributo);
 	}
 
@@ -77,7 +77,7 @@ public class Fachada {
 	 * @param celular celular do usuario
 	 * @throws Exception
 	 */
-	public void removerUsuario(String nome, String celular) throws Exception {
+	public void removerUsuario(String nome, String celular) {
 		usuarioController.removerUsuario(nome, celular);
 	}
 
@@ -91,7 +91,7 @@ public class Fachada {
 	 * @param valor valor do atributo modificado
 	 * @throws Exception
 	 */
-	public void atualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
+	public void atualizarUsuario(String nome, String celular, String atributo, String valor) {
 		usuarioController.AtualizarUsuario(nome, celular, atributo, valor);
 	}
 
@@ -109,7 +109,7 @@ public class Fachada {
 	 * @throws Exception
 	 */
 	public void cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
-			String genero, String classificacao, int anoLancamento) throws Exception {
+			String genero, String classificacao, int anoLancamento) {
 		usuarioController.cadastrarBluRayFilme(nome, celular, nomeItem, preco, duracao, genero, classificacao,
 				anoLancamento);
 	}
@@ -128,7 +128,7 @@ public class Fachada {
 	 * @throws Exception
 	 */
 	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
-			int numeroFaixas, String artista, String classificacao) throws Exception {
+			int numeroFaixas, String artista, String classificacao) {
 		usuarioController.cadastrarBluRayShow(nome, celular, nomeItem, preco, duracao, numeroFaixas, artista,
 				classificacao);
 	}
@@ -148,7 +148,7 @@ public class Fachada {
 	 * @throws Exception
 	 */
 	public void cadastrarBluRaySerie(String nome, String telefone, String nomeItem, double preco, String descricao,
-			int duracao, String classificacao, String genero, int temporada) throws Exception {
+			int duracao, String classificacao, String genero, int temporada) {
 		usuarioController.cadastrarBluRaySerie(nome, telefone, nomeItem, preco, descricao, duracao, classificacao,
 				genero, temporada);
 	}
@@ -163,8 +163,7 @@ public class Fachada {
 	 * @param duracao duracao do episodio
 	 * @throws Exception
 	 */
-	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao)
-			throws Exception {
+	public void adicionarBluRay(String nome, String telefone, String nomeBlurayTemporada, int duracao) {
 		usuarioController.adicionarBluRay(nome, telefone, nomeBlurayTemporada, duracao);
 	}
 
@@ -178,8 +177,7 @@ public class Fachada {
 	 * @param plataforma plataforma em que o jogo eletronico funciona
 	 * @throws Exception
 	 */
-	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
-			throws Exception {
+	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) {
 		usuarioController.cadastrarEletronico(nome, celular, nomeItem, preco, plataforma);
 	}
 
@@ -192,7 +190,7 @@ public class Fachada {
 	 * @param preco preco do jogo de tabuleiro
 	 * @throws Exception
 	 */
-	public void cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
+	public void cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) {
 		usuarioController.cadastrarJogoTabuleiro(nome, celular, nomeItem, preco);
 	}
 
@@ -206,7 +204,7 @@ public class Fachada {
 	 * @return
 	 * @throws Exception
 	 */
-	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) {
 		return usuarioController.getInfoItem(nome, celular, nomeItem, atributo);
 	}
 
@@ -219,7 +217,7 @@ public class Fachada {
 	 * @param nomePeca nome da peca perdida
 	 * @throws Exception
 	 */
-	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) throws Exception {
+	public void adicionarPecaPerdida(String nome, String telefone, String nomeItem, String nomePeca) {
 		usuarioController.adicionarPecaPerdida(nome, telefone, nomeItem, nomePeca);
 	}
 
@@ -231,7 +229,7 @@ public class Fachada {
 	 * @param nomeItem nome do item a ser removido
 	 * @throws Exception
 	 */
-	public void removerItem(String nome, String celular, String nomeItem) throws Exception {
+	public void removerItem(String nome, String celular, String nomeItem) {
 		usuarioController.removerItem(nome, celular, nomeItem);
 	}
 
@@ -245,8 +243,7 @@ public class Fachada {
 	 * @param valor valor do atributo atualizado(modificado)
 	 * @throws Exception
 	 */
-	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
-			throws Exception {
+	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor) {
 		usuarioController.atualizarItem(nome, celular, nomeItem, atributo, valor);
 	}
 
@@ -293,7 +290,7 @@ public class Fachada {
 	 * @throws Exception 
 	 */
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente,
-			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) throws Exception {
+			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) {
 		controllerEmprestimo.registrarEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,
 				dataEmprestimo, periodo, usuarioController.getUsuarios());
 

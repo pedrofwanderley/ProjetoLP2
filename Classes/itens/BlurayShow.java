@@ -26,7 +26,7 @@ public class BlurayShow extends Bluray{
 	 * @param classificacao
 	 */
 	public BlurayShow(String nome, double valor, int duracao, int numeroDeFaixas, 
-			String nomeDoArtista, String classificacao) throws Exception{
+			String nomeDoArtista, String classificacao) {
 		super(nome, valor, duracao, classificacao);
 		
 		if (nomeDoArtista.trim().equals("")) {

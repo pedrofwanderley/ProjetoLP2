@@ -20,7 +20,7 @@ public class Usuario {
 	private CartaoFidelidade cartao;
 	private double reputacao;
 
-	public Usuario(String nome, String celular, String email) throws Exception {
+	public Usuario(String nome, String celular, String email) {
 		if (nome == null || email == null || celular == null) {
 			throw new NullPointerException("Parametros de usuario nao podem ser nulos");
 		}

@@ -10,7 +10,7 @@ public class BlurayShowTest {
 	BlurayShow blurayShow;
 	
 	@Before
-	public void inicializaBlurayShow() throws Exception{
+	public void inicializaBlurayShow() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "SOAD", "Show de Rock");
 	}
 	
@@ -27,31 +27,31 @@ public class BlurayShowTest {
 
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testNumeroDefaixasInvalidoZedo() throws Exception{
+	public void testNumeroDefaixasInvalidoZedo() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 0, "SOAD", "Show de Rock");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNumerodeFaixasInvalidoNegativo() throws Exception{
+	public void testNumerodeFaixasInvalidoNegativo() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, -7, "SOAD", "Show de Rock");
 	}
 
 	
 	@Test(expected = NullPointerException.class)
-	public void testNomeDoArtistaNull() throws Exception{
+	public void testNomeDoArtistaNull() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, null, "Show de Rock");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeDoArtistaInvalidaVazia() throws Exception{
+	public void testNomeDoArtistaInvalidaVazia() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "", "Show de Rock");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNomeDoArtistaInvalidaVaziaEspacos() throws Exception{
+	public void testNomeDoArtistaInvalidaVaziaEspacos() {
 		blurayShow = new BlurayShow("SOAD - Live in Rock in Rio", 100.89, 127, 15, "       ", "Show de Rock");
 	}
 	

@@ -12,7 +12,7 @@ public class BluraySerieTest {
 	BluraySerie bluraySerie3;
 	
 	@Before
-	public void inicializaBlurayTemporada() throws Exception{
+	public void inicializaBlurayTemporada() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 7);
 		
 	}
@@ -30,56 +30,56 @@ public class BluraySerieTest {
 
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testGeneroSerieInvalidoVazio() throws Exception{
+	public void testGeneroSerieInvalidoVazio() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "", 7);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testGeneroSerieInvalidoVazioEspacos() throws Exception{
+	public void testGeneroSerieInvalidoVazioEspacos() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "        ", 7);
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testGeneroSerieNull() throws Exception{
+	public void testGeneroSerieNull() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", null, 7);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoSerieInvalidoVazio() throws Exception{
+	public void testDescricaoSerieInvalidoVazio() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "", 600, "Maiores de 18", "Fantasia", 7);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoSerieInvalidoVazioEspacos() throws Exception{
+	public void testDescricaoSerieInvalidoVazioEspacos() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "         ", 600, "Maiores de 18", "Fantasia", 7);
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testDescricaoSerieNull() throws Exception{
+	public void testDescricaoSerieNull() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, null, 600, "Maiores de 18", null, 7);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNumeroDaTemporadaNegativo() throws Exception{
+	public void testNumeroDaTemporadaNegativo() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", -7);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testNumeroDaTemporadaZero() throws Exception{
+	public void testNumeroDaTemporadaZero() {
 		bluraySerie1 = new BluraySerie("GoT", 100.53, "Guerra e mais guerra", 600, "Maiores de 18", "Fantasia", 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testAdicionarBlurayInvalidoZero() throws Exception{
+	public void testAdicionarBlurayInvalidoZero() {
 		bluraySerie1.adicionarBluRay(0);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testAdicionarBlurayInvalidoNegativo() throws Exception{
+	public void testAdicionarBlurayInvalidoNegativo() {
 		bluraySerie1.adicionarBluRay(-4);
 	}
 }

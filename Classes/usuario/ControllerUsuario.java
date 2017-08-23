@@ -25,7 +25,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void CadastrarUsuario(String nome, String celular, String email) throws Exception {
+	public void CadastrarUsuario(String nome, String celular, String email) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (usuarios.containsKey(chave)) {
@@ -46,7 +46,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void removerUsuario(String nome, String celular) throws Exception {
+	public void removerUsuario(String nome, String celular) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -87,7 +87,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void AtualizarUsuario(String nome, String celular, String atributo, String valor) throws Exception {
+	public void AtualizarUsuario(String nome, String celular, String atributo, String valor) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -119,7 +119,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public String getInfoUsuario(String nome, String celular, String atributo) throws Exception {
+	public String getInfoUsuario(String nome, String celular, String atributo) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -154,8 +154,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma)
-			throws Exception {
+	public void cadastrarEletronico(String nome, String celular, String nomeItem, double preco, String plataforma) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -202,7 +201,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) throws Exception {
+	public void cadastrarJogoTabuleiro(String nome, String celular, String nomeItem, double preco) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -232,7 +231,7 @@ public class ControllerUsuario {
 	 */
 
 	public void cadastrarBluRayFilme(String nome, String celular, String nomeItem, double preco, int duracao,
-			String genero, String classificacao, int anoLancamento) throws Exception {
+			String genero, String classificacao, int anoLancamento) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -262,7 +261,7 @@ public class ControllerUsuario {
 	 */
 
 	public void cadastrarBluRayShow(String nome, String celular, String nomeItem, double preco, int duracao,
-			int numeroFaixas, String artista, String classificacao) throws Exception {
+			int numeroFaixas, String artista, String classificacao) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -293,7 +292,7 @@ public class ControllerUsuario {
 	 */
 
 	public void cadastrarBluRaySerie(String nome, String celular, String nomeItem, double preco, String descricao,
-			int duracao, String classificacao, String genero, int temporada) throws Exception {
+			int duracao, String classificacao, String genero, int temporada) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -317,7 +316,7 @@ public class ControllerUsuario {
 	 * @throws Exception 
 	 */
 
-	public void adicionarBluRay(String nome, String celular, String nomeBlurayTemporada, int duracao) throws Exception {
+	public void adicionarBluRay(String nome, String celular, String nomeBlurayTemporada, int duracao) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -341,7 +340,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void removerItem(String nome, String celular, String nomeItem) throws Exception {
+	public void removerItem(String nome, String celular, String nomeItem) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -375,8 +374,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor)
-			throws Exception {
+	public void atualizarItem(String nome, String celular, String nomeItem, String atributo, String valor) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -421,7 +419,7 @@ public class ControllerUsuario {
 	 * @throws Exception 
 	 */
 
-	public void adicionarPecaPerdida(String nome, String celular, String nomeItem, String nomePeca) throws Exception {
+	public void adicionarPecaPerdida(String nome, String celular, String nomeItem, String nomePeca) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {
@@ -451,7 +449,7 @@ public class ControllerUsuario {
 	 * @throws Exception
 	 */
 
-	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) throws Exception {
+	public String getInfoItem(String nome, String celular, String nomeItem, String atributo) {
 
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (!usuarios.containsKey(chave)) {

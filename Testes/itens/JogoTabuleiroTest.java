@@ -19,7 +19,7 @@ public class JogoTabuleiroTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void inicializaJogoTabuleiro() throws Exception{
+	public void inicializaJogoTabuleiro() {
 		jogoTabuleiro1 = new JogoTabuleiro("War", 100.55);
 		jogoTabuleiro2 = new JogoTabuleiro("War Guerra Mundial", 5.43);
 		jogoTabuleiro3 = new JogoTabuleiro("War", 90.55);
@@ -75,7 +75,7 @@ public class JogoTabuleiroTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testAdicionaPacaInvalidaVazia() throws Exception{
+	public void testAdicionaPacaInvalidaVazia() {
 		jogoTabuleiro1.adicionarPecaPerdida("");
 	}
 	
@@ -86,7 +86,7 @@ public class JogoTabuleiroTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testAdicionaPacaInvalidaVaziaEspacos() throws Exception{
+	public void testAdicionaPacaInvalidaVaziaEspacos() {
 		jogoTabuleiro1.adicionarPecaPerdida("          ");
 	}
 	
@@ -95,7 +95,7 @@ public class JogoTabuleiroTest {
 	 * @throws Exception
 	 */
 	@Test(expected = NullPointerException.class)
-	public void testAdicionaPacaInvalidaNull() throws Exception{
+	public void testAdicionaPacaInvalidaNull() {
 		jogoTabuleiro1.adicionarPecaPerdida(null);
 	}
 	

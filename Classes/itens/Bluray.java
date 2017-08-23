@@ -21,7 +21,7 @@ public class Bluray extends Item{
 	 * @param duracao
 	 * @param classificacao
 	 */
-	public Bluray(String nome, double valor, int duracao, String classificacao) throws Exception{
+	public Bluray(String nome, double valor, int duracao, String classificacao) {
 		super(nome, valor);
 		
 		if (duracao <= 0) {

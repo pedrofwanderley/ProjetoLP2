@@ -14,7 +14,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void inicializaBlurayFilme() throws Exception{
+	public void inicializaBlurayFilme() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "Fantasia", 1995);
 	}
 	
@@ -38,7 +38,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testAnoInvalidoZedo() throws Exception{
+	public void testAnoInvalidoZedo() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "Fantasia", 0);
 	}
 	
@@ -47,7 +47,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testAnoInvalidoNegativo() throws Exception{
+	public void testAnoInvalidoNegativo() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "Fantasia", -5);
 	}
 	
@@ -57,7 +57,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Test(expected = NullPointerException.class)
-	public void testGeneroNull() throws Exception{
+	public void testGeneroNull() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", null, 1995);
 	}
 	
@@ -67,7 +67,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testGeneroInvalidaVazio() throws Exception{
+	public void testGeneroInvalidaVazio() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "", 1995);
 	}
 	
@@ -77,7 +77,7 @@ public class BlurayFilmeTest {
 	 * @throws Exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testGeneroInvalidaVazioespacos() throws Exception{
+	public void testGeneroInvalidaVazioespacos() {
 		blurayFilme = new BlurayFilme("CDZ", 50.60, 60, "Infantil", "        ", 1995);
 	}
 	

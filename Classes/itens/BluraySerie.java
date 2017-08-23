@@ -33,7 +33,7 @@ public class BluraySerie extends Bluray{
 	 * @param numeroDaTemporada
 	 */
 	public BluraySerie(String nome, double valor, String descricao, int duracao, String classificacao, 
-			String generoSerie, int numeroDaTemporada) throws Exception{
+			String generoSerie, int numeroDaTemporada) {
 		super(nome, valor, duracao, classificacao);
 		
 		if (descricao.trim().equals("")) {
@@ -122,7 +122,7 @@ public class BluraySerie extends Bluray{
 	 * 
 	 * @param duracao
 	 */
-	public void adicionarBluRay(int duracao)throws Exception{
+	public void adicionarBluRay(int duracao) {
 		if (duracao <= 0) {
 			throw new IllegalArgumentException();
 		}

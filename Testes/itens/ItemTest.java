@@ -11,7 +11,7 @@ public class ItemTest {
 	Item item2;
 	
 	@Before
-	public void inicializaItem() throws Exception{
+	public void inicializaItem() {
 		item1 = new Item("CDZ", 50.60);
 	}
 	
@@ -25,31 +25,31 @@ public class ItemTest {
 
 	
 	@Test(expected = NullPointerException.class)
-	public void testDescricaoNull() throws Exception{
+	public void testDescricaoNull() {
 		item2 = new Bluray(null, 50.60, 60, "Infantil");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoInvalidaVazia() throws Exception{
+	public void testDescricaoInvalidaVazia() {
 		item2 = new Bluray("", 50.60, 60, "Infantil");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDescricaoInvalidaVaziaEspacos() throws Exception{
+	public void testDescricaoInvalidaVaziaEspacos() {
 		item2 = new Bluray("        ", 50.60, 60, "Infantil");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testValorInvalidoZero() throws Exception{
+	public void testValorInvalidoZero() {
 		item2 = new Bluray("CDZ", 0, 60, "Infantil");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testValorInvalidoNegativo() throws Exception{
+	public void testValorInvalidoNegativo() {
 		item2 = new Bluray("CDZ", -5, 60, "Infantil");
 	}
 	

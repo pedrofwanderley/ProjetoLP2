@@ -25,30 +25,30 @@ public class BlurayTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDuracaoInvalidoZedo() throws Exception{
+	public void testDuracaoInvalidoZedo() {
 		bluray1 = new Bluray("CDZ", 50.60, 0, "Infantil");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testDuracaoInvalidoNegativo() throws Exception{
+	public void testDuracaoInvalidoNegativo() {
 		bluray1 = new Bluray("CDZ", 50.60, -5, "Infantil");
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testClassificacaoNull() throws Exception{
+	public void testClassificacaoNull() {
 		bluray1 = new Bluray("CDZ", 50.60, 60, null);
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testClassificacaoInvalidaVazia() throws Exception{
+	public void testClassificacaoInvalidaVazia() {
 		bluray1 = new Bluray("CDZ", 50.60, 60, "");
 	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testClassificacaoInvalidaVaziaEspacos() throws Exception{
+	public void testClassificacaoInvalidaVaziaEspacos() {
 		bluray1 = new Bluray("CDZ", 50.60, 60, "       ");
 	}
 	

@@ -16,7 +16,7 @@ public class ControllerPesquisaTest {
 	private Usuario usuario, usuario2;
 	private ControllerEmprestimo emprestimoController;
 	@Before
-	public void controllerPesquisa() throws Exception {
+	public void controllerPesquisa() {
 		pesquisa = new ControllerPesquisa();
 		usuario = new Usuario("Pedro", "0000-0000", "projeto@gmail.com");
 		usuario2 = new Usuario("Fulano", "9999-9999", "fulano@gmail.com");
@@ -26,7 +26,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testListaItensUsuariosNome() throws Exception {
+	public void testListaItensUsuariosNome() {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -45,7 +45,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testListaItensUsuariosValor() throws Exception {
+	public void testListaItensUsuariosValor() {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -65,7 +65,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testPesquisarDetalhesItem() throws Exception {
+	public void testPesquisarDetalhesItem() {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -77,7 +77,7 @@ public class ControllerPesquisaTest {
 
 	}
 	@Test
-    public void testListarEmprestimosItem() throws Exception {
+    public void testListarEmprestimosItem() {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.CadastrarUsuario(usuario2.getNome(), usuario2.getCelular(), usuario2.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
@@ -91,7 +91,7 @@ public class ControllerPesquisaTest {
     }
     
     @Test
-    public void testListarItensNaoEmprestados() throws Exception {
+    public void testListarItensNaoEmprestados() {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
                 50.00, 140, "comedia", "12_ANOS", 2010);
@@ -106,7 +106,7 @@ public class ControllerPesquisaTest {
     }
     
     @Test
-    public void testListarItensEmprestados() throws Exception {
+    public void testListarItensEmprestados() {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.CadastrarUsuario(usuario2.getNome(), usuario2.getCelular(), usuario2.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
@@ -133,7 +133,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testPesquisaDetalhesItensUsuarioException() throws Exception {
+	public void testPesquisaDetalhesItensUsuarioException() {
 		
 		try {
 			usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",

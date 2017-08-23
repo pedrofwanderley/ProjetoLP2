@@ -42,7 +42,7 @@ public class ControllerEmprestimo {
 	
 	
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios) throws Exception{
+			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios) {
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
@@ -54,7 +54,7 @@ public class ControllerEmprestimo {
 		Usuario usuarioRequerente = usuarios.get(chaveRequerente);
 		
 		if (usuarioRequerente.getReputacao() < 0) 
-			throw new Exception("Usuario nao pode pegar nenhum item emprestado");
+			throw new IllegalArgumentException("Usuario nao pode pegar nenhum item emprestado");
 		
 		HashMap<String, Item> itensDoDono = usuarioDono.getItens();
 		
@@ -144,7 +144,7 @@ public class ControllerEmprestimo {
 		
 	}
 	
-	private void podePedirEmprestado(Usuario requerente, int periodo) throws Exception {
+	private void podePedirEmprestado(Usuario requerente, int periodo) {
 		if (requerente.getCartao().equals("Noob") && periodo > 7) {
 			throw new IllegalArgumentException("Usuario impossiblitado de pegar emprestado por esse periodo");
 		}

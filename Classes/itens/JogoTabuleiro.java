@@ -29,7 +29,7 @@ public class JogoTabuleiro extends Item{
 	 * @param valor
 	 * @param pecasPerdidas
 	 */
-	public JogoTabuleiro(String nome, double valor) throws Exception{
+	public JogoTabuleiro(String nome, double valor) {
 		super(nome, valor);
 		pecasPerdidas = new ArrayList<String>();
 	}
@@ -109,7 +109,7 @@ public class JogoTabuleiro extends Item{
 	 * @param pecaPerdida
 	 * @throws Exception
 	 */
-	public void adicionarPecaPerdida(String pecaPerdida)throws Exception{
+	public void adicionarPecaPerdida(String pecaPerdida) {
 		if (pecaPerdida.trim().equals("")) {
 			throw new IllegalArgumentException();
 		}

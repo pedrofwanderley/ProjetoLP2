@@ -18,7 +18,7 @@ public class Item {
 	protected EstadoItem estado;
 	protected List<Emprestimo> historicoItem;
 
-	public Item(String nome, double valor) throws Exception {
+	public Item(String nome, double valor) {
 		if (nome.trim().equals("")) {
 			throw new IllegalArgumentException("Nome vazio ou composto de espacos!");
 		}
