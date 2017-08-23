@@ -91,10 +91,10 @@ public class ControllerEmprestimoTest {
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);
 		
-		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", "14/7/2017");
+		fac.devolverItem("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", "11/7/2017");
 		
 		ChaveEmprestimo chaveEmprestimo1 = new ChaveEmprestimo("Joao","Antonio","1234-5678","5555-5555","7/7/2017","War 2");
-		assertEquals("EMPRESTIMO - De: Joao, Para: Antonio, War 2, 7/7/2017, 5 dias, ENTREGA: 14/7/2017"
+		assertEquals("EMPRESTIMO - De: Joao, Para: Antonio, War 2, 7/7/2017, 5 dias, ENTREGA: 11/7/2017"
 				,fac.controllerEmprestimo.getEmprestimos().get(chaveEmprestimo1).toString());
 		
 	}
