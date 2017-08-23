@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
   <class id="1" language="java" name="itens.JogoEletronico" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/JogoEletronico.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="167" width="200" x="1816" y="1874"/>    
+    <position height="-1" width="-1" x="1548" y="1921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="chaves.ChaveEmprestimo" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/chaves/ChaveEmprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="329" width="307" x="78" y="2"/>    
+    <position height="-1" width="-1" x="1027" y="210"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="pesquisa.ControllerPesquisa" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/pesquisa/ControllerPesquisa.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1183" y="616"/>    
+    <position height="-1" width="-1" x="1067" y="608"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="itens.BlurayShow" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/BlurayShow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="167" width="245" x="1771" y="2081"/>    
+    <position height="-1" width="-1" x="1569" y="2196"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <enumeration id="7" language="java" name="usuario.CartaoFidelidade" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/usuario/CartaoFidelidade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="185" width="166" x="2210" y="1118"/>    
+    <position height="-1" width="-1" x="2025" y="1278"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="itens.Bluray" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Bluray.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="149" width="173" x="2056" y="1874"/>    
+    <position height="-1" width="-1" x="1910" y="1944"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="itens.BlurayFilme" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/BlurayFilme.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="167" width="244" x="2056" y="2081"/>    
+    <position height="-1" width="-1" x="1886" y="2200"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="itens.JogoTabuleiro" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/JogoTabuleiro.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="167" width="191" x="2269" y="1874"/>    
+    <position height="-1" width="-1" x="2168" y="1953"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="itens.Item" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Item.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="239" width="203" x="2161" y="1595"/>    
+    <position height="-1" width="-1" x="1942" y="1682"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="emprestimo.Emprestimo" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/emprestimo/Emprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="437" width="240" x="1930" y="1118"/>    
+    <position height="-1" width="-1" x="1454" y="1268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="emprestimo.ControllerEmprestimo" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/emprestimo/ControllerEmprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="203" width="500" x="1610" y="479"/>    
+    <position height="-1" width="-1" x="1636" y="728"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="itens.BluraySerie" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/BluraySerie.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="275" width="274" x="2340" y="2081"/>    
+    <position height="-1" width="-1" x="2229" y="2290"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -201,7 +201,7 @@
   </class>  
   <enumeration id="23" language="java" name="itens.EstadoItem" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/EstadoItem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="149" width="154" x="2500" y="1874"/>    
+    <position height="-1" width="-1" x="2381" y="1952"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -274,6 +274,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="46">    
+    <bendpoint x="2223" y="1785"/>    
     <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="47" name="estado"/>      
       <multiplicity id="48" minimum="0" maximum="1"/>    
