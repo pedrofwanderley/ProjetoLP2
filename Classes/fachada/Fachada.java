@@ -317,48 +317,77 @@ public class Fachada {
 
 	}
 
-	
+	/**
+	 * 
+	 * @param nome
+	 * @param telefone
+	 */
 	public String listarEmprestimosUsuarioEmprestando(String nome, String telefone) {
 		return usuarioController.listaEmprestimosEmprestando(nome, telefone);
 
 	}
 
-	
+	/**
+	 * 
+	 * @param nome
+	 * @param telefone
+	 */
 	public String listarEmprestimosUsuarioPegandoEmprestado(String nome, String telefone) {
 		return usuarioController.listaEmprestimosPegos(nome, telefone);
 	}
 
-	
+	/**
+	 * 
+	 * @param nomeItem
+	*/
 	public String listarEmprestimosItem(String nomeItem) {
 		return pesquisa.listarEmprestimosItem(usuarioController.getUsuarios(), nomeItem);
 	}
 
-	
+	/**
+	 * Lista itens que estao disponiveis no momento
+	 * 
+	 */
 	public String listarItensNaoEmprestados() {
 		return pesquisa.listarItensNaoEmprestados(usuarioController.getUsuarios());
 	}
 
-	
+	/**
+	 * Lista os itens emprestados no momento
+	 *
+	 */
 	public String listarItensEmprestados() {
 		return pesquisa.listarItensEmprestados(usuarioController.getUsuarios());
 	}
 
-	
+	/**
+	 * Lista os dez itens que mais foram requisitados
+	 * 
+	 */
 	public String listarTop10Itens() {
 		return pesquisa.listaTop10itens(usuarioController.getUsuarios());
 	}
 	
-	
+	/**
+	 * Lista todos os usuarios que possuem reputacao negativa
+	 * 
+	 */
 	public String listarCaloteiros(){
 		return pesquisa.listarCaloteiros(usuarioController.getUsuarios());
 	}
 	
-	
+	/**
+	 * Lista os dez melhores usuarios em reputacao
+	 * 
+	 */
 	public String listarTop10MelhoresUsuarios(){
 		return pesquisa.listarTop10MelhoresUsuarios(usuarioController.getUsuarios());
 	}
 	
-	
+	/**
+	 * Lista os dez piores usuarios em reputacao
+	 * 
+	 */
 	public String listarTop10PioresUsuarios(){
 		return pesquisa.listarTop10PioresUsuarios(usuarioController.getUsuarios());
 	}	
