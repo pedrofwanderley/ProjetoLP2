@@ -133,6 +133,21 @@ public class UsuarioControllerTest {
 		assertEquals("BomAmigo", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
 	}
 	
+	@Test
+    public void testListarItensEmprestando() throws Exception{
+        fachada.registrarEmprestimo("Lucas", "12345", "Pedro", "67890", "Jumanji", "10/01/2017", 3);
+        assertEquals("Emprestimos: EMPRESTIMO - De: " + "Lucas" + ", Para: " + "Pedro" + ", "
+                + "Jumanji" + ", " + "10/01/2017" + ", " + "3 " + "dias, ENTREGA: " + "Emprestimo em andamento" +
+                "|", fachada.listarEmprestimosUsuarioEmprestando("Lucas","12345"));
+    }
+    
+    @Test
+    public void testListarItensPegandoEmprestado() throws Exception{
+        fachada.registrarEmprestimo("Lucas", "12345", "Pedro", "67890", "Resident Evil", "10/02/2017", 3);
+        assertEquals("Emprestimos pegos: EMPRESTIMO - De: " + "Lucas" + ", Para: " + "Pedro" + ", " + "Resident Evil" +
+        ", " + "10/02/2017" + ", " + "3" + " dias, ENTREGA: " + "Emprestimo em andamento" + "|",
+        fachada.listarEmprestimosUsuarioPegandoEmprestado("Pedro","67890"));
+    }
 	//////////////// Testes de exceção \\\\\\\\\\\\\\\\\\\\
 	
 		@Test
