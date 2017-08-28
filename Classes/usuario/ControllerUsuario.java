@@ -354,10 +354,6 @@ public class ControllerUsuario {
 			throw new IllegalArgumentException("Item nao encontrado");
 		}
 		
-		double nr = usuario.getReputacao() - (0.05 * itensDoUsuario.get(nomeItem).getValor());
-		usuario.setReputacao(nr);
-		verificaCartao(usuario);
-		
 		itensDoUsuario.remove(nomeItem);
 		
 		

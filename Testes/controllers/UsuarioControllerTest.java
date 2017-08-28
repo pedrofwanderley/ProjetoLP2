@@ -119,9 +119,6 @@ public class UsuarioControllerTest {
 		
 		assertEquals("Noob", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
 		
-		fachada.removerItem("Pedro", "67890", "GTA: SA");
-		
-		assertEquals("Caloteiro", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
 		
 		fachada.cadastrarEletronico("Pedro", "67890", "GTA IV", 200.0, "PC");
 		fachada.cadastrarEletronico("Pedro", "67890", "GTA: V", 300.0, "PC");
