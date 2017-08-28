@@ -1,4 +1,9 @@
 package emprestimo;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
 import chaves.ChaveEmprestimo;
@@ -9,7 +14,7 @@ import usuario.Usuario;
 import usuario.ControllerUsuario;
 
 
-public class ControllerEmprestimo {
+public class ControllerEmprestimo implements Serializable {
 	
 	private HashMap <ChaveEmprestimo, Emprestimo> emprestimos;
 	
@@ -189,5 +194,12 @@ public class ControllerEmprestimo {
 	private void verificaCartao(Usuario usuario) {
 		ControllerUsuario con = new ControllerUsuario();
 		con.verificaCartao(usuario);
+	}
+	
+	public void gravarEmprestimo(Emprestimo emprestimo) throws IOException{
+		FileOutputStream arquivoEmprestimos = new FileOutputStream("Emprestimos.dat");
+		ObjectOutputStream gravarEmprestimo = new ObjectOutputStream(arquivoEmprestimos);
+		gravarEmprestimo.writeObject(emprestimo);
+		gravarEmprestimo.flush();
 	}
 }

@@ -1,10 +1,15 @@
 package usuario;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
 import chaves.ChaveUsuario;
 import itens.*;
 
-public class ControllerUsuario {
+public class ControllerUsuario implements Serializable {
 	
 	private Map<ChaveUsuario, Usuario> usuarios;
 
@@ -530,6 +535,13 @@ public class ControllerUsuario {
 		}
 		return usuarios.get(chave).listaEmprestimosPegos();
 		
+	}
+	
+	public void gravaUsuario(Usuario usuario) throws IOException{
+		FileOutputStream arquivoUsuarios = new FileOutputStream("arquivoUsuarios.dat");
+		ObjectOutputStream gravarUsuario = new ObjectOutputStream(arquivoUsuarios);
+		gravarUsuario.writeObject(usuario);
+		gravarUsuario.flush();
 	}
 
 	
