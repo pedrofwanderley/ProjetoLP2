@@ -1,8 +1,10 @@
 package fachada;
 
+import java.io.IOException;
+
 import easyaccept.EasyAccept;
 import emprestimo.ControllerEmprestimo;
-import pesquisa.ControllerPesquisa;
+import listing.ControllerListing;
 import usuario.ControllerUsuario;
 
 public class Fachada {
@@ -14,7 +16,7 @@ public class Fachada {
 		EasyAccept.main(args);
 	}
 
-	private ControllerPesquisa pesquisa = new ControllerPesquisa();
+	private ControllerListing pesquisa = new ControllerListing();
 	public ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
 	public ControllerUsuario usuarioController = new ControllerUsuario();
 
@@ -37,9 +39,10 @@ public class Fachada {
 	 * @param email email do usuario
 	 * @param celular celular do usuario
 	 * @return
+	 * @throws IOException 
 	 * @throws Exception os tratamentos estao na classe itens
 	 */
-	public String cadastrarUsuario(String nome, String email, String celular) {
+	public String cadastrarUsuario(String nome, String email, String celular) throws IOException {
 		usuarioController.CadastrarUsuario(nome, email, celular);
 		return email;
 	}
@@ -287,10 +290,11 @@ public class Fachada {
 	 * @param nomeItem nome do item a ser emprestado
 	 * @param dataEmprestimo data em que o emprestimo foi feito
 	 * @param periodo periodo em que o item permanecera emprestado
+	 * @throws IOException 
 	 * @throws Exception 
 	 */
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente,
-			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) {
+			String telefoneRequerente, String nomeItem, String dataEmprestimo, int periodo) throws IOException {
 		controllerEmprestimo.registrarEmprestimo(nomeDono, telefoneDono, nomeRequerente, telefoneRequerente, nomeItem,
 				dataEmprestimo, periodo, usuarioController.getUsuarios());
 

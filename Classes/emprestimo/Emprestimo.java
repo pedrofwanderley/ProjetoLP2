@@ -1,11 +1,12 @@
 package emprestimo;
+import java.io.Serializable;
 import java.util.Calendar;
 
 import itens.Item;
 import usuario.Usuario;
 
 
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 	
 	private Usuario dono;
 	private Usuario requerente;

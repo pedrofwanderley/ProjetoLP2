@@ -1,5 +1,6 @@
 package usuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.List;
 import emprestimo.Emprestimo;
 import itens.Item;
 
-public class Usuario {
+public class Usuario implements Serializable{
 
 	private String nome;
 	private String email;

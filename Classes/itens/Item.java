@@ -1,5 +1,6 @@
 package itens;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import emprestimo.Emprestimo;
  * 
  *
  */
-public class Item {
+public class Item implements Serializable {
 
 	protected String nomeItem;
 	protected double valor;

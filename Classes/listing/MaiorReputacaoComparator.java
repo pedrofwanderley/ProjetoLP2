@@ -1,15 +1,14 @@
-package pesquisa;
+package listing;
 
 import java.util.Comparator;
-
 import usuario.Usuario;
 
-public class MenorReputacaoComparator implements Comparator<Usuario> {
+public class MaiorReputacaoComparator implements Comparator<Usuario> {
 	
 	public int compare(Usuario usuario1, Usuario usuario2) {
 		Double reputacao1 = usuario1.getReputacao(); 
 		Double reputacao2 = usuario2.getReputacao();
-		return reputacao1.compareTo(reputacao2);
+		return reputacao2.compareTo(reputacao1);
 	}
 
 }

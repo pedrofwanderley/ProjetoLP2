@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="pesquisa.ControllerPesquisa" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/pesquisa/ControllerPesquisa.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="listing.ControllerListing" project="ProjetoLP2" 
+    file="/ProjetoLP2/Classes/listing/ControllerListing.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="149" width="372" x="-88" y="539"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="pesquisa.NomeItemComparator" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/pesquisa/NomeItemComparator.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="listing.NomeItemComparator" project="ProjetoLP2" 
+    file="/ProjetoLP2/Classes/listing/NomeItemComparator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="95" width="152" x="22" y="8"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,16 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="6" language="java" name="emprestimo.SituacaoEmprestimo" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/emprestimo/SituacaoEmprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="131" y="1979"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="7" language="java" name="itens.Bluray" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Bluray.java" 
+  <class id="6" language="java" name="itens.Bluray" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Bluray.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="553" y="2241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="itens.BlurayFilme" project="ProjetoLP2" 
+  <class id="7" language="java" name="itens.BlurayFilme" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/BlurayFilme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="555" y="2470"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="itens.JogoTabuleiro" project="ProjetoLP2" 
+  <class id="8" language="java" name="itens.JogoTabuleiro" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/JogoTabuleiro.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="830" y="2251"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="itens.Item" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Item.java" 
+  <class id="9" language="java" name="itens.Item" project="ProjetoLP2" file="/ProjetoLP2/Classes/itens/Item.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="613" y="2007"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,16 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="usuario.Historico" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/usuario/Historico.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="416" y="1719"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="emprestimo.Emprestimo" project="ProjetoLP2" 
+  <class id="10" language="java" name="emprestimo.Emprestimo" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/emprestimo/Emprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="292" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="emprestimo.ControllerEmprestimo" project="ProjetoLP2" 
+  <class id="11" language="java" name="emprestimo.ControllerEmprestimo" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/emprestimo/ControllerEmprestimo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="131" width="458" x="324" y="539"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="itens.BluraySerie" project="ProjetoLP2" 
+  <class id="12" language="java" name="itens.BluraySerie" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/BluraySerie.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="899" y="2567"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="usuario.Usuario" project="ProjetoLP2" 
+  <class id="13" language="java" name="usuario.Usuario" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/usuario/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="643" y="1362"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="pesquisa.ValorItemComparator" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/pesquisa/ValorItemComparator.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="listing.ValorItemComparator" project="ProjetoLP2" 
+    file="/ProjetoLP2/Classes/listing/ValorItemComparator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="95" width="147" x="929" y="8"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -145,16 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="usuario.UsuarioController" project="ProjetoLP2" 
-    file="/ProjetoLP2/Classes/usuario/UsuarioController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="401" width="410" x="822" y="539"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="18" language="java" name="itens.EstadoItem" project="ProjetoLP2" 
+  <enumeration id="15" language="java" name="itens.EstadoItem" project="ProjetoLP2" 
     file="/ProjetoLP2/Classes/itens/EstadoItem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="993" y="2015"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,146 +136,129 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <association id="19">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="20" name="item"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
+  <association id="16">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="23" name="usuarioController"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="26">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="27" name="controllerEmprestimo"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="31">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="32" name="historicos"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+      <attribute id="17" name="controllerEmprestimo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="34">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="35" name="situacao"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="7"/>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="38">    
-    <bendpoint x="777" y="1772"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="39" name="itens"/>      
-      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="42" name="estado"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="45" name="dono"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <bendpoint x="798" y="1385"/>    
-    <bendpoint x="798" y="1772"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="48" name="item"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="51" name="requerente"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <bendpoint x="831" y="980"/>    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="54" name="usuarios"/>      
-      <multiplicity id="55" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
+  <association id="20">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="57" name="pesquisa"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
+      <attribute id="21" name="pesquisa">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="7"/>  
+  <association id="23">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="24" name="dono">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
-  <association id="60">    
+  <association id="27">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="61" name="usuario"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
+      <attribute id="28" name="emprestimos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="31" name="estado">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="63">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="64">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="65" name="emprestimos"/>      
-      <multiplicity id="66" minimum="0" maximum="2147483647"/>    
+  <association id="33">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="34" name="requerente">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="38">    
+    <bendpoint x="798" y="1385"/>    
+    <bendpoint x="798" y="1772"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="39" name="item">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="42">    
+    <bendpoint x="777" y="1772"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="43" name="itens">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

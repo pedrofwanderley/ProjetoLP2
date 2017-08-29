@@ -27,10 +27,11 @@ public class ControllerUsuario implements Serializable {
 	 * @param celular
 	 * @param email
 	 * @return mensagem de sucesso
+	 * @throws IOException 
 	 * @throws Exception
 	 */
 
-	public void CadastrarUsuario(String nome, String celular, String email) {
+	public void CadastrarUsuario(String nome, String celular, String email) throws IOException {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
 		if (usuarios.containsKey(chave)) {
@@ -39,6 +40,7 @@ public class ControllerUsuario implements Serializable {
 		
 		Usuario usuario = new Usuario(nome, celular, email);
 		usuarios.put(chave, usuario);
+		gravaUsuario(usuario);
 	}
 
 	/**
@@ -538,7 +540,7 @@ public class ControllerUsuario implements Serializable {
 	}
 	
 	public void gravaUsuario(Usuario usuario) throws IOException{
-		FileOutputStream arquivoUsuarios = new FileOutputStream("arquivoUsuarios.dat");
+		FileOutputStream arquivoUsuarios = new FileOutputStream("arquivoUsuarios.txt");
 		ObjectOutputStream gravarUsuario = new ObjectOutputStream(arquivoUsuarios);
 		gravarUsuario.writeObject(usuario);
 		gravarUsuario.flush();

@@ -42,12 +42,13 @@ public class ControllerEmprestimo implements Serializable {
 	 * @param dataEmprestimo
 	 * @param periodo
 	 * @param usuarios
+	 * @throws IOException 
 	 * @throws Exception 
 	 */
 	
 	
 	public void registrarEmprestimo(String nomeDono, String telefoneDono, String nomeRequerente, String telefoneRequerente, 
-			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios) {
+			String nomeItem,String dataEmprestimo, int periodo, Map<ChaveUsuario, Usuario> usuarios) throws IOException {
 		
 		ChaveUsuario chaveDono = new ChaveUsuario(nomeDono, telefoneDono);
 		ChaveUsuario chaveRequerente = new ChaveUsuario(nomeRequerente, telefoneRequerente);
@@ -87,6 +88,7 @@ public class ControllerEmprestimo implements Serializable {
 		usuarioDono.getEmprestimosEmprestando().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
 		itemDesejado.getHistoricoItem().add(emprestimo);
+		gravarEmprestimo(emprestimo);
 	}
 		
 	/**
@@ -197,7 +199,7 @@ public class ControllerEmprestimo implements Serializable {
 	}
 	
 	public void gravarEmprestimo(Emprestimo emprestimo) throws IOException{
-		FileOutputStream arquivoEmprestimos = new FileOutputStream("Emprestimos.dat");
+		FileOutputStream arquivoEmprestimos = new FileOutputStream("Emprestimos.txt");
 		ObjectOutputStream gravarEmprestimo = new ObjectOutputStream(arquivoEmprestimos);
 		gravarEmprestimo.writeObject(emprestimo);
 		gravarEmprestimo.flush();

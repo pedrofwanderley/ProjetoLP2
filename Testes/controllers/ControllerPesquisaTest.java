@@ -5,19 +5,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import emprestimo.ControllerEmprestimo;
-import pesquisa.ControllerPesquisa;
+import listing.ControllerListing;
 import usuario.Usuario;
 import usuario.ControllerUsuario;
 
 public class ControllerPesquisaTest {
 
-	private ControllerPesquisa pesquisa;
+	private ControllerListing pesquisa;
 	private ControllerUsuario usuarioController;
 	private Usuario usuario, usuario2;
 	private ControllerEmprestimo emprestimoController;
 	@Before
 	public void controllerPesquisa() {
-		pesquisa = new ControllerPesquisa();
+		pesquisa = new ControllerListing();
 		usuario = new Usuario("Pedro", "0000-0000", "projeto@gmail.com");
 		usuario2 = new Usuario("Fulano", "9999-9999", "fulano@gmail.com");
 		usuarioController = new ControllerUsuario();

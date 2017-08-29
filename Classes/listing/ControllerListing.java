@@ -1,4 +1,4 @@
-package pesquisa;
+package listing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,10 +15,10 @@ import usuario.Usuario;
  * @author pedrofw
  *
  */
-public class ControllerPesquisa {
+public class ControllerListing {
 	
 	
-	public ControllerPesquisa() {
+	public ControllerListing() {
 		
 	}
 	
