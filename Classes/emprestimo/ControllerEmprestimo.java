@@ -1,7 +1,8 @@
 package emprestimo;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
@@ -16,7 +17,11 @@ import usuario.ControllerUsuario;
 
 public class ControllerEmprestimo implements Serializable {
 	
-	private HashMap <ChaveEmprestimo, Emprestimo> emprestimos;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Map <ChaveEmprestimo, Emprestimo> emprestimos;
 	
 	
 	public ControllerEmprestimo(){
@@ -27,7 +32,7 @@ public class ControllerEmprestimo implements Serializable {
 	 * @return emprestimo
 	 */
 	
-	public HashMap<ChaveEmprestimo, Emprestimo> getEmprestimos() {
+	public Map<ChaveEmprestimo, Emprestimo> getEmprestimos() {
 		return emprestimos;
 	}
 	
@@ -88,7 +93,6 @@ public class ControllerEmprestimo implements Serializable {
 		usuarioDono.getEmprestimosEmprestando().add(emprestimo);
 		usuarioRequerente.getEmprestimosPegos().add(emprestimo);
 		itemDesejado.getHistoricoItem().add(emprestimo);
-		gravarEmprestimo(emprestimo);
 	}
 		
 	/**
@@ -198,10 +202,34 @@ public class ControllerEmprestimo implements Serializable {
 		con.verificaCartao(usuario);
 	}
 	
-	public void gravarEmprestimo(Emprestimo emprestimo) throws IOException{
-		FileOutputStream arquivoEmprestimos = new FileOutputStream("Emprestimos.txt");
-		ObjectOutputStream gravarEmprestimo = new ObjectOutputStream(arquivoEmprestimos);
-		gravarEmprestimo.writeObject(emprestimo);
-		gravarEmprestimo.flush();
+	public void gravaEmprestimos(Map<ChaveEmprestimo, Emprestimo> map, String arquivo){
+		FileOutputStream arquivoEmprestimos;
+		try {
+			arquivoEmprestimos = new FileOutputStream(arquivo);
+			ObjectOutputStream gravarEmprestimos = new ObjectOutputStream(arquivoEmprestimos);
+			gravarEmprestimos.writeObject(map);
+			arquivoEmprestimos.close();
+			gravarEmprestimos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
+	
+	public Map<ChaveEmprestimo, Emprestimo> recuperarEmprestimos(String arquivo){
+		Map<ChaveEmprestimo, Emprestimo> map = new HashMap<>();
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			map = (Map<ChaveEmprestimo, Emprestimo>) ois.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return map;
+		
+		
+	}
+	
 }

@@ -1,7 +1,13 @@
 package chaves;
 
-public class ChaveEmprestimo {
+import java.io.Serializable;
 
+public class ChaveEmprestimo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nomeDono;
 	private String nomeRequerente;
 	private String telefoneDono;

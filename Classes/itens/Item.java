@@ -14,6 +14,10 @@ import emprestimo.Emprestimo;
  */
 public class Item implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String nomeItem;
 	protected double valor;
 	protected EstadoItem estado;

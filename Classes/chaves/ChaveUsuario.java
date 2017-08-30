@@ -1,6 +1,12 @@
 package chaves;
 
-public class ChaveUsuario {
+import java.io.Serializable;
+
+public class ChaveUsuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String celular;
 	

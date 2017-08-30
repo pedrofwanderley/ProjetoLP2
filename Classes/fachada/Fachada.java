@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import easyaccept.EasyAccept;
 import emprestimo.ControllerEmprestimo;
+import emprestimo.Emprestimo;
 import listing.ControllerListing;
 import usuario.ControllerUsuario;
+import usuario.Usuario;
 
 public class Fachada {
 	public static void main(String[] args) {
@@ -24,12 +26,17 @@ public class Fachada {
 	 * Metodo inicializa sistema
 	 */
 	public void iniciarSistema() {
+		usuarioController.recuperaArquivo("usuarios.ser");
+		controllerEmprestimo.recuperarEmprestimos("Emprestimos.ser");
+		
 	}
 
 	/**
 	 * Metodo fecha sistema
 	 */
 	public void fecharSistema() {
+		usuarioController.gravaUsuarios(usuarioController.getUsuarios(), "usuarios.ser");
+		controllerEmprestimo.gravaEmprestimos(controllerEmprestimo.getEmprestimos(), "Emprestimos.ser");
 	}
 
 	/**

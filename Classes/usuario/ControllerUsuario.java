@@ -13,6 +13,10 @@ import itens.*;
 
 public class ControllerUsuario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map<ChaveUsuario, Usuario> usuarios;
 
 	public ControllerUsuario() {
@@ -540,7 +544,7 @@ public class ControllerUsuario implements Serializable {
 		
 	}
 	
-	public void gravaUsuarioss(Map<ChaveUsuario, Usuario> map, String arquivo){
+	public void gravaUsuarios(Map<ChaveUsuario, Usuario> map, String arquivo){
 		FileOutputStream arquivoUsuarios;
 		try {
 			arquivoUsuarios = new FileOutputStream(arquivo);
@@ -554,19 +558,22 @@ public class ControllerUsuario implements Serializable {
 		
 	}
 	
-	public HashMap<ChaveUsuario, Usuario> recuperaArquivo(String arquivo){
-		HashMap<ChaveUsuario, Usuario> map = new HashMap<>();
+	public Map<ChaveUsuario, Usuario> recuperaArquivo(String arquivo){
+		Map<ChaveUsuario, Usuario> map = new HashMap<>();
 		FileInputStream fis;
 		try {
 			fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			map = (HashMap<ChaveUsuario, Usuario>) ois.readObject();
+			map = (Map<ChaveUsuario, Usuario>) ois.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return map;
 		
 		
 	}
+	
+	
 	
 }
