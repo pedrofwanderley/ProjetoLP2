@@ -1,7 +1,11 @@
 package chaves;
 
 import java.io.Serializable;
-
+/**
+ * Classe que serve para ser usada como chave de uma coleção de empréstimos
+ * @author Guilherme, Wesley
+ *
+ */
 public class ChaveEmprestimo implements Serializable {
 
 	/**

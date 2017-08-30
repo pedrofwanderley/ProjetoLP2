@@ -5,7 +5,11 @@ import java.util.Calendar;
 import itens.Item;
 import usuario.Usuario;
 
-
+/**
+ * Classe que define um emprestimo.
+ * @author Wesley
+ *
+ */
 public class Emprestimo implements Serializable {
 	
 	/**

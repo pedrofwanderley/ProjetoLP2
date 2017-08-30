@@ -15,7 +15,11 @@ import itens.Item;
 import usuario.Usuario;
 import usuario.ControllerUsuario;
 
-
+/**
+ * Classe controladora de emprestimos.
+ * @author Wesley
+ *
+ */
 public class ControllerEmprestimo implements Serializable {
 	
 	/**
@@ -147,7 +151,12 @@ public class ControllerEmprestimo implements Serializable {
 		verificaCartao(requerente);
 
 	}
-			
+	/**
+	 * Metodo que modifica o estado de um item.	
+	 * @param conUsuario, COntrollerUsuário
+	 * @param chaveDono, chave do mapa de usuários, que representa o dono.
+	 * @param nomeItem, nome do item a ser modificado o estado.
+	 */
 	private void modificaEstadoEmprestimoItem(ControllerUsuario conUsuario, ChaveUsuario chaveDono, String nomeItem) {
 		
 		Usuario usuarioDono = conUsuario.getUsuarios().get(chaveDono);
@@ -155,7 +164,11 @@ public class ControllerEmprestimo implements Serializable {
 		itemEmprestimo.setEstado(EstadoItem.NEmprestado);
 		
 	}
-	
+	/**
+	 * Metodo que define se um usuário pode ou não pedir emprestado, dependendo do seu cartão fidelidade.
+	 * @param requerente, Usuário requerente.
+	 * @param periodo, periodo de empréstimo.
+	 */
 	private void podePedirEmprestado(Usuario requerente, int periodo) {
 		if (requerente.getCartao().equals("Noob") && periodo > 7) {
 			throw new IllegalArgumentException("Usuario impossiblitado de pegar emprestado por esse periodo");
@@ -199,10 +212,15 @@ public class ControllerEmprestimo implements Serializable {
 	
 	
 	private void verificaCartao(Usuario usuario) {
-		ControllerUsuario con = new ControllerUsuario();
-		con.verificaCartao(usuario);
+		ControllerUsuario usuarioController = new ControllerUsuario();
+		usuarioController.verificaCartao(usuario);
 	}
 	
+	/**
+	 * Metodo de gravacao da colecao de emprestimos em um arquivo.
+	 * @param map, mapa de emprestimos.
+	 * @param arquivo, nome do arquivo a ser direcionada a gravacao.
+	 */
 	public void gravaEmprestimos(Map<ChaveEmprestimo, Emprestimo> map, String arquivo){
 		FileOutputStream arquivoEmprestimos;
 		try {
@@ -216,7 +234,11 @@ public class ControllerEmprestimo implements Serializable {
 		}
 		
 	}
-	
+	/**
+	 * Metodo de recuperacao de mapa de emprestimos.
+	 * @param arquivo, nome do arquivo onde se encontra o mapa.
+	 * @return, retorna o mapa de emprestimos recuperado.
+	 */
 	public Map<ChaveEmprestimo, Emprestimo> recuperaEmprestimos(String arquivo){
 		File arquivoEmprestimos = null;
 		arquivoEmprestimos = new File(arquivo);

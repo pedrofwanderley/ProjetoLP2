@@ -11,15 +11,15 @@ import listing.ControllerListing;
 import usuario.Usuario;
 import usuario.ControllerUsuario;
 
-public class ControllerPesquisaTest {
+public class ControllerListingTest {
 
-	private ControllerListing pesquisa;
+	private ControllerListing controllerListing;
 	private ControllerUsuario usuarioController;
 	private Usuario usuario, usuario2;
 	private ControllerEmprestimo emprestimoController;
 	@Before
 	public void controllerPesquisa() {
-		pesquisa = new ControllerListing();
+		controllerListing = new ControllerListing();
 		usuario = new Usuario("Pedro", "0000-0000", "projeto@gmail.com");
 		usuario2 = new Usuario("Fulano", "9999-9999", "fulano@gmail.com");
 		usuarioController = new ControllerUsuario();
@@ -43,7 +43,7 @@ public class ControllerPesquisaTest {
 					67 + " min, " + "14_ANOS" + ", " +  "Arctic Monkeys" + ", " + 15 + " faixas" + "|" +
 					"FILME: " + "Poeira em alto mar"+ ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 
 						120 + " min, " + "14_ANOS" + ", " + "comedia" + ", " + 2012 + "|",
-				pesquisa.listaItensUsuariosNome(usuarioController.getUsuarios()));
+				controllerListing.listaItensUsuariosNome(usuarioController.getUsuarios()));
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class ControllerPesquisaTest {
 						"FILME: " + "A volta dos que nao foram"
 						+ ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " + 140 + " min, " + "12_ANOS" + ", "
 						+ "comedia" + ", " + 2010 + "|",
-				pesquisa.listaItensUsuariosValor(usuarioController.getUsuarios()));
+				controllerListing.listaItensUsuariosValor(usuarioController.getUsuarios()));
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class ControllerPesquisaTest {
 		assertEquals(
 				"FILME: " + "A volta dos que nao foram" + ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " + 140
 						+ " min, " + "12_ANOS" + ", " + "comedia" + ", " + 2010,
-				pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
+				controllerListing.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
 						"A volta dos que nao foram"));
 
 	}
@@ -88,7 +88,7 @@ public class ControllerPesquisaTest {
                 "A volta dos que nao foram", "12/08/2017", 3, usuarioController.getUsuarios());
         assertEquals("Emprestimos associados ao item: " + "EMPRESTIMO - De: " +usuario.getNome() + ", Para: " + usuario2.getNome() + ", " +
                 "A volta dos que nao foram" + ", " + "12/08/2017" + ", " + 3 + " dias, ENTREGA: " + "Emprestimo em andamento" + "|",
-                pesquisa.listarEmprestimosItem(usuarioController.getUsuarios(), "A volta dos que nao foram"));
+                controllerListing.listarEmprestimosItem(usuarioController.getUsuarios(), "A volta dos que nao foram"));
         
     }
     
@@ -104,7 +104,7 @@ public class ControllerPesquisaTest {
                 + ", R$ " + 50.00 + ", " + "Nao emprestado" + ", " + 140 + " min, " + "12_ANOS" + ", "
                 + "comedia" + ", " + 2010 + "|" + "FILME: " + "Poeira em alto mar" + ", R$ " + 40.00 + ", " + "Nao emprestado" + ", " + 120 + " min, "
                 + "14_ANOS" + ", " + "comedia" + ", " + 2012 + "|" + "JOGO ELETRONICO: " + "Tibia" + ", R$ " + 30.00 + ", " + "Nao emprestado" +
-                ", " + "PC" + "|", pesquisa.listarItensNaoEmprestados(usuarioController.getUsuarios()));
+                ", " + "PC" + "|", controllerListing.listarItensNaoEmprestados(usuarioController.getUsuarios()));
     }
     
     @Test
@@ -116,14 +116,14 @@ public class ControllerPesquisaTest {
         emprestimoController.registrarEmprestimo(usuario.getNome(), usuario.getCelular(), usuario2.getNome(),usuario2.getCelular(),
                 "A volta dos que nao foram", "12/08/2017", 3, usuarioController.getUsuarios());
         assertEquals("Dono do item: " + usuario.getNome() + ", Nome do item emprestado: " + "A volta dos que nao foram" + "|", 
-                pesquisa.listarItensEmprestados(usuarioController.getUsuarios()));
+                controllerListing.listarItensEmprestados(usuarioController.getUsuarios()));
     }
 
 	@Test
 	public void testPesquisaDetalhesItensItemException() {
 		try {
 			usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
-			pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
+			controllerListing.pesquisarDetalhesItem(usuarioController.getUsuarios(), usuario.getNome(), usuario.getCelular(),
 					"A volta dos que nao foram");
 			
 			
@@ -140,7 +140,7 @@ public class ControllerPesquisaTest {
 		try {
 			usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 					50.00, 140, "comedia", "12_ANOS", 2010);
-			pesquisa.pesquisarDetalhesItem(usuarioController.getUsuarios(), "Pedro", "9999-9999",
+			controllerListing.pesquisarDetalhesItem(usuarioController.getUsuarios(), "Pedro", "9999-9999",
 					"A volta dos que nao foram");
 			
 		} catch (Exception e) {

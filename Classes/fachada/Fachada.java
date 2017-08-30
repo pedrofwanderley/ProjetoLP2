@@ -4,10 +4,8 @@ import java.io.IOException;
 
 import easyaccept.EasyAccept;
 import emprestimo.ControllerEmprestimo;
-import emprestimo.Emprestimo;
 import listing.ControllerListing;
 import usuario.ControllerUsuario;
-import usuario.Usuario;
 
 public class Fachada {
 	public static void main(String[] args) {
@@ -23,14 +21,14 @@ public class Fachada {
 	public ControllerUsuario usuarioController = new ControllerUsuario();
 
 	/**
-	 * Metodo inicializa sistema.
+	 * Metodo inicializa sistema e recupera os arquivos gravados quando o sistema fechou pela última vez.
 	 */
 	public void iniciarSistema() {
 		usuarioController.recuperaUsuarios("Usuarios.ser");
 		controllerEmprestimo.recuperaEmprestimos("Emprestimos.ser");
 	}
 	/**
-	 * Metodo fecha sistema
+	 * Metodo fecha sistema, e guarda os dados do sistema, atualizados, em arquivos.
 	 */
 	public void fecharSistema() {
 		usuarioController.gravaUsuarios(usuarioController.getUsuarios(), "Usuarios.ser");

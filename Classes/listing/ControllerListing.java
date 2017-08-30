@@ -10,7 +10,7 @@ import itens.Item;
 import usuario.Usuario;
 
 /**
- * Classe de controle de pesquisas.
+ * Classe de controle de listagem.
  * 
  * @author pedrofw
  *

@@ -74,7 +74,7 @@ public class Usuario implements Serializable{
 	}
 
 	public String getCartao() {
-		return cartao.getEstadoItem();
+		return cartao.getCartaoFidelidade();
 	}
 
 	public void setCartao(CartaoFidelidade cartao) {

@@ -1,7 +1,11 @@
 package chaves;
 
 import java.io.Serializable;
-
+/**
+ * Classe que gera uma chave para o mapa de usuários.
+ * @author Guilherme
+ *
+ */
 public class ChaveUsuario implements Serializable{
 	/**
 	 * 
