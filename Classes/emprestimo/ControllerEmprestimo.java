@@ -216,7 +216,7 @@ public class ControllerEmprestimo implements Serializable {
 		
 	}
 	
-	public Map<ChaveEmprestimo, Emprestimo> recuperarEmprestimos(String arquivo){
+	public Map<ChaveEmprestimo, Emprestimo> recuperaEmprestimos(String arquivo){
 		Map<ChaveEmprestimo, Emprestimo> map = new HashMap<>();
 		FileInputStream fis;
 		try {

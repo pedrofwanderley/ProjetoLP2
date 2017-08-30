@@ -26,8 +26,8 @@ public class Fachada {
 	 * Metodo inicializa sistema
 	 */
 	public void iniciarSistema() {
-		usuarioController.recuperaArquivo("usuarios.ser");
-		controllerEmprestimo.recuperarEmprestimos("Emprestimos.ser");
+		usuarioController.recuperaUsuarios("usuarios.ser");
+		controllerEmprestimo.recuperaEmprestimos("Emprestimos.ser");
 		
 	}
 

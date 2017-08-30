@@ -558,7 +558,7 @@ public class ControllerUsuario implements Serializable {
 		
 	}
 	
-	public Map<ChaveUsuario, Usuario> recuperaArquivo(String arquivo){
+	public Map<ChaveUsuario, Usuario> recuperaUsuarios(String arquivo){
 		Map<ChaveUsuario, Usuario> map = new HashMap<>();
 		FileInputStream fis;
 		try {
