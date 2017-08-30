@@ -1,6 +1,8 @@
 package controllers;
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +18,7 @@ public class UsuarioControllerTest {
 	ChaveUsuario chavePedro;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws IOException {
 		Usuario usuario = new Usuario("Lucas", "lucas@gmail.com", "12345");
 		Usuario usuario2 = new Usuario("Pedro", "pedro@gmail.com", "67890");
 		fachada = new Fachada();
@@ -106,7 +108,7 @@ public class UsuarioControllerTest {
 	}
 	
 	@Test
-	public void testAlteraReputacao() {
+	public void testAlteraReputacao() throws IOException {
 		assertEquals("Noob", fachada.usuarioController.getUsuarios().get(chaveLucas).getCartao());
 		assertEquals("FreeRyder", fachada.usuarioController.getUsuarios().get(chavePedro).getCartao());
 		
@@ -130,7 +132,7 @@ public class UsuarioControllerTest {
 	}
 	
 	@Test
-    public void testListarItensEmprestando() {
+    public void testListarItensEmprestando() throws IOException {
         fachada.registrarEmprestimo("Lucas", "12345", "Pedro", "67890", "Jumanji", "10/01/2017", 3);
         assertEquals("Emprestimos: EMPRESTIMO - De: " + "Lucas" + ", Para: " + "Pedro" + ", "
                 + "Jumanji" + ", " + "10/01/2017" + ", " + "3 " + "dias, ENTREGA: " + "Emprestimo em andamento" +
@@ -138,7 +140,7 @@ public class UsuarioControllerTest {
     }
     
     @Test
-    public void testListarItensPegandoEmprestado() {
+    public void testListarItensPegandoEmprestado() throws IOException {
         fachada.registrarEmprestimo("Lucas", "12345", "Pedro", "67890", "Resident Evil", "10/02/2017", 3);
         assertEquals("Emprestimos pegos: EMPRESTIMO - De: " + "Lucas" + ", Para: " + "Pedro" + ", " + "Resident Evil" +
         ", " + "10/02/2017" + ", " + "3" + " dias, ENTREGA: " + "Emprestimo em andamento" + "|",

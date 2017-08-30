@@ -1,6 +1,8 @@
 package controllers;
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,7 +28,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testListaItensUsuariosNome() {
+	public void testListaItensUsuariosNome() throws IOException {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -45,7 +47,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testListaItensUsuariosValor() {
+	public void testListaItensUsuariosValor() throws IOException {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -65,7 +67,7 @@ public class ControllerPesquisaTest {
 	}
 
 	@Test
-	public void testPesquisarDetalhesItem() {
+	public void testPesquisarDetalhesItem() throws IOException {
 		usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
 		usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
 				50.00, 140, "comedia", "12_ANOS", 2010);
@@ -77,7 +79,7 @@ public class ControllerPesquisaTest {
 
 	}
 	@Test
-    public void testListarEmprestimosItem() {
+    public void testListarEmprestimosItem() throws IOException {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.CadastrarUsuario(usuario2.getNome(), usuario2.getCelular(), usuario2.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
@@ -91,7 +93,7 @@ public class ControllerPesquisaTest {
     }
     
     @Test
-    public void testListarItensNaoEmprestados() {
+    public void testListarItensNaoEmprestados() throws IOException {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",
                 50.00, 140, "comedia", "12_ANOS", 2010);
@@ -106,7 +108,7 @@ public class ControllerPesquisaTest {
     }
     
     @Test
-    public void testListarItensEmprestados() {
+    public void testListarItensEmprestados() throws IOException {
         usuarioController.CadastrarUsuario(usuario.getNome(), usuario.getCelular(), usuario.getEmail());
         usuarioController.CadastrarUsuario(usuario2.getNome(), usuario2.getCelular(), usuario2.getEmail());
         usuarioController.cadastrarBluRayFilme(usuario.getNome(), usuario.getCelular(), "A volta dos que nao foram",

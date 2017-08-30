@@ -1,6 +1,9 @@
 package controllers;
 
 import static org.junit.Assert.*;
+
+import java.io.IOException;
+
 import fachada.Fachada;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +16,7 @@ public class ControllerEmprestimoTest {
 	private Fachada fac = new Fachada();
 	
 	@Before
-	public void setUp() {
+	public void setUp() throws IOException {
 		fac.cadastrarUsuario("Joao",  "1234-5678", "joao123@gmail.com");
 		fac.cadastrarUsuario("Ana", "9999-8888","ana@gmail.com");
 		fac.cadastrarUsuario("Antonio", "5555-5555","antonio5@hotmail.com");
@@ -24,7 +27,7 @@ public class ControllerEmprestimoTest {
 	}
 	
 	@Test
-	public void testRegistraEmprestimo() {
+	public void testRegistraEmprestimo() throws IOException {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);
@@ -86,7 +89,7 @@ public class ControllerEmprestimoTest {
 	}
 		
 	@Test 
-	public void testDevolucao() {
+	public void testDevolucao() throws IOException {
 		
 		fac.registrarEmprestimo("Joao", "1234-5678", "Antonio", "5555-5555", "War 2", "7/7/2017", 5);
 		fac.registrarEmprestimo("Ana", "9999-8888", "Antonio", "5555-5555", "The Witcher 3", "25/7/2017", 5);

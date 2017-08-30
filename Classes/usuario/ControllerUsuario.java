@@ -1,7 +1,9 @@
 package usuario;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
@@ -40,7 +42,6 @@ public class ControllerUsuario implements Serializable {
 		
 		Usuario usuario = new Usuario(nome, celular, email);
 		usuarios.put(chave, usuario);
-		gravaUsuario(usuario);
 	}
 
 	/**
@@ -539,12 +540,33 @@ public class ControllerUsuario implements Serializable {
 		
 	}
 	
-	public void gravaUsuario(Usuario usuario) throws IOException{
-		FileOutputStream arquivoUsuarios = new FileOutputStream("arquivoUsuarios.txt");
-		ObjectOutputStream gravarUsuario = new ObjectOutputStream(arquivoUsuarios);
-		gravarUsuario.writeObject(usuario);
-		gravarUsuario.flush();
+	public void gravaUsuarioss(Map<ChaveUsuario, Usuario> map, String arquivo){
+		FileOutputStream arquivoUsuarios;
+		try {
+			arquivoUsuarios = new FileOutputStream(arquivo);
+			ObjectOutputStream gravarUsuario = new ObjectOutputStream(arquivoUsuarios);
+			gravarUsuario.writeObject(map);
+			arquivoUsuarios.close();
+			gravarUsuario.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
-
+	
+	public HashMap<ChaveUsuario, Usuario> recuperaArquivo(String arquivo){
+		HashMap<ChaveUsuario, Usuario> map = new HashMap<>();
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(arquivo);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			map = (HashMap<ChaveUsuario, Usuario>) ois.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+		
+		
+	}
 	
 }

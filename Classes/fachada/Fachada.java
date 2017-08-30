@@ -392,4 +392,5 @@ public class Fachada {
 	public String listarTop10PioresUsuarios(){
 		return pesquisa.listarTop10PioresUsuarios(usuarioController.getUsuarios());
 	}	
-}
+	
+	}
