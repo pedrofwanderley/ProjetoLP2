@@ -23,19 +23,17 @@ public class Fachada {
 	public ControllerUsuario usuarioController = new ControllerUsuario();
 
 	/**
-	 * Metodo inicializa sistema
+	 * Metodo inicializa sistema.
 	 */
 	public void iniciarSistema() {
-		usuarioController.recuperaUsuarios("usuarios.ser");
+		usuarioController.recuperaUsuarios("Usuarios.ser");
 		controllerEmprestimo.recuperaEmprestimos("Emprestimos.ser");
-		
 	}
-
 	/**
 	 * Metodo fecha sistema
 	 */
 	public void fecharSistema() {
-		usuarioController.gravaUsuarios(usuarioController.getUsuarios(), "usuarios.ser");
+		usuarioController.gravaUsuarios(usuarioController.getUsuarios(), "Usuarios.ser");
 		controllerEmprestimo.gravaEmprestimos(controllerEmprestimo.getEmprestimos(), "Emprestimos.ser");
 	}
 

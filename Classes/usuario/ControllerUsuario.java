@@ -1,8 +1,11 @@
 package usuario;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -543,28 +546,47 @@ public class ControllerUsuario implements Serializable {
 		return usuarios.get(chave).listaEmprestimosPegos();
 		
 	}
-	
+	/**
+	 * Método de gravação de mapa de usuários, o objeto é gravado após o sistema ser fechado.
+	 * @param map, mapa de usuários.
+	 * @param arquivo, nome do arquivo de destino.
+	 */
 	public void gravaUsuarios(Map<ChaveUsuario, Usuario> map, String arquivo){
 		FileOutputStream arquivoUsuarios;
 		try {
 			arquivoUsuarios = new FileOutputStream(arquivo);
 			ObjectOutputStream gravarUsuario = new ObjectOutputStream(arquivoUsuarios);
 			gravarUsuario.writeObject(map);
-			arquivoUsuarios.close();
+			gravarUsuario.flush();
 			gravarUsuario.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
-	
+	/**
+	 * Método de recuperação de mapa gravado.
+	 * @param arquivo, nome do arquivo onde os dados serão buscados.
+	 * @return, retorna um mapa de usuários gravado anteriormente.
+	 */
 	public Map<ChaveUsuario, Usuario> recuperaUsuarios(String arquivo){
+		File arquivoUsuarios = null;
+		arquivoUsuarios = new File(arquivo);
 		Map<ChaveUsuario, Usuario> map = new HashMap<>();
 		FileInputStream fis;
 		try {
+			if (!arquivoUsuarios.exists()) {
+				arquivoUsuarios.createNewFile();
+			}	
+			else if (arquivoUsuarios.length() == 0) {
+				System.out.println("ARQUIVO VAZIO");
+				
+			}else{
 			fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			map = (Map<ChaveUsuario, Usuario>) ois.readObject();
+			ois.close();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

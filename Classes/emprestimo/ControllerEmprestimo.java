@@ -1,4 +1,5 @@
 package emprestimo;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -208,7 +209,7 @@ public class ControllerEmprestimo implements Serializable {
 			arquivoEmprestimos = new FileOutputStream(arquivo);
 			ObjectOutputStream gravarEmprestimos = new ObjectOutputStream(arquivoEmprestimos);
 			gravarEmprestimos.writeObject(map);
-			arquivoEmprestimos.close();
+			gravarEmprestimos.flush();
 			gravarEmprestimos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -217,12 +218,22 @@ public class ControllerEmprestimo implements Serializable {
 	}
 	
 	public Map<ChaveEmprestimo, Emprestimo> recuperaEmprestimos(String arquivo){
+		File arquivoEmprestimos = null;
+		arquivoEmprestimos = new File(arquivo);
 		Map<ChaveEmprestimo, Emprestimo> map = new HashMap<>();
 		FileInputStream fis;
 		try {
+			if (!arquivoEmprestimos.exists()) {
+				arquivoEmprestimos.createNewFile();
+			}
+			else if (arquivoEmprestimos.length() == 0) {
+				System.out.println("ARQUIVO VAZIO");
+			}else{
 			fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			map = (Map<ChaveEmprestimo, Emprestimo>) ois.readObject();
+			ois.close();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
