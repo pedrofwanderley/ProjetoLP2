@@ -32,10 +32,9 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Recebe os parametros do usuario e adiciona o mesmo a colecao de usuarios
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param email
-	 * @return mensagem de sucesso
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param email, email do usuario.
 	 * @throws IOException 
 	 * @throws Exception
 	 */
@@ -55,9 +54,8 @@ public class ControllerUsuario implements Serializable {
 	 * Metodo que recebe a identificacao do usuario, e remove o mesmo da colecao de
 	 * usuarios
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @return mensagem de sucesso ou nao
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
 	 * @throws Exception
 	 */
 
@@ -75,7 +73,8 @@ public class ControllerUsuario implements Serializable {
 	 * Metodo que recebe o nome do usuario e retorna a representacao textual do
 	 * mesmo
 	 * 
-	 * @param nome
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
 	 * @return toString do usuario desejado
 	 */
 
@@ -94,11 +93,10 @@ public class ControllerUsuario implements Serializable {
 	 * Metodo que recebe a identificacao do usuario, o atributo que se deseja
 	 * modificar e o valor que sera setado
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param atributo
-	 * @param valor
-	 * @return mensagem de sucesso
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param atributo, atributo a ser atualizado.
+	 * @param valor, valor do item.
 	 * @throws Exception
 	 */
 
@@ -125,11 +123,11 @@ public class ControllerUsuario implements Serializable {
 	
 	
 	/**
-	 * Metodo que recebe a identificaao do usuario e exibe o email do mesmo
+	 * Metodo que recebe a identificao do usuario e exibe o email do mesmo
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param atributo
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param atributo, atributo a ser identificado.
 	 * @return Email desejado
 	 * @throws Exception
 	 */
@@ -160,12 +158,11 @@ public class ControllerUsuario implements Serializable {
 	 * Metodo que cadastra um novo item do tipo jogo eletronico e adiciona ao mapa
 	 * de itens de determinado usuario
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param preco
-	 * @param plataforma
-	 * @return Mensagem de status
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param preco, valor do item.
+	 * @param plataforma, tipo de plataforma do jogo.
 	 * @throws Exception
 	 */
 
@@ -208,11 +205,10 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo para cadastrar um novo jogo de tabuleiro no sistema
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param preco
-	 * @return Mensagem de sucesso
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param preco, valor do item.
 	 * @throws Exception
 	 */
 
@@ -233,15 +229,14 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo para cadastrar um novo blu-ray de filme no sistema
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param preco
-	 * @param duracao
-	 * @param genero
-	 * @param classificacao
-	 * @param anoLancamento
-	 * @return Mensagem de sucesso
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param preco, valor do item.
+	 * @param duracao, duracao do filme.
+	 * @param genero, genero do filme.
+	 * @param classificacao, classificacao do filme.
+	 * @param anoLancamento, ano de lancamento do filme.
 	 * @throws Exception
 	 */
 
@@ -263,15 +258,14 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo para cadastrar um novo blu-ray de show no sistema
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param preco
-	 * @param duracao
-	 * @param classificacao
-	 * @param artista
-	 * @param numeroDeFaixas
-	 * @return Mensagem de sucesso
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param preco, valor do item.
+	 * @param duracao, duracao do show.
+	 * @param classificacao, classificacao do show.
+	 * @param artista, artista do show.
+	 * @param numeroFaixas, numero de faixas do show.
 	 * @throws Exception
 	 */
 
@@ -294,15 +288,15 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo que cadastra um novo Blu-Ray de serie no sistema
 	 * 
-	 * @param nome
-	 * @param telefone
-	 * @param nomeItem
-	 * @param preco
-	 * @param descricao
-	 * @param duracao
-	 * @param classificacao
-	 * @param genero
-	 * @param temporada
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param preco, valor do item.
+	 * @param descricao, descricao da serie.
+	 * @param duracao, duracao da serie.
+	 * @param classificacao, classificao da serie.
+	 * @param genero, genero da serie.
+	 * @param temporada, temporada da serie.
 	 * @throws Exception
 	 */
 
@@ -324,10 +318,10 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo que adiciona um blu-ray simples em uma temporada de determinada serie
 	 * 
-	 * @param nome
-	 * @param telefone
-	 * @param nomeBlurayTemporada
-	 * @param duracao
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeBlurayTemporada, nome do item.
+	 * @param duracao, duracao do episodio.
 	 * @throws Exception 
 	 */
 
@@ -348,10 +342,9 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo que remove o item desejado de um determinado usuario
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @return Mensagem de status
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
 	 * @throws Exception
 	 */
 
@@ -377,11 +370,11 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo que atualiza determinada informacao sobre um item desejado
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param atributo
-	 * @param valor
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param atributo, atributo a ser atualizado.
+	 * @param valor, valor do item.
 	 * @throws Exception
 	 */
 
@@ -420,16 +413,11 @@ public class ControllerUsuario implements Serializable {
 
 	/**
 	 * Metodo que adicona uma peca perdida a determinado jogo de tabuleiro
-	 * poderiamos consideram um caso em que o item escolhido nï¿½o fosse um 
-	 * jogo de tabuleiro, entao neste caso com iriamos lidar com este erro?
-	 * 
-	 * @param nome
-	 * @param telefone
-	 * @param nomeItem
-	 * @param nomePeca
-	 * @throws Exception 
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param nomePeca, nome da peca perdida.
 	 */
-
 	public void adicionarPecaPerdida(String nome, String celular, String nomeItem, String nomePeca) {
 		
 		ChaveUsuario chave = new ChaveUsuario(nome, celular);
@@ -452,10 +440,10 @@ public class ControllerUsuario implements Serializable {
 	/**
 	 * Metodo que retorna a informacao desejada sobre o item desejado
 	 * 
-	 * @param nome
-	 * @param celular
-	 * @param nomeItem
-	 * @param atributo
+	 * @param nome, nome do usuario.
+	 * @param celular, telefone do usuario.
+	 * @param nomeItem, nome do item.
+	 * @param atributo, atributo a ser informado.
 	 * @return Mensagem de status
 	 * @throws Exception
 	 */
@@ -490,20 +478,15 @@ public class ControllerUsuario implements Serializable {
 	}
 	
 	/**
-	 * Metodo que retorna o valor de 5% sobre o preco total do item em questao
-	 * @param preco
-	 * @return valor requerido
+	 * Metodo de registro de emprestimo no historico do usuario.
+	 * @param nomeUsuario, nome do usuario.
+	 * @param telefoneUsuario, telefone do usuario.
+	 * @param nomeUsuarioRelacionado, usuario requerente.
+	 * @param nomeItem, nome do item.
+	 * @param situacao, situacao do emprestimo.
+	 * @param dataDevolucao, data de devolucao do item.
+	 * @param diasAtrasados, dias de atraso na devolucao.
 	 */
-	
-	/**
-	 
-	 * Registra no historico do usuario informacao sobre emprestimos passados.
-	 * @param usuario
-	 * @param usuarioHistorico
-	 * @param item
-	 * @param situacao
-	 */
-	
 	public void registraHistorico(String nomeUsuario, String telefoneUsuario, String nomeUsuarioRelacionado,
 			String nomeItem, String situacao, String dataDevolucao, int diasAtrasados) {
 		
